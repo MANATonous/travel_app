@@ -37,19 +37,7 @@ it('has an password confirmation input', ()=>{
   expect(component.find('label#password_confirmation').text()).toBe('Password Confirm')
 })
 
-it('has a submit button', ()=>{
-    const mockSubmitHandler = jest.fn()
-    const component = mount (<Register onSubmit={mockSubmitHandler}/>)
-    component.find('input[name="name"]').simulate('change', {target: {value: 'Paws', name: 'name'}})
-})
 
-// it('has a submit button', ()=>{
-//   const mockSubmitHandler = jest.fn()
-//   const component = mount(<Register />);
-//   component.find('form').simulate('submit')
-//   // console.log(mockSubmitHandler.mock)
-//   expect(mockSubmitHandler).toBeCalled();
-// })
 
 // it('', ()=>{
 //

@@ -19,7 +19,10 @@ class Register extends Component {
     }
 
 handleChange(e){
-  
+  const formState = Object.assign({}, this.state.form)
+  formState[e.target.name] = e.target.value
+  this.setState({form: formState})
+  console.log(this.state.form);
 }
 
 handleSubmit(event){
@@ -46,31 +49,49 @@ handleSubmit(event){
           <label id='last_name'>Last Name</label>
           <input
             placeholder="Last Name"
+            name='last_name'
+            value= {this.state.form.last_name}
+            onChange={this.handleChange.bind(this)}
             type="text"
           />
           <label id='city'>City</label>
           <input
             placeholder="City"
+            name='city'
+            value= {this.state.form.city}
+            onChange={this.handleChange.bind(this)}
             type="text"
           />
           <label id='state'>State</label>
           <input
             placeholder="State"
+            name='state'
+            value= {this.state.form.state}
+            onChange={this.handleChange.bind(this)}
             type="text"
           />
           <label id='email'>Email</label>
           <input
-            placeholder="email"
+            placeholder="Email"
+            name='email'
+            value= {this.state.form.email}
+            onChange={this.handleChange.bind(this)}
             type="email"
           />
           <label id='password'>Password</label>
           <input
-            placeholder="password"
+            placeholder="Password"
+            name='password'
+            value= {this.state.form.password}
+            onChange={this.handleChange.bind(this)}
             type="password"
           />
           <label id='password_confirmation'>Password Confirm</label>
           <input
             placeholder="Confirm Password"
+            name='password_confirmation'
+            value= {this.state.form.password_confirmation}
+            onChange={this.handleChange.bind(this)}
             type="password"
           />
           <input
