@@ -7,6 +7,7 @@ class Register extends Component {
       this.state = {
         apiURL: 'http://localhost:3000',
         errors: '',
+        // state gets updated from handleChange, and sent to server with newUserSubmit
         form: {
           first_name: '',
           last_name: '',
@@ -15,21 +16,24 @@ class Register extends Component {
           email: '',
           password: '',
           password_confirmation: '',
-          //TODO profile pic avatar
+          //todo: profile pic avatar
         }
       }
     }
 
+//handleChange is called any time a user inputs any value into a form field, when they do so the corresponding state.from field is updated
 handleChange(e){
   const formState = Object.assign({}, this.state.form)
   formState[e.target.name] = e.target.value
   this.setState({form: formState})
-  console.log(this.state.form);
 }
 
 newUserSubmit(event){
+  //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
   event.preventDefault()
+  //set newUser to state
   const newUser = this.state.form
+  //send json version of newUser to backend api with post method
   fetch(`${this.state.apiURL}/users`,
     {
       body: JSON.stringify(newUser),
@@ -39,14 +43,14 @@ newUserSubmit(event){
       method: "POST"
     }
   )
-  .then((rawResponse) => {
+  .then((rawResponse) => { //process response
     return Promise.all([rawResponse.status, rawResponse.json()])
   })
-  .then((parsedResponse) =>{
+  .then((parsedResponse) =>{ //if response is error, update this.state.error
     if (parsedResponse[0] === 422) {
       this.setState({errors: 'Invalid Inputs'})
-    } else {
-      //TODO redirect to login
+    } else { //otherwise redirect to login and (temporarily) set alert=success
+      //todo redirect to login
       this.setState({errors: null})
       alert('Success')
     }})
@@ -56,6 +60,7 @@ newUserSubmit(event){
 
   render() {
     return(
+      //only returning form field with no editing FOR NOW
       <div>
         <form
           onSubmit={this.newUserSubmit.bind(this)}

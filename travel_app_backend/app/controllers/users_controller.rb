@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+# we ran into errors when creating from params alone, so we broke out each individual assignment
   def create
     user = User.new()
     user.first_name = params[:first_name]
