@@ -7,6 +7,16 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() })
 
+const form = {
+  first_name: 'test',
+  last_name: 'test',
+  city: 'ca',
+  state: 'ca',
+  email: 'email@emal.cpm',
+  password: 'pass',
+  password_confirmation: 'pass',
+}
+
 it('renders without crashing', ()=>{
   const div = document.createElement('div')
   ReactDOM.render(<Register />, div)
@@ -37,6 +47,11 @@ it('has an password confirmation input', ()=>{
   expect(component.find('label#password_confirmation').text()).toBe('Password Confirm')
 })
 
+it('updates state on form change', ()=> {
+  const component = mount(<Register />)
+  component.find('input#first_name_test').simulate('change', {target: {value: 'test', name: 'first_name'}})
+  expect(component.state().form.first_name).toBe('test')
+})
 
 
 // it('', ()=>{

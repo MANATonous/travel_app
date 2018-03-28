@@ -5,6 +5,8 @@ class Register extends Component {
     constructor(){
       super()
       this.state = {
+        apiURL: 'http://localhost:3000',
+        errors: '',
         form: {
           first_name: '',
           last_name: '',
@@ -25,23 +27,44 @@ handleChange(e){
   console.log(this.state.form);
 }
 
-handleSubmit(event){
-
+newUserSubmit(event){
   event.preventDefault()
-
-  return("Form was submitted", this.state)
+  const newUser = this.state.form
+  fetch(`${this.state.apiURL}/users`,
+    {
+      body: JSON.stringify(newUser),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST"
+    }
+  )
+  .then((rawResponse) => {
+    return Promise.all([rawResponse.status, rawResponse.json()])
+  })
+  .then((parsedResponse) =>{
+    if (parsedResponse[0] === 422) {
+      this.setState({errors: 'Invalid Inputs'})
+    } else {
+      //TODO redirect to login
+      this.setState({errors: null})
+      alert('Success')
+    }})
 }
+
+
 
   render() {
     return(
       <div>
         <form
-          onSubmit={this.handleSubmit.bind(this)}
+          onSubmit={this.newUserSubmit.bind(this)}
         >
           <label id='first_name'>First Name</label>
           <input
             placeholder="First Name"
             name='first_name'
+            id='first_name_test'
             value= {this.state.form.first_name}
             onChange={this.handleChange.bind(this)}
             type="text"
@@ -94,6 +117,7 @@ handleSubmit(event){
             onChange={this.handleChange.bind(this)}
             type="password"
           />
+          //TODO: add profile picture upload with PaperClip
           <input
             className='form-submit'
             type="submit"
