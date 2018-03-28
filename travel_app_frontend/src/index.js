@@ -15,6 +15,11 @@ ReactDOM.render(
         path='/trips'
         component={Trips}
       />
+      <Route
+        exact
+        path='/'
+        component={App}
+      />
     </div>
   </Router>
 , document.getElementById('root'));
