@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { CardDeck } from 'reactstrap'
+import { CardDeck } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/Trips.css';
 
 class Trips extends Component {
@@ -29,8 +30,12 @@ class Trips extends Component {
           <h1 className= "display-3"> Trippin Out!</h1>
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
-          <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
-          <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
+          <Link to="/NewTrip">
+            <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
+          </Link>
+          <Link to="/NewTrip">
+            <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
+          </Link>
         </ div>
           <div className= "jumbotron">
             <h1 className="label"> Your Trips </h1>

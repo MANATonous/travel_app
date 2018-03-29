@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Row, Col, Form} from 'react-bootstrap';
+import AuthService from '../services/AuthService'
 import '../css/NewTrip.css';
 
 class NewTrip extends Component {
   constructor(props) {
     super(props)
+    this.Auth = new AuthService()
     this.state = {
       apiURL: 'http://localhost:3000',
       errors: '',
@@ -16,7 +18,8 @@ class NewTrip extends Component {
         start_date: '',
         end_date: '',
         description: '',
-        link: ''
+        link: '',
+        user_id: ''
       }
     }
   }
@@ -24,35 +27,9 @@ class NewTrip extends Component {
   handleChange(e){
     const { form } = this.state
     form[e.target.name] = e.target.value
+    form.user_id = this.Auth.getUserId()
     this.setState({ form })
   }
-  //
-  // handleSubmit(e){
-  //   this.props.onSubmit(this.state.form)
-  //   console.log(this.state.form)
-  // }
-  //
-  // newTripSubmit(trip){
-  //   fetch(`${this.state.apiUrl}/trips`,
-  //     {
-  //       body: JSON.stringify(trip),
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       method: 'POST'
-  //     }
-  //   )
-  // .then((rawResponse)=>{
-  //   return Promise.all([rawResponse.status, rawResponse.json()])
-  // })
-  // .then((parsedResponse)=> {
-  //   if(parsedResponse[0] === 422){
-  //     this.setState({errors: parsedResponse[1]})
-  //   }else{
-  //     const trips
-  //   }
-  // })
-  // }
 
 
   newTripSubmit(event){
