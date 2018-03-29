@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../css/App.css';
+import withAuth from '../services/withAuth'
 
 class App extends Component {
   render() {
@@ -11,4 +12,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuth(App);
