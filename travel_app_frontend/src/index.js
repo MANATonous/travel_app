@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 import App from './pages/App';
-import Trips from './Trips';
+import Trips from './pages/Trips';
+import NewTrip from './pages/NewTrip';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -19,6 +20,11 @@ ReactDOM.render(
         exact
         path='/'
         component={App}
+      />
+      <Route
+      exact
+      path='/newtrip'
+      component={NewTrip}
       />
     </div>
   </Router>

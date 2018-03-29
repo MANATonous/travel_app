@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Row, jumbotron} from 'reactstrap'
-import './Trips.css';
+import { CardDeck } from 'reactstrap'
+import '../css/Trips.css';
 
 
 
@@ -45,12 +45,12 @@ class Trips extends Component {
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
-                <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Stock Photo" />
+                <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Scene" />
                 <div className="card-body">
                   <p className="card-text">{trips.description}</p>
                 </div>
                 <div className="card-body">
-                  <a href="#" className="card-link">{trips.link}</a>
+                  <a href="" className="card-link">{trips.link}</a>
                 </div>
               </div>
             )
