@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { CardDeck } from 'reactstrap'
 import '../css/Trips.css';
 
-
-
 class Trips extends Component {
 
   constructor(props){
