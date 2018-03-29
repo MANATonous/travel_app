@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-# we ran into errors when creating from params alone, so we broke out each individual assignment
+  before_action :authenticate_user, only: :show
+
+
+  def show
+    user = User.find params[:id]
+    render json: user
+  end
+
+  # we ran into errors when creating and using strong params alone, so we broke out each individual assignment
   def create
     user = User.new()
     user.first_name = params[:first_name]
@@ -10,10 +18,15 @@ class UsersController < ApplicationController
     user.city = params[:city]
     user.state = params[:state]
 
-    if user.save!
-      render json: user, status: 201
+    if user.save
+      token = Knock::AuthToken.new(payload: { sub: user.id }).token
+      payload = {
+        user: user,
+        jwt: token
+      }
+      render json: payload, status: 201
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: {errors: user.errors}, status: 422
     end
   end
 
