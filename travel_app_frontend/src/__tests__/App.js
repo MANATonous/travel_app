@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from '../pages/App';
 import { mount } from 'enzyme'
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
