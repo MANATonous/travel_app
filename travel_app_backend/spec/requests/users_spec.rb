@@ -1,36 +1,43 @@
 require 'rails_helper'
 
-RSpec.describe "Trips API" do
-  it "creates a user" do
-    user_params = {
-      user: {
-        first_name:'Test',
-        last_name: 'Test',
-        email: 'test@test.com',
-        password: 'test',
-        password_confirmation: 'test',
-        city: 'test',
-        state: 'test'
+RSpec.describe "Users", type: :request do
+
+  describe "GET /users/:id" do
+
+    it "creates a user" do
+      payload = {
+          first_name: 'Bob',
+          last_name: 'John',
+          email: 'bob@bobber.com',
+          city: 'CA',
+          state: 'CA',
+          password: 'secret',
+          password_confirmation: 'secret'
       }
-    }
-    post '/users', params: user_params
-    expect(response).to have_http_status(201)
-    json = JSON.parse(response.body)
-    puts json
-    expect(json["first_name"]).to eq 'Test'
+
+      post users_path, params: payload
+      expect(response).to have_http_status(201)
+      json = JSON.parse(response.body)
+      expect(json["user"]["first_name"]).to eq "Bob"
+      expect(json["jwt"]).to_not be_blank
+    end
+
+    it "should return errors when fails to create" do
+      payload = {
+        first_name: 'Bob',
+        last_name: 'John',
+        email: 'bob@bobber.com',
+        city: 'CA',
+        state: 'CA',
+        password: 'secret',
+        password_confirmation: 'not-secret'
+      }
+
+      post users_path, params: payload
+      expect(response).to have_http_status(422)
+      json = JSON.parse(response.body)
+      expect(json["errors"]["password_confirmation"]).to_not be_blank
+    end
+
   end
-
-    # it "creates a new item" do
-    #    expect {
-    #      post '/users', { first_name:'Test',
-    #            last_name: 'Test',
-    #            email: 'test@test.com',
-    #            password: 'test',
-    #            password_confirmation: 'test',
-    #            city: 'test',
-    #            state: 'test', format: :json  }
-    #    }.to change(User, :count).by(1)
-    #  end
-
-
 end

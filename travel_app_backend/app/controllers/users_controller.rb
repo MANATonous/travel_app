@@ -18,10 +18,15 @@ class UsersController < ApplicationController
     user.city = params[:city]
     user.state = params[:state]
 
-    if user.save!
-      render json: user, status: 201
+    if user.save
+      token = Knock::AuthToken.new(payload: { sub: user.id }).token
+      payload = {
+        user: user,
+        jwt: token
+      }
+      render json: payload, status: 201
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: {errors: user.errors}, status: 422
     end
   end
 
