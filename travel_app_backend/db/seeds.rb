@@ -68,7 +68,9 @@ trip_attributes = [
     country: 'USA',
     start_date: '2018-08-22',
     end_date: '2018-08-24',
-    link: 'www.google.com'
+    link: 'www.google.com',
+    rand_code: '000000',
+    user_id: 1
   },
   {
     title: 'London',
@@ -78,7 +80,9 @@ trip_attributes = [
     country: 'UK',
     start_date: '2015-09-15',
     end_date: '2015-09-29',
-    link: 'www.friends.com'
+    link: 'www.friends.com',
+    rand_code: '000001',
+    user_id: 1
   },
   {
     title: 'New York',
@@ -88,7 +92,9 @@ trip_attributes = [
     country: 'USA',
     start_date: '2013-03-29',
     end_date: '2013-04-15',
-    link: 'www.hey.com'
+    link: 'www.hey.com',
+    rand_code: '000002',
+    user_id: 4
   }
 ]
 

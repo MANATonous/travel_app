@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import registerServiceWorker from './registerServiceWorker';
-import Register from './pages/Register';
 
 
 ReactDOM.render(
@@ -38,11 +37,6 @@ ReactDOM.render(
         exact
         path='/NewTrip'
         component={NewTrip}
-      />
-      <Route
-        exact
-        path='/Register'
-        component={Register}
       />
     </div>
   </Router>
