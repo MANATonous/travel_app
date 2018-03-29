@@ -5,6 +5,7 @@ import App from './pages/App';
 import Trips from './Trips';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
+import Register from './pages/Register';
 
 
 ReactDOM.render(
@@ -19,6 +20,11 @@ ReactDOM.render(
         exact
         path='/'
         component={App}
+      />
+      <Route
+        exact
+        path='/Register'
+        component={Register}
       />
     </div>
   </Router>
