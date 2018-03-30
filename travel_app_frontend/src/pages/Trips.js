@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { CardDeck } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem, DropdownMenu, NavbarToggler, Collapse, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/Trips.css';
+import '../css/AuthUserNavFooter.css';
 
 class Trips extends Component {
 
@@ -9,8 +10,16 @@ class Trips extends Component {
     super(props)
     this.state = {
       apiUrl: "http://localhost:3000",
-      trips: []
+      trips: [],
+      collapsed: true
     }
+      this.toggleNavbar = this.toggleNavbar.bind(this);
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
 
   componentWillMount(){
@@ -26,8 +35,24 @@ class Trips extends Component {
   render(){
     return(
       <div>
+      <Navbar color="faded" light>
+        <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
+        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!this.state.collapsed} navbar>
+          <Nav navbar align="right">
+            <NavItem>
+              <NavLink href="/Trips">My Trips</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/Trips">My Past Trips</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/Trips">Logout</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+        </Navbar>
         <div className= "jumbotron">
-          <h1 className= "display-3"> Trippin Out!</h1>
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
           <Link to="/NewTrip">
