@@ -33,7 +33,7 @@ class Trips extends Component {
           <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
           </Link>
-          <Link to="/NewTrip">
+          <Link to="/">
             <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
           </Link>
         </ div>

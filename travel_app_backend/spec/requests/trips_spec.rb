@@ -42,6 +42,7 @@ RSpec.describe "Trips", type: :request do
       expect(response).to have_http_status(200)
       json = JSON.parse(response.body)
       expect(json["title"]).to eq "Bahama Mama"
+      expect(json["rand_code"].length).to eq 6
 
     end
   end
