@@ -21,11 +21,11 @@ class App extends Component {
         <button type="button" className="logout" onClick={this.handleLogout.bind(this)}>Logout
         </button>
         <Router>
-            <Switch>
-              <Route exact path='/' component={Trips}/>
-              <Route path='/NewTrip' component={NewTrip} />
-            </Switch>
-          </Router>
+          <Switch>
+            <Route exact path='/' component={Trips}/>
+            <Route path='/NewTrip' component={NewTrip} />
+          </Switch>
+        </Router>
       </div>
     );
   }
