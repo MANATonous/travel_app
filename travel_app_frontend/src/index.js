@@ -28,16 +28,6 @@ ReactDOM.render(
         path='/Login'
         component={Login}
       />
-      <Route
-        exact
-        path='/Trips'
-        component={Trips}
-      />
-      <Route
-        exact
-        path='/NewTrip'
-        component={NewTrip}
-      />
     </div>
   </Router>
 , document.getElementById('root'));

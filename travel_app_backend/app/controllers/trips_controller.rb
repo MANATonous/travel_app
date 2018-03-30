@@ -4,6 +4,8 @@ class TripsController < ApplicationController
     render json: trips
   end
 
+
+#inquire why private? and how to call private method from a public method within the same controller
   def generate_code(number)
     charset = Array('A'..'Z') + Array(0..9)
     Array.new(number) { charset.sample }.join
@@ -18,6 +20,7 @@ class TripsController < ApplicationController
 
 
   private
+
   def trip_params
     params.require(:trip).permit(:title, :city, :state, :country, :start_date, :end_date, :description, :link, :user_id)
   end
