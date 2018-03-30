@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import registerServiceWorker from './registerServiceWorker';
+import Trips from './pages/Trips.js';
+import NewTrip from './pages/NewTrip';
+import JoinTrip from './pages/JoinTrip';
+
 
 
 ReactDOM.render(
