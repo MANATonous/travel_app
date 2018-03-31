@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem, DropdownMenu, NavbarToggler, Collapse, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/Trips.css';
 import '../css/AuthUserNavFooter.css';
+
+
+
 
 class Trips extends Component {
 
@@ -58,7 +61,7 @@ class Trips extends Component {
           <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
           </Link>
-          <Link to="/">
+          <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
           </Link>
         </ div>
