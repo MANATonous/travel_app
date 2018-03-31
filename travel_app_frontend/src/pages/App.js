@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import withAuth from '../services/withAuth'
-import Trips from './Trips';
+import Dashboard from './Dashboard';
 import NewTrip from './NewTrip';
 import AuthService from '../services/AuthService'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Trip from './Trip';
 
 const Auth = new AuthService()
 
@@ -22,8 +23,9 @@ class App extends Component {
         </button>
         <Router>
           <Switch>
-            <Route exact path='/' component={Trips}/>
+            <Route exact path='/' component={Dashboard}/>
             <Route path='/NewTrip' component={NewTrip} />
+            <Route path='/Trip/:id' component={Trip} />
           </Switch>
         </Router>
       </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { CardDeck } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import '../css/Trips.css';
+import '../css/Dashboard.css';
 
-class Trips extends Component {
+class Dashboard extends Component {
 
   constructor(props){
     super(props)
@@ -44,16 +44,15 @@ class Trips extends Component {
           {this.state.trips.map((trips, index) => {
             return(
               <div className="card" key={index}>
-                <h3 className="card-header">{trips.title}</h3>
+                <Link to={`/Trip/${trips.id}`}>
+                  <h3 className="card-header">{trips.title}</h3>
+                </Link>
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
                 <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Scene" />
                 <div className="card-body">
                   <p className="card-text">{trips.description}</p>
-                </div>
-                <div className="card-body">
-                  <a href="" className="card-link">{trips.link}</a>
                 </div>
               </div>
             )
@@ -65,4 +64,4 @@ class Trips extends Component {
   }
 }
 
-export default Trips;
+export default Dashboard;

@@ -4,6 +4,14 @@ class TripsController < ApplicationController
     render json: trips
   end
 
+  def find_trip
+    #take in id from post
+    #find the id
+    #send the trip back as json
+    singletrip = Trip.find_by_id(params[:trip_id])
+    render json: singletrip, status: 201
+  end
+
 
 #inquire why private? and how to call private method from a public method within the same controller
   def generate_code(number)
