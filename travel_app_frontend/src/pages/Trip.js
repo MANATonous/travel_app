@@ -36,6 +36,11 @@ class Trip extends Component {
   render() {
     return(
       <div>
+        {this.state.trip.title} <br/>
+        {this.state.trip.start_date} to {this.state.trip.end_date} <br/>
+        {this.state.trip.city}, {this.state.trip.state} <br/>
+        {this.state.trip.country} <br/>
+        {this.state.trip.description}
       </div>
     )
   }
