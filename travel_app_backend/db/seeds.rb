@@ -140,3 +140,34 @@ user_trip_attributes = [
 user_trip_attributes.each do |attribute|
   UserTrip.create(attribute)
 end
+
+# chat_attributes = [
+#   {
+#     username: "Rachel",
+#     chat: "Hey guys, let's go on a trip!"
+#   },
+#   {
+#     username: "Joey",
+#     chat: "Where should be go?"
+#   },
+#   {
+#     username: "Phoebe",
+#     chat: "How about Atlantic City?!"
+#   },
+#   {
+#     username: "Chandler",
+#     chat: "No, let's go to Vegas instead!"
+#   },
+#   {
+#     username: "Ross",
+#     chat: "Sounds good to me"
+#   },
+#   {
+#     username: "Monica",
+#     chat: "Count me in, too!"
+#   }
+# ]
+#
+# chat_attributes.each do |attribute|
+#   Chat.create(attribute)
+# end
