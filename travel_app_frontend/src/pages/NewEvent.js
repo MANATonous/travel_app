@@ -32,7 +32,7 @@ class NewEvent extends Component {
 
   newEventSubmit(event){
     //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
-    event.preventDefault()
+    event.preventDefault() 
     //set new event to state
     const newEvent = this.state.form
     //send json version of new event to backend api with post method
