@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: :show
-
+  def index
+    @users = User.all
+  end
 
   def show
     user = User.find params[:id]
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
     user.email = params[:email]
     user.city = params[:city]
     user.state = params[:state]
+    user.avatar = params[:avatar_base]
 
     if user.save
       token = Knock::AuthToken.new(payload: { sub: user.id }).token
@@ -32,7 +35,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :city, :state)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :city, :state, :avatar_base)
   end
 
 end

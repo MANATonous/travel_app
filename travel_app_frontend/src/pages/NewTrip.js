@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Form} from 'react-bootstrap';
+import {Row, Col, Form, Label } from 'react-bootstrap';
 import AuthService from '../services/AuthService'
 import '../css/NewTrip.css';
 
@@ -19,9 +19,30 @@ class NewTrip extends Component {
         end_date: '',
         description: '',
         link: '',
-        user_id: ''
+        user_id: '',
+        photo_base: null
       }
     }
+  }
+
+  //base64 encode the file
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  // custom handler for file uploads
+  fileChangeHandler(event){
+    const file = event.target.files[0]
+    this.getBase64(file).then( (fileString) => {
+      const formState = Object.assign({}, this.state.form)
+      formState.photo_base = fileString
+      this.setState({form: formState})
+    })
   }
 
   handleChange(e){
@@ -68,6 +89,13 @@ class NewTrip extends Component {
             <label className="col-form-label col-form-label-lg title">Title</label>
             <input className="form-control form-control-lg title" type="text" placeholder="Title" name="title" value={this.state.form.title} onChange={this.handleChange.bind(this)} id="inputLarge" />
           </div>
+          <Label for="photo_base" sm={2}>Add a Trip Picture</Label>
+            <Col sm={5}>
+              <input
+                type="file"
+                onChange={this.fileChangeHandler.bind(this)}
+              />
+            </Col>
         </Row>
         <Row>
           <Col>

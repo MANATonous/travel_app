@@ -17,9 +17,29 @@ class Register extends Component {
           email: '',
           password: '',
           password_confirmation: '',
-          //todo: profile pic avatar
+          avatar_base: null
         }
       }
+    }
+
+    //base64 encode the file
+    getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    }
+
+    // custom handler for file uploads
+    fileChangeHandler(event){
+      const file = event.target.files[0]
+      this.getBase64(file).then( (fileString) => {
+        const formState = Object.assign({}, this.state.form)
+        formState.avatar_base = fileString
+        this.setState({form: formState})
+      })
     }
 
 //handleChange is called any time a user inputs any value into a form field, when they do so the corresponding state.from field is updated
@@ -108,6 +128,15 @@ newUserSubmit(event){
               <Col sm={5}>
               <Input type="password_confirmation" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" value= {this.state.form.password_confirmation}
               onChange={this.handleChange.bind(this)}/>
+              </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="avatar_base" sm={2}>Upload a Profile Picture</Label>
+              <Col sm={5}>
+                <Input
+                  type="file"
+                  onChange={this.fileChangeHandler.bind(this)}
+                />
               </Col>
           </FormGroup>
           <button

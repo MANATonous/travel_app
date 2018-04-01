@@ -27,7 +27,6 @@ ReactDOM.render(
         path='/Login'
         component={Login}
       />
-      //TEMPORARY FOR TESTING
       <Route
         exact
         path='/NewEvent'
