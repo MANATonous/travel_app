@@ -10,7 +10,7 @@ RSpec.describe "Users", type: :request do
     end
 
 
-    it "creates a user" do
+    it "creates a user with a photo" do
       payload = {
           first_name: 'Bob',
           last_name: 'John',

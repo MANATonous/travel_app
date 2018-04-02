@@ -1,15 +1,17 @@
 require 'rails_helper'
 
+
 RSpec.describe "Trips", type: :request do
 
   describe "GET /trips/:id" do
+
     let(:encoded_file) do
       file_path = File.join(Rails.root, 'spec', 'fixtures', 'sample-image.png')
       base64_image = Base64.encode64(File.read(file_path))
       "data:image/jpg;base64,#{base64_image}"
     end
 
-##still failing
+##TODO fix this test; still failing
     it "gets a list of trips" do
       Trip.create(
         title: 'Bahama Mama',
@@ -22,9 +24,10 @@ RSpec.describe "Trips", type: :request do
         country: 'USA',
         user_id: '1',
         rand_code: '102937',
-        avatar_base: encoded_file
+        photo: encoded_file
       )
-      get '/trips'
+
+      get '/trips', :format => :json
       json = JSON.parse(response.body)
       expect(response).to be_success
 
@@ -41,7 +44,8 @@ RSpec.describe "Trips", type: :request do
           city: 'Test',
           state: 'CA',
           country: 'USA',
-          user_id: '1'
+          user_id: '1',
+          photo_base: encoded_file
         }
       }
 
@@ -66,14 +70,11 @@ RSpec.describe "Trips", type: :request do
           country: 'USA',
           user_id: '1',
           rand_code: '102937',
-          avatar_base: encoded_file
+          photo_base: encoded_file
         }
       }
 
       post trips_path, params: trip_params
-
-      puts response.body
-
       expect(response).to have_http_status(200)
 
       # test json response object
