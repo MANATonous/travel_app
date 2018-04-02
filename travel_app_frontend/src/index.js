@@ -8,7 +8,6 @@ import Register from './pages/Register'
 import NewEvent from './pages/NewEvent'
 import registerServiceWorker from './registerServiceWorker';
 
-
 ReactDOM.render(
   <Router>
     <div>
