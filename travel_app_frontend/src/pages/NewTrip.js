@@ -90,9 +90,6 @@ class NewTrip extends Component {
           </Nav>
         </Collapse>
         </Navbar>
-          <Modal isOpen>
-          <ModalHeader toggle={this.toggle}>Create New Trip</ModalHeader>
-            <ModalBody>
               <form
                 onSubmit={this.newTripSubmit.bind(this)}>
                 <FormGroup row>
@@ -159,8 +156,6 @@ class NewTrip extends Component {
                       Submit
                 </button>
               </form>
-            </ModalBody>
-          </Modal>
       </div>
     );
   }
