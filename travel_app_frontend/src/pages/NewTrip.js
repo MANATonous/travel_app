@@ -23,9 +23,30 @@ class NewTrip extends Component {
         description: '',
         link: '',
         user_id: '',
-        collapsed: true,
+        photo_base: null,
+        collapsed:true
       }
     }
+  }
+
+  //base64 encode the file
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  // custom handler for file uploads
+  fileChangeHandler(event){
+    const file = event.target.files[0]
+    this.getBase64(file).then( (fileString) => {
+      const formState = Object.assign({}, this.state.form)
+      formState.photo_base = fileString
+      this.setState({form: formState})
+    })
   }
 
   handleChange(e){
@@ -73,89 +94,81 @@ class NewTrip extends Component {
   render(){
     return(
       <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!this.state.collapsed} navbar>
-          <Nav navbar align="right">
-            <NavItem>
-              <NavLink href="/Trips">My Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">My Past Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">Logout</NavLink>   //TODO add logout functionality
-            </NavItem>
-          </Nav>
-        </Collapse>
-        </Navbar>
-              <form
-                onSubmit={this.newTripSubmit.bind(this)}>
-                <FormGroup row>
-                  <Label for="Title" hidden sm={2}>Title</Label>
-                  <Col sm={5}>
-                    <Input type="text" name="Title" id="inputLarge" placeholder="Title" value= {this.state.form.title}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="city" hidden sm={2}>City</Label>
-                  <Col sm={5}>
-                    <Input type="text" name="city" id="inputLarge" placeholder="City" value= {this.state.form.city}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="state" hidden sm={2}>City</Label>
-                  <Col sm={5}>
-                    <Input type="text" name="state" id="inputLarge" placeholder="State" value= {this.state.form.state}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="country" hidden sm={2}>Country</Label>
-                  <Col sm={5}>
-                    <Input type="text" name="country" id="inputLarge" placeholder="Country" value= {this.state.form.country}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="start_date" sm={2}>Start Date</Label>
-                  <Col sm={5}>
-                    <Input type="date" name="start_date" id="inputLarge" placeholder="Start Date" value= {this.state.form.start_date}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="end_date" sm={2}>End Date</Label>
-                  <Col sm={5}>
-                    <Input type="date" name="end_date" id="inputLarge" placeholder="End Date" value= {this.state.form.end_date}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="description" sm={2}>Description</Label>
-                  <Col sm={5}>
-                    <Input type="textarea" rows="5" name="description" id="exampleTextarea" placeholder="Add ideas for your trip here! Events, Adventures, and Explorations!" value= {this.state.form.description}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <FormGroup row>
-                  <Label for="link" sm={2}>Links</Label>
-                  <Col sm={5}>
-                    <Input type="textarea" rows="3" name="link" id="exampleTextarea" placeholder="Add links that pertain to your trip here..." value= {this.state.form.link}
-                    onChange={this.handleChange.bind(this)}/>
-                  </Col>
-                </FormGroup>
-                <button
-                  type="button"
-                  input type="submit"
-                  value='Submit'
-                  className="btn btn-primary btn-lg btn-block form-submit">
-                      Submit
-                </button>
-              </form>
+          <form
+            onSubmit={this.newTripSubmit.bind(this)}>
+            <FormGroup Row>
+              <Label for="photo_base" hidden sm={2}>Add a Trip Picture</Label>
+                <Col sm={5}>
+                  <input
+                    type="file"
+                    onChange={this.fileChangeHandler.bind(this)}
+                  />
+                </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="Title" hidden sm={2}>Title</Label>
+              <Col sm={5}>
+                <Input type="text" name="Title" id="inputLarge" placeholder="Title" value= {this.state.form.title}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="city" hidden sm={2}>City</Label>
+              <Col sm={5}>
+                <Input type="text" name="city" id="inputLarge" placeholder="City" value= {this.state.form.city}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="state" hidden sm={2}>City</Label>
+              <Col sm={5}>
+                <Input type="text" name="state" id="inputLarge" placeholder="State" value= {this.state.form.state}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="country" hidden sm={2}>Country</Label>
+              <Col sm={5}>
+                <Input type="text" name="country" id="inputLarge" placeholder="Country" value= {this.state.form.country}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="start_date" sm={2}>Start Date</Label>
+              <Col sm={5}>
+                <Input type="date" name="start_date" id="inputLarge" placeholder="Start Date" value= {this.state.form.start_date}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="end_date" sm={2}>End Date</Label>
+              <Col sm={5}>
+                <Input type="date" name="end_date" id="inputLarge" placeholder="End Date" value= {this.state.form.end_date}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="description" sm={2}>Description</Label>
+              <Col sm={5}>
+                <Input type="textarea" rows="5" name="description" id="exampleTextarea" placeholder="Add ideas for your trip here! Events, Adventures, and Explorations!" value= {this.state.form.description}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="link" sm={2}>Links</Label>
+              <Col sm={5}>
+                <Input type="textarea" rows="3" name="link" id="exampleTextarea" placeholder="Add links that pertain to your trip here..." value= {this.state.form.link}
+                onChange={this.handleChange.bind(this)}/>
+              </Col>
+            </FormGroup>
+            <button
+              type="button"
+              input type="submit"
+              value='Submit'
+              className="btn btn-primary btn-lg btn-block form-submit">
+                  Submit
+            </button>
+          </form>
       </div>
     );
   }

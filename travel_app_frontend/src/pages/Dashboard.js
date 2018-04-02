@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import '../css/Trips.css';
 import '../css/AuthUserNavFooter.css';
+import '../css/Dashboard.css';
 
-
-
-
-class Trips extends Component {
+class Dashboard extends Component {
 
   constructor(props){
     super(props)
@@ -38,23 +35,6 @@ class Trips extends Component {
   render(){
     return(
       <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!this.state.collapsed} navbar>
-          <Nav navbar align="right">
-            <NavItem>
-              <NavLink href="/Trips">My Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">My Past Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">Logout</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-        </Navbar>
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
@@ -72,16 +52,15 @@ class Trips extends Component {
           {this.state.trips.map((trips, index) => {
             return(
               <div className="card" key={index}>
-                <h3 className="card-header">{trips.title}</h3>
+                <Link to={`/Trip/${trips.id}`}>
+                  <h3 className="card-header">{trips.title}</h3>
+                </Link>
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
                 <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Scene" />
                 <div className="card-body">
                   <p className="card-text">{trips.description}</p>
-                </div>
-                <div className="card-body">
-                  <a href="" className="card-link">{trips.link}</a>
                 </div>
               </div>
             )
@@ -93,4 +72,4 @@ class Trips extends Component {
   }
 }
 
-export default Trips;
+export default Dashboard;

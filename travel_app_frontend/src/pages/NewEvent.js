@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Col, Form} from 'react-bootstrap';
 import '../css/NewTrip.css';
+import AuthService from '../services/AuthService';
 
 class NewEvent extends Component {
   constructor(props) {

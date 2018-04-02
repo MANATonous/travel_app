@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import withAuth from '../services/withAuth'
-import Trips from './Trips';
+import Dashboard from './Dashboard';
 import NewTrip from './NewTrip';
 import AuthService from '../services/AuthService'
 import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Trip from './Trip';
 
 const Auth = new AuthService()
 
@@ -50,8 +51,9 @@ this.toggleNavbar = this.toggleNavbar.bind(this);
         </Navbar>
         <Router>
           <Switch>
-            <Route exact path='/' component={Trips}/>
+            <Route exact path='/' component={Dashboard}/>
             <Route path='/NewTrip' component={NewTrip} />
+            <Route path='/Trip/:id' component={Trip} />
           </Switch>
         </Router>
       </div>

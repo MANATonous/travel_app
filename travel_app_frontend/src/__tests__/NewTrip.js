@@ -4,6 +4,7 @@ import NewTrip from '../pages/NewTrip';
 import { mount, shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import 'jest-localstorage-mock';
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -51,6 +52,7 @@ it('has form links input', () => {
   const component = mount(<NewTrip />)
   expect(component.find('label.link').text()).toBe("Links")
 })
+
 
 it('updates state on form change', ()=> {
   const component = mount(<NewTrip />)

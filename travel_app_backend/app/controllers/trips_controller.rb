@@ -1,7 +1,15 @@
 class TripsController < ApplicationController
+
   def index
-    trips = Trip.all
-    render json: trips
+    @trips = Trip.all
+  end
+
+  def find_trip
+    #take in id from post
+    #find the id
+    #send the trip back as json
+    singletrip = Trip.find_by_id(params[:trip_id])
+    render json: singletrip, status: 201
   end
 
 
@@ -13,8 +21,9 @@ class TripsController < ApplicationController
 
   def create
     trip = Trip.new(trip_params)
+    trip.photo = params[:photo_base]
     trip.rand_code = generate_code(6)
-    trip.save
+    trip.save!
     render json: trip
   end
 
@@ -36,6 +45,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :city, :state, :country, :start_date, :end_date, :description, :link, :rand_code, :user_id)
+    params.require(:trip).permit(:title, :city, :state, :country, :start_date, :end_date, :description, :link, :rand_code, :user_id, :photo_base)
   end
 end
