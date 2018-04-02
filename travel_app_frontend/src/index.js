@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import registerServiceWorker from './registerServiceWorker';
-import MessageBoard from './pages/MessageBoard'
 
 ReactDOM.render(
   <Router>
@@ -25,11 +24,6 @@ ReactDOM.render(
         exact
         path='/Login'
         component={Login}
-      />
-      <Route
-        exact
-        path='/MessageBoard'
-        component={MessageBoard}
       />
     </div>
   </Router>

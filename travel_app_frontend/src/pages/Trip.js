@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MessageBoard from './MessageBoard';
 
 const apiURL = 'http://localhost:3000'
 class Trip extends Component {
@@ -40,7 +41,8 @@ class Trip extends Component {
         {this.state.trip.start_date} to {this.state.trip.end_date} <br/>
         {this.state.trip.city}, {this.state.trip.state} <br/>
         {this.state.trip.country} <br/>
-        {this.state.trip.description}
+        {this.state.trip.description} <br />
+        <MessageBoard />
       </div>
     )
   }
