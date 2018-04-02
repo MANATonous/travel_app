@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../services/AuthService';
 import Register from './Register'
-import { nav, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
+import { nav, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row,Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Login extends Component {
@@ -11,10 +11,17 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      apiUrl: 'http://localhost:3000'
+      apiUrl: 'http://localhost:3000',
+      modal: false,
     }
+    this.toggle = this.toggle.bind(this);
   }
 
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   //update state based on user input in form
   handleChange(e) {
     this.setState({ [e.target.name] : e.target.value })
@@ -51,40 +58,49 @@ class Login extends Component {
           </ul>
         </div>
       </nav>
-        <form
-          onSubmit={this.userCredSubmit.bind(this)}
-        >
-          <label className="email" name="email">Email</label>
-          <input className="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange.bind(this)}
-            placeholder="Email"
-            type="email"
-          />
-          <label name="password">Password</label>
-          <input className="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange.bind(this)}
-            placeholder="Password"
-            type="password"
-          />
-          <input
-              type="submit"
-              value="Log In"
-              name="submit"
-          />
-        </form>
-        <Link
-          to={`/Register`}
-          activeClassName='active'
-        >
-          <small className='subtitle'>Not Registered?</small>
-        </Link>
-      </div>
-    )
+      <div>
+        <Button size="lg" onClick={this.toggle}>{this.props.buttonLabel}>LOGIN</Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+            <ModalHeader toggle={this.toggle}>Register Now</ModalHeader>
+              <ModalBody>
+                <form
+                  onSubmit={this.userCredSubmit.bind(this)}
+                >
+                <FormGroup row>
+                  <Label for="email" hidden sm={2}>Email</Label>
+                  <Col sm={10}>
+                    <Input type="email" name="email" id="email" placeholder="Email" value= {this.state.email}
+                    onChange={this.handleChange.bind(this)}/>
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="password" hidden sm={2}>Password</Label>
+                  <Col sm={10}>
+                    <Input type="password" name="password" id="password" placeholder="Password" value= {this.state.password}
+                    onChange={this.handleChange.bind(this)}/>
+                  </Col>
+                </FormGroup>
+                  <input
+                      type="submit"
+                      value="Log In"
+                      name="submit"
+                  />
+                  </form>
+                <Link
+                  to={`/Register`}
+                  activeClassName='active'>
+                  <medium className='subtitle'>Not Registered?</medium>
+                </Link>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.toggle}>Login </Button>
+                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+        </div>
+      );
+    }
   }
-}
 
 export default Login
