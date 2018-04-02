@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { nav, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
+import { Navbar, Nav, NavDropdown, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
 import '../css/Register.css';
+
 
 class Register extends Component {
     constructor(){

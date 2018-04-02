@@ -17,7 +17,7 @@ ReactDOM.render(
       />
       <Route
         exact
-        path='/Register'
+        path='/register'
         component={Register}
       />
       <Route
