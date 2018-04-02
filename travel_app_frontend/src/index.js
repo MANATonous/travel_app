@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import NewEvent from './pages/NewEvent'
 import registerServiceWorker from './registerServiceWorker';
+import MessageBoard from './pages/MessageBoard'
 
 ReactDOM.render(
   <Router>

@@ -27,7 +27,7 @@ RSpec.describe "Trips", type: :request do
         photo: encoded_file
       )
 
-      get '/trips', :format => :json
+      get '/trips.json'
       json = JSON.parse(response.body)
       expect(response).to be_success
 
