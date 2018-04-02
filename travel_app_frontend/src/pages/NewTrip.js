@@ -86,7 +86,7 @@ class NewTrip extends Component {
       <Form className="form" onSubmit={this.newTripSubmit.bind(this)}>
         <Row>
           <div className="form-group">
-            <label className="col-form-label col-form-label-lg title">Title</label>
+            <label className="col-form-label col-form-label-lg title" hidden>Title</label>
             <input className="form-control form-control-lg title" type="text" placeholder="Title" name="title" value={this.state.form.title} onChange={this.handleChange.bind(this)} id="inputLarge" />
           </div>
           <Label for="photo_base" sm={2}>Add a Trip Picture</Label>
@@ -100,19 +100,19 @@ class NewTrip extends Component {
         <Row>
           <Col>
             <div className="form-group">
-              <label className="col-form-label col-form-label-lg city">City</label>
+              <label className="col-form-label col-form-label-lg city" hidden>City</label>
               <input className="form-control form-control-lg" type="text" placeholder="City" name="city" value={this.state.form.city} onChange={this.handleChange.bind(this)} id="inputLarge" />
             </div>
           </Col>
           <Col>
             <div className="form-group">
-              <label className="col-form-label col-form-label-lg state">State</label>
+              <label className="col-form-label col-form-label-lg state" hidden>State</label>
               <input className="form-control form-control-lg" type="text" placeholder="State" name="state" value={this.state.form.state} onChange={this.handleChange.bind(this)} id="inputLarge" />
             </div>
           </Col>
           <Col>
             <div className="form-group">
-              <label className="col-form-label col-form-label-lg country">Country</label>
+              <label className="col-form-label col-form-label-lg country" hidden>Country</label>
               <input className="form-control form-control-lg" type="text" placeholder="Country" name="country" value={this.state.form.country} onChange={this.handleChange.bind(this)} id="inputLarge" />
             </div>
           </Col>

@@ -1,7 +1,9 @@
-.form {
+form {
   margin-left: 20px;
+  align-items: center;
 }
 
-.text-area {
+text-area {
   min-width: 50%;
+  align-items: center;
 }
