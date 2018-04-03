@@ -143,10 +143,11 @@ newUserSubmit(event){
               </Col>
           </FormGroup>
           <button
-          type="button"
-          input type="submit"
-          value='Submit'
-          className="btn btn-primary btn-lg btn-block form-submit">
+            type="button"
+            input type="submit"
+            value='Submit'
+            className="btn btn-primary btn-lg btn-block form-submit"
+          >
             Submit
           </button>
         </form>
