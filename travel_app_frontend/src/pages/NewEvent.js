@@ -23,7 +23,6 @@ class NewEvent extends Component {
   }
 
   handleChange(e){
-    console.log(this.props.trip);
     e.preventDefault()
     const { form } = this.state
     form[e.target.name] = e.target.value
@@ -45,6 +44,9 @@ class NewEvent extends Component {
     event.preventDefault()
     //set new event to state
     const newEvent = this.state.form
+
+    //use trip_id from localStorage to send with new event
+    newEvent.trip_id = localStorage.getItem('trip_id')
     //send json version of new event to backend api with post method
     fetch(`${this.state.apiURL}/events`,
       {

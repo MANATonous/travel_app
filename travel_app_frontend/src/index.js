@@ -5,23 +5,14 @@ import App from './pages/App';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
-import NewEvent from './pages/NewEvent'
 import registerServiceWorker from './registerServiceWorker';
-
-import Dashboard from './pages/Dashboard.js';
-import NewTrip from './pages/NewTrip';
-import JoinTrip from './pages/JoinTrip';
-import MessageBoard from './pages/MessageBoard'
-
 
 ReactDOM.render(
   <Router>
     <div>
       <Route
-        exact
         path='/'
-        component={App}
-      />
+        component={App}/>
       <Route
         exact
         path='/register'
@@ -31,16 +22,6 @@ ReactDOM.render(
         exact
         path='/Login'
         component={Login}
-      />
-      <Route
-        exact
-        path='/NewEvent'
-        component={NewEvent}
-      />
-      <Route
-        exact
-        path='/MessageBoard'
-        component={MessageBoard}
       />
     </div>
   </Router>
