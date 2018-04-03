@@ -54,6 +54,7 @@ this.toggleNavbar = this.toggleNavbar.bind(this);
             <Route exact path='/' component={Dashboard}/>
             <Route path='/NewTrip' component={NewTrip} />
             <Route path='/Trip/:id' component={Trip} />
+            <Route path='/Trip/' component={Trip} />
           </Switch>
         </Router>
       </div>

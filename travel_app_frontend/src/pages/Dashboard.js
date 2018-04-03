@@ -23,6 +23,7 @@ class Dashboard extends Component {
   }
 
   componentWillMount(){
+    localStorage.getItem('trip_id') !== null ? localStorage.setItem('trip_id', null) : localStorage.getItem('trip_id')
     fetch(`${this.state.apiUrl}/trips.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
@@ -30,7 +31,6 @@ class Dashboard extends Component {
     .then((parsedResponse) =>{
       this.setState({trips: parsedResponse})
     })
-    console.log(this.state.trips)
   }
 
   render(){
