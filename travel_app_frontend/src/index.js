@@ -32,6 +32,11 @@ ReactDOM.render(
         path='/NewEvent'
         component={NewEvent}
       />
+      <Route
+        exact
+        path='/MessageBoard'
+        component={MessageBoard}
+      />
     </div>
   </Router>
 , document.getElementById('root'));
