@@ -1,0 +1,56 @@
+.tripsImage {
+  width: 98%;
+  margin: auto;
+  padding: 2px;
+}
+
+.card {
+  margin: 10px;
+  width: 30%;
+  height: auto;
+  font-size: 10px;
+  text-align: center;
+  padding: 2px;
+  border: 1px solid pink;
+}
+.card-header {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: pink;
+  color: white !important;
+}
+.card-subtitle {
+  font-size: 15px;
+  text-align: center;
+  padding: 5px;
+}
+.card-body {
+  padding: 10px;
+  margin: 5px;
+}
+
+.card-deck{
+  margin: 20px;
+}
+.label {
+  margin-left: 35px;
+}
+
+.jumbotron {
+  background-color: white;
+}
+
+.btn-block {
+  width: 49%;
+  align-items: center;
+}
+
+#button1 {
+  float: left;
+  margin-top: .5rem;
+}
+
+#button2 {
+  float: right;
+}

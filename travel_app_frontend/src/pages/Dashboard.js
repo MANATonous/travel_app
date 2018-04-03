@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem, DropdownMenu, NavbarToggler, Collapse, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
+import JoinTrip from './JoinTrip'
 
 class Dashboard extends Component {
 
@@ -11,14 +12,22 @@ class Dashboard extends Component {
     this.state = {
       apiUrl: "http://localhost:3000",
       trips: [],
-      collapsed: true
+      collapsed: true,
+      modal: false,
     }
       this.toggleNavbar = this.toggleNavbar.bind(this);
+      this.toggle = this.toggle.bind(this);
   }
 
   toggleNavbar() {
     this.setState({
       collapsed: !this.state.collapsed
+    });
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
     });
   }
 
@@ -36,31 +45,24 @@ class Dashboard extends Component {
   render(){
     return(
       <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!this.state.collapsed} navbar>
-          <Nav navbar align="right">
-            <NavItem>
-              <NavLink href="/Trips">My Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">My Past Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">Logout</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-        </Navbar>
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
           <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
           </Link>
-          <Link to="/">
+          <Link to="/JoinTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
+
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+            <ModalHeader toggle={this.toggle}>Enter Trip ID Here!</ModalHeader>
+              <ModalBody>
+                < JoinTrip />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
           </Link>
         </ div>
           <div className= "jumbotron">
