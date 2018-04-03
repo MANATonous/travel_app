@@ -1,4 +1,5 @@
 json.array! @trips do |trip|
+  json.id trip.id
   json.title trip.title
   json.description trip.description
   json.city trip.city

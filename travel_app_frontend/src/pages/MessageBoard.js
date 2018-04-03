@@ -6,37 +6,23 @@ class MessageBoard extends Component {
   constructor(props){
     super(props)
     this.state = {
-      chats: [
-              {
-                username: "Rachel",
-                chat: "Hey guys, let's go on a trip!"
-              },
-              {
-                username: "Joey",
-                chat: "Where should be go?"
-              },
-              {
-                username: "Phoebe",
-                chat: "How about Atlantic City?!"
-              },
-              {
-                username: "Chandler",
-                chat: "No, let's go to Vegas instead!"
-              },
-              {
-                username: "Ross",
-                chat: "Sounds good to me"
-              },
-              {
-                username: "Monica",
-                chat: "Count me in, too!"
-              }
-            ]
+      apiUrl: "http://localhost:3000",
+      chats: []
       }
   }
 
   submitMessage(e) {
     e.preventDefault()
+  }
+
+  componentWillMount(){
+    fetch(`${this.state.apiUrl}/messages.json`)
+    .then((rawResponse) =>{
+      return rawResponse.json()
+    })
+    .then((parsedResponse) =>{
+      this.setState({chats: parsedResponse})
+    })
   }
 
   render(){
@@ -47,9 +33,9 @@ class MessageBoard extends Component {
           {this.state.chats.map((chats, index) =>{
             return(
               <div className="card border-primary mb-3" key={index}>
-                <div className="card-header">{chats.username}</div>
+                <div className="card-header">{chats.user_id}</div>
                 <div className="card-body">
-                  <p className="card-text">{chats.chat}</p>
+                  <p className="card-text">{chats.message}</p>
                 </div>
               </div>
             )

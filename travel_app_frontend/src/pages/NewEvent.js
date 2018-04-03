@@ -10,6 +10,7 @@ class NewEvent extends Component {
     this.state = {
       apiURL: 'http://localhost:3000',
       errors: '',
+      trip_id: '',
       form: {
         title: '',
         location: '',
@@ -22,21 +23,30 @@ class NewEvent extends Component {
   }
 
   handleChange(e){
+    console.log(this.props.trip);
+    e.preventDefault()
     const { form } = this.state
     form[e.target.name] = e.target.value
     form.user_id = this.Auth.getUserId()
+
     this.setState({ form })
   }
+
+  // componentWillMount() {
+  //   this.state.form.trip_id = this.props.match.params.id
+  // }
+
+
 
 
 
   newTripSubmit(event){
     //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
     event.preventDefault()
-    //set new trip to state
-    const newTrip = this.state.form
-    //send json version of new trip to backend api with post method
-    fetch(`${this.state.apiURL}/trips`,
+    //set new event to state
+    const newEvent = this.state.form
+    //send json version of new event to backend api with post method
+    fetch(`${this.state.apiURL}/events`,
       {
         body: JSON.stringify(newTrip),
         headers: {
@@ -59,6 +69,7 @@ class NewEvent extends Component {
   }
 
   render(){
+    // console.log(this.state.form)
     return(
       <Form className="form" onSubmit={this.newTripSubmit.bind(this)}>
 

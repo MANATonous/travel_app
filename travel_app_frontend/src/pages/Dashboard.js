@@ -23,13 +23,14 @@ class Dashboard extends Component {
   }
 
   componentWillMount(){
-    fetch(`${this.state.apiUrl}/trips`)
+    fetch(`${this.state.apiUrl}/trips.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
       this.setState({trips: parsedResponse})
     })
+    console.log(this.state.trips)
   }
 
   render(){
