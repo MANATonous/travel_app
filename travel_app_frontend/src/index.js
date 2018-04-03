@@ -7,7 +7,12 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import NewEvent from './pages/NewEvent'
 import registerServiceWorker from './registerServiceWorker';
+
+import Dashboard from './pages/Dashboard.js';
+import NewTrip from './pages/NewTrip';
+import JoinTrip from './pages/JoinTrip';
 import MessageBoard from './pages/MessageBoard'
+
 
 ReactDOM.render(
   <Router>

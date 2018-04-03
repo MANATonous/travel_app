@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem, DropdownMenu, NavbarToggler, Collapse, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
@@ -36,30 +36,13 @@ class Dashboard extends Component {
   render(){
     return(
       <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!this.state.collapsed} navbar>
-          <Nav navbar align="right">
-            <NavItem>
-              <NavLink href="/Trips">My Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">My Past Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">Logout</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-        </Navbar>
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
           <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
           </Link>
-          <Link to="/">
+          <Link to="/NewTrip">
             <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
           </Link>
         </ div>
