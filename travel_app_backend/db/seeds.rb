@@ -6,7 +6,7 @@ user_attributes = [
     password: 'cleangirl',
     password_confirmation: 'cleangirl',
     city: 'New York',
-    state: 'NY'
+    state: 'NY',
   },
   {
     first_name: 'Ross',
@@ -141,33 +141,39 @@ user_trip_attributes.each do |attribute|
   UserTrip.create(attribute)
 end
 
-# chat_attributes = [
-#   {
-#     username: "Rachel",
-#     chat: "Hey guys, let's go on a trip!"
-#   },
-#   {
-#     username: "Joey",
-#     chat: "Where should be go?"
-#   },
-#   {
-#     username: "Phoebe",
-#     chat: "How about Atlantic City?!"
-#   },
-#   {
-#     username: "Chandler",
-#     chat: "No, let's go to Vegas instead!"
-#   },
-#   {
-#     username: "Ross",
-#     chat: "Sounds good to me"
-#   },
-#   {
-#     username: "Monica",
-#     chat: "Count me in, too!"
-#   }
-# ]
-#
-# chat_attributes.each do |attribute|
-#   Chat.create(attribute)
-# end
+message_attributes = [
+  {
+    user_id: "1",
+    trip_id: '1',
+    message: "Hey guys, let's go on a trip!"
+  },
+  {
+    user_id: "2",
+    trip_id: '2',
+    message: "Where should be go?"
+  },
+  {
+    user_id: "3",
+    trip_id: '2',
+    message: "How about Atlantic City?!"
+  },
+  {
+    user_id: "1",
+    trip_id: '1',
+    message: "No, let's go to Vegas instead!"
+  },
+  {
+    user_id: "1",
+    trip_id: '3',
+    message: "Sounds good to me"
+  },
+  {
+    user_id: "3",
+    trip_id: '1',
+    message: "Count me in, too!"
+  }
+]
+
+message_attributes.each do |attribute|
+  Message.create(attribute)
+end
