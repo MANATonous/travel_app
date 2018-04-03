@@ -5,17 +5,14 @@ import App from './pages/App';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
-import NewEvent from './pages/NewEvent'
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Router>
     <div>
       <Route
-        exact
         path='/'
-        component={App}
-      />
+        component={App}/>
       <Route
         exact
         path='/register'
@@ -25,11 +22,6 @@ ReactDOM.render(
         exact
         path='/Login'
         component={Login}
-      />
-      <Route
-        exact
-        path='/NewEvent'
-        component={NewEvent}
       />
     </div>
   </Router>
