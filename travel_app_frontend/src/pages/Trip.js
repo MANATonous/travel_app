@@ -10,7 +10,7 @@ class Trip extends Component {
     this.state = {
       trip: [],
       trip_id: '',
-      active: false
+      active: false,
     }
     this.toggleComponent = this.toggleComponent.bind(this)
   }
@@ -36,6 +36,8 @@ class Trip extends Component {
     const tripID = {
       trip_id: this.getTripId()
     }
+
+    this.setState({newEventStatus: false})
 
     fetch(`${apiURL}/find_trip`,
       {

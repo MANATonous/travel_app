@@ -48,6 +48,7 @@ class JoinTrip extends Component {
         this.setState({errors: null})
         //TODO redirect to trips dashboard
         alert('Success')
+        this.props.toggleJoinTrip()
       }})
   }
 
