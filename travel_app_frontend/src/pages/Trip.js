@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
+import Itinerary from './Itinerary';
+import NewEvent from './NewEvent'
 
 const apiURL = 'http://localhost:3000'
 class Trip extends Component {
   constructor(props){
     super(props)
     this.state = {
-      trip: []
+      trip: [],
+      trip_id: '',
+      active: false
     }
+    this.toggleComponent = this.toggleComponent.bind(this)
   }
+
+  toggleComponent() {
+    this.setState(prevState => ({active : !this.state.active}))
+  }
+
+
 
   componentWillMount(){
 
     const tripID = {
       trip_id: this.props.match.params.id
     }
-
+    
     fetch(`${apiURL}/find_trip`,
       {
         body: JSON.stringify(tripID),
@@ -30,9 +41,14 @@ class Trip extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({trip: parsedResponse})
-      console.log(this.state.trip)
+      console.log('trip', this.state.trip)
     })
+    this.setState({trip_id: tripID.trip_id})
   }
+
+  // componentDidMount(){
+  //
+  // }
 
   render() {
     return(
@@ -43,6 +59,13 @@ class Trip extends Component {
         {this.state.trip.country} <br/>
         {this.state.trip.description} <br />
         <MessageBoard />
+        <div className="toggle-form">
+          {this.state.active && <NewEvent />}
+          <button type="button" onClick={this.toggleComponent.bind(this)}>
+            toggle
+          </button>
+        </div>
+        <Itinerary />
       </div>
     )
   }
