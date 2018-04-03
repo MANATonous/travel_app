@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Form} from 'react-bootstrap';
+import {Row, Col, Form, FormGroup, Label, Button, Input} from 'reactstrap';
 import AuthService from '../services/AuthService';
 
 class JoinTrip extends Component {
@@ -54,15 +54,16 @@ class JoinTrip extends Component {
   render(){
     return(
       <Form onSubmit={this.joinTripSubmit.bind(this)}>
-        <Row>
-          <div className="form-group">
-            <label className="col-form-label col-form-label-lg title">Enter Your Trip Code: </label>
-            <input className="form-control form-control-lg title" type="text" placeholder="Code" name="code" value={this.state.info.code} onChange={this.handleChange.bind(this)} id="inputLarge" />
-          </div>
-        </Row>
-        <Row>
-          <input type="submit" className="btn btn-primary submit" value="Join Trip"  />
-        </Row>
+        <FormGroup Row>
+          <Label for="form-group" hidden sm={2}>Code</Label>
+          <Col sm={10}>
+            <Button><Input type="text" name="code" id="InputLarge" placeholder="Code" value= {this.state.info.code}
+             onChange={this.handleChange.bind(this)}/> </Button>
+          </Col>
+        </FormGroup>
+        <FormGroup Row>
+            <input type="submit" className="btn btn-primary submit" value="Join Trip"  />
+        </FormGroup>
       </Form>
     )
   }

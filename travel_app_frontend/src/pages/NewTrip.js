@@ -53,8 +53,7 @@ class NewTrip extends Component {
     const { form } = this.state
     form[e.target.name] = e.target.value
     form.user_id = this.Auth.getUserId()
-    this.setState({
-    })
+    this.setState({ form })
   }
 
 
@@ -96,15 +95,6 @@ class NewTrip extends Component {
       <div>
           <form
             onSubmit={this.newTripSubmit.bind(this)}>
-            <FormGroup Row>
-              <Label for="photo_base" hidden sm={2}>Add a Trip Picture</Label>
-                <Col sm={5}>
-                  <input
-                    type="file"
-                    onChange={this.fileChangeHandler.bind(this)}
-                  />
-                </Col>
-            </FormGroup>
             <FormGroup row>
               <Label for="Title" hidden sm={2}>Title</Label>
               <Col sm={5}>
@@ -160,6 +150,12 @@ class NewTrip extends Component {
                 <Input type="textarea" rows="3" name="link" id="exampleTextarea" placeholder="Add links that pertain to your trip here..." value= {this.state.form.link}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
+              </FormGroup>
+              <FormGroup Row>
+                <Label for="photo_base" hidden sm={2}>Add a Trip Picture</Label>
+                <Col sm={5}>
+                  <input type="file" onChange={this.fileChangeHandler.bind(this)} />
+                </Col>
             </FormGroup>
             <button
               type="button"
