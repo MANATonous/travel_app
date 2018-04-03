@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Col, Form} from 'react-bootstrap';
-import '../css/NewTrip.css';
 import AuthService from '../services/AuthService';
+import '../css/NewEvent.css';
 
 class NewEvent extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class NewEvent extends Component {
         description: '',
         link: '',
         date: '',
-        trip: ''
+        trip_id: ''
       }
     }
   }
@@ -40,7 +40,7 @@ class NewEvent extends Component {
 
 
 
-  newTripSubmit(event){
+  newEventSubmit(event){
     //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
     event.preventDefault()
     //set new event to state
@@ -48,7 +48,7 @@ class NewEvent extends Component {
     //send json version of new event to backend api with post method
     fetch(`${this.state.apiURL}/events`,
       {
-        body: JSON.stringify(newTrip),
+        body: JSON.stringify(newEvent),
         headers: {
           'Content-Type': 'application/json'
         },
@@ -71,47 +71,48 @@ class NewEvent extends Component {
   render(){
     // console.log(this.state.form)
     return(
-      <Form className="form" onSubmit={this.newTripSubmit.bind(this)}>
+      <Form className="form" onSubmit={this.newEventSubmit.bind(this)}>
 
         <Row>
           <div className="form-group">
-            <label className="col-form-label col-form-label-lg title">Title</label>
-            <input className="form-control form-control-lg title" type="text" placeholder="Title" name="title" value={this.state.form.title} onChange={this.handleChange.bind(this)} id="inputLarge" />
+            <input
+              className="form-control form-control-lg title"
+              type="text"
+              placeholder="Title"
+              name="title"
+              value={this.state.form.title}
+              onChange={this.handleChange.bind(this)}
+              id="inputLarge"
+            />
           </div>
         </Row>
 
         <Row>
           <Col>
             <div className="form-group">
-              <label className="col-form-label col-form-label-lg city">City</label>
-              <input className="form-control form-control-lg" type="text" placeholder="City" name="city" value={this.state.form.city} onChange={this.handleChange.bind(this)} id="inputLarge" />
+              <input
+                className="form-control form-control-lg"
+                type="text"
+                placeholder="Location"
+                name="location"
+                value={this.state.form.location}
+                onChange={this.handleChange.bind(this)}
+                id="inputLarge"
+              />
             </div>
           </Col>
           <Col>
             <div className="form-group">
-              <label className="col-form-label col-form-label-lg state">State</label>
-              <input className="form-control form-control-lg" type="text" placeholder="State" name="state" value={this.state.form.state} onChange={this.handleChange.bind(this)} id="inputLarge" />
-            </div>
-          </Col>
-          <Col>
-            <div className="form-group">
-              <label className="col-form-label col-form-label-lg country">Country</label>
-              <input className="form-control form-control-lg" type="text" placeholder="Country" name="country" value={this.state.form.country} onChange={this.handleChange.bind(this)} id="inputLarge" />
-            </div>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <div className="form-group">
-              <label className="col-form-label col-form-label-lg start_date">Start Date</label>
-              <input className="form-control form-control-lg" type="date" placeholder="Start Date" name="start_date" value={this.state.form.start_date} onChange={this.handleChange.bind(this)} id="inputLarge" />
-            </div>
-          </Col>
-          <Col>
-            <div className="form-group">
-              <label className="col-form-label col-form-label-lg end_date">End Date</label>
-              <input className="form-control form-control-lg" type="date" placeholder="End Date" name="end_date" value={this.state.form.end_date} onChange={this.handleChange.bind(this)} id="inputLarge" />
+              <label hidden className="col-form-label col-form-label-lg country">Date & Time</label>
+              <input
+                className="form-control form-control-lg"
+                type="datetime-local"
+                placeholder="Date & Time"
+                name="date"
+                value={this.state.form.date}
+                onChange={this.handleChange.bind(this)}
+                id="inputLarge"
+              />
             </div>
           </Col>
         </Row>
@@ -119,19 +120,39 @@ class NewEvent extends Component {
         <Row>
           <div className="form-group text-area">
             <label className="description">Description</label>
-            <textarea className="form-control" id="exampleTextarea" rows="5" placeholder="Add ideas for your trip here! Events, Adventures, and Explorations!" name="description" value={this.state.form.description} onChange={this.handleChange.bind(this)}></textarea>
+            <textarea
+              className="form-control"
+              id="exampleTextarea"
+              rows="5"
+              placeholder="Add a description of your proposed activity..."
+              name="description"
+              value={this.state.form.description}
+              onChange={this.handleChange.bind(this)}>
+            </textarea>
           </div>
         </Row>
 
         <Row>
           <div className="form-group text-area">
             <label className="link">Links</label>
-            <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="Add links that pertain to your trip here..." name="link" value={this.state.form.link} onChange={this.handleChange.bind(this)}></textarea>
+            <textarea
+              className="form-control"
+              id="exampleTextarea"
+              rows="3"
+              placeholder="Add links that pertain to your event here..."
+              name="link"
+              value={this.state.form.link}
+              onChange={this.handleChange.bind(this)}>
+            </textarea>
           </div>
         </Row>
 
         <Row>
-          <input type="submit" className="btn btn-primary submit" value="Submit"  />
+          <input
+            type="submit"
+            className="btn btn-primary submit"
+            value="Submit"
+          />
         </Row>
 
       </Form>
