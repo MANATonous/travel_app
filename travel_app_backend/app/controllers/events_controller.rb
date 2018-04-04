@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
-  def index
-    events = Event.all
-    render json: events
+  # def index
+  #   events = Event.all
+  #   render json: events
+  # end
+
+  def events_by_trip
+    @events_by_trip = Event.where("trip_id = #{params[:trip_id]}")
   end
 
   def create
