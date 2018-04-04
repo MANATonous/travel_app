@@ -4,6 +4,7 @@ import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
 import {Button} from 'react-bootstrap';
+import Navigation from './Navigation';
 
 const apiURL = 'http://localhost:3000'
 
@@ -64,6 +65,7 @@ class Trip extends Component {
   render() {
     return(
       <div>
+        <Navigation />
         <jumbotron>
           <h2>{this.state.trip.title} <br/></h2>
           <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
