@@ -1,4 +1,4 @@
-json.array! @trips_by_user do |trip|
+json.array! @index do |trip|
   json.id trip.id
   json.title trip.title
   json.description trip.description

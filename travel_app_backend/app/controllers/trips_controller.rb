@@ -1,8 +1,12 @@
 class TripsController < ApplicationController
 
   def trips_by_user
-    render json: Trip.where("user_id = #{params[:user_id]}")
+    @index = Trip.where("user_id = #{params[:user_id]}")
   end
+
+  # def index
+  #   @index = Trip.all
+  # end
 
   def find_trip
     #take in id from post
