@@ -4,9 +4,6 @@ class TripsController < ApplicationController
     @trips_by_user = Trip.where("user_id = #{params[:user_id]}")
   end
 
-  # def index
-  #   @index = Trip.all
-  # end
 
   def find_trip
     #take in id from post
