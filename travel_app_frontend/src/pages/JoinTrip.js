@@ -58,8 +58,8 @@ class JoinTrip extends Component {
         <FormGroup Row>
           <Label for="form-group" hidden sm={2}>Code</Label>
           <Col sm={10}>
-            <Button><Input type="text" name="code" id="InputLarge" placeholder="Code" value= {this.state.info.code}
-             onChange={this.handleChange.bind(this)}/> </Button>
+            <Input type="text" name="code" id="InputLarge" placeholder="Code" value= {this.state.info.code}
+             onChange={this.handleChange.bind(this)}/>
           </Col>
         </FormGroup>
         <FormGroup Row>

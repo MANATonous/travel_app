@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def trips_by_user
-    @trips_by_user = Trip.where("user_id = #{params[:user_id]}")
+    @trips_by_user = Trip.joins("JOIN user_trips ON user_trips.trip_id = trips.id AND user_trips.user_id = #{params[:user_id]}")
   end
 
   def find_trip
@@ -22,14 +22,17 @@ class TripsController < ApplicationController
   def create
     trip = Trip.new(trip_params)
     trip.rand_code = generate_code(6)
-
     if params[:photo_base]
       trip.photo = params[:photo_base]
     else
       trip.photo = default_photo
     end
-
     trip.save!
+
+    tripid = Trip.last.id
+    userid = params[:user_id]
+    UserTrip.create(user_id: userid, trip_id: tripid)
+
     render json: trip
   end
 
@@ -46,6 +49,7 @@ class TripsController < ApplicationController
     else
       render json: {errors: user.errors}, status: 404
     end
+
   end
 
   private
