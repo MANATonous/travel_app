@@ -3,9 +3,13 @@ import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Butto
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
-import NewTrip from './NewTrip'
-import JoinTrip from './JoinTrip'
-import AuthService from '../services/AuthService'
+import NewTrip from './NewTrip';
+import JoinTrip from './JoinTrip';
+import Navigation from './Navigation';
+import AuthService from '../services/AuthService';
+import withAuth from '../services/withAuth';
+
+const Auth = new AuthService()
 
 class Dashboard extends Component {
 
@@ -59,9 +63,10 @@ class Dashboard extends Component {
   }
 
   render(){
-    console.log(this.state.trips);
+    // console.log(this.state.trips);
     return(
       <div>
+        <Navigation />
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
@@ -89,9 +94,9 @@ class Dashboard extends Component {
             </Modal>
 
         </ div>
-          <div className= "jumbotron">
-            <h1 className="label"> Your Trips </h1>
-            <hr className= "my-4" />
+        <div className= "jumbotron">
+          <h1 className="label"> Your Trips </h1>
+          <hr className= "my-4" />
         <CardDeck className="card-deck">
           {this.state.trips.map((trips, index) => {
             return(
@@ -116,4 +121,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withAuth(Dashboard);
