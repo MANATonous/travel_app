@@ -12,7 +12,7 @@ class Itinerary extends Component {
 
   componentWillMount(){
     const trip_id = localStorage.getItem('trip_id')
-    fetch(`${this.state.apiUrl}/events_by_trip/${trip_id}`)
+    fetch(`${this.state.apiUrl}/events_by_trip/${trip_id}.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })

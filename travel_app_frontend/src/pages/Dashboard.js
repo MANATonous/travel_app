@@ -88,9 +88,9 @@ class Dashboard extends Component {
             </Modal>
 
         </ div>
-          <div className= "jumbotron">
-            <h1 className="label"> Your Trips </h1>
-            <hr className= "my-4" />
+      <div className= "jumbotron">
+        <h1 className="label"> Your Trips </h1>
+        <hr className= "my-4" />
         <CardDeck className="card-deck">
           {this.state.trips.map((trips, index) => {
             return(
@@ -109,8 +109,8 @@ class Dashboard extends Component {
             )
           })}
         </CardDeck>
-        </div>
       </div>
+    </div>
     );
   }
 }
