@@ -31,14 +31,6 @@ class NewEvent extends Component {
     this.setState({ form })
   }
 
-  // componentWillMount() {
-  //   this.state.form.trip_id = this.props.match.params.id
-  // }
-
-
-
-
-
   newEventSubmit(event){
     //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
     event.preventDefault()

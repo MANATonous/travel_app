@@ -4,6 +4,7 @@ import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
 import AuthService from '../services/AuthService'
 import withAuth from '../services/withAuth'
+import {Button} from 'react-bootstrap';
 
 const apiURL = 'http://localhost:3000'
 const Auth = new AuthService()
@@ -14,7 +15,7 @@ class Trip extends Component {
     this.state = {
       trip: [],
       trip_id: '',
-      active: false
+      active: false,
     }
     this.toggleComponent = this.toggleComponent.bind(this)
   }
@@ -25,7 +26,6 @@ class Trip extends Component {
 
   getTripId(){
     if (this.props.match.params.id === null) {
-      debugger
       return localStorage.getItem('trip_id')
     }
    else {
@@ -40,6 +40,8 @@ class Trip extends Component {
     const tripID = {
       trip_id: this.getTripId()
     }
+
+    this.setState({newEventStatus: false})
 
     fetch(`${apiURL}/find_trip`,
       {
@@ -60,25 +62,24 @@ class Trip extends Component {
     this.setState({trip_id: tripID.trip_id})
   }
 
-  // componentDidMount(){
-  //
-  // }
-
   render() {
     return(
       <div>
-        {this.state.trip.title} <br/>
-        {this.state.trip.start_date} to {this.state.trip.end_date} <br/>
-        {this.state.trip.city}, {this.state.trip.state} <br/>
-        {this.state.trip.country} <br/>
-        {this.state.trip.description} <br />
+        <jumbotron>
+          <h2>{this.state.trip.title} <br/></h2>
+          <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
+          {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
+          {this.state.trip.description} </h5> <br />
+        </jumbotron>
+      <div className="MessageBoard">
         <MessageBoard />
-        <div className="toggle-form">
-          {this.state.active && <NewEvent />}
-          <button type="button" onClick={this.toggleComponent.bind(this)}>
-            toggle
-          </button>
-        </div>
+      </div>
+      <div className="toggle-form">
+        {this.state.active && <NewEvent />}
+        <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+          Add New Event!
+        </Button>
+      </div>
         <Itinerary />
       </div>
     )

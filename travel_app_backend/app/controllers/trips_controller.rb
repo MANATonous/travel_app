@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
-  def index
-    @trips = Trip.all
+  def trips_by_user
+    @trips_by_user = Trip.where("user_id = #{params[:user_id]}")
   end
 
   def find_trip
@@ -21,8 +21,14 @@ class TripsController < ApplicationController
 
   def create
     trip = Trip.new(trip_params)
-    trip.photo = params[:photo_base]
     trip.rand_code = generate_code(6)
+
+    if params[:photo_base]
+      trip.photo = params[:photo_base]
+    else
+      trip.photo = default_photo
+    end
+
     trip.save!
     render json: trip
   end
@@ -47,4 +53,13 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:title, :city, :state, :country, :start_date, :end_date, :description, :link, :rand_code, :user_id, :photo_base)
   end
+
+
+
+  def default_photo
+    file_path = File.join(Rails.root, 'public', 'images', 'small', 'trip_default_image.png')
+    base64_image = Base64.encode64(File.read(file_path))
+    "data:image/jpg;base64,#{base64_image}"
+  end
+
 end

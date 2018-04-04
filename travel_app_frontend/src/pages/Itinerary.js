@@ -20,8 +20,6 @@ class Itinerary extends Component {
     })
   }
 
-
-
   render(){
     return(
       <div>

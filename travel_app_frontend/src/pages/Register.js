@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import '../css/Register.css';
 
 
 class Register extends Component {
-    constructor(){
-      super()
+    constructor(props){
+      super(props)
       this.state = {
         apiURL: 'http://localhost:3000',
         errors: '',
@@ -46,7 +46,6 @@ class Register extends Component {
 
 //handleChange is called any time a user inputs any value into a form field, when they do so the corresponding state.from field is updated
 handleChange(e){
-  console.log(this.state);
   const formState = Object.assign({}, this.state.form)
   formState[e.target.name] = e.target.value
   this.setState({form: formState})
@@ -77,13 +76,14 @@ newUserSubmit(event){
       //todo redirect to login
       this.setState({errors: null})
       alert('Success')
+      this.props.toggleModal()
     }})
 }
     render() {
       return (
       <div>
       <form
-        onSubmit={this.newUserSubmit.bind(this)}>
+        >
           <FormGroup row>
             <Label for="first_name" hidden sm={2}>First Name</Label>
             <Col sm={10}>
@@ -129,7 +129,7 @@ newUserSubmit(event){
           <FormGroup row>
             <Label for="password_confirmation" hidden sm={2}>Confirm Password</Label>
               <Col sm={10}>
-              <Input type="password_confirmation" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" value= {this.state.form.password_confirmation}
+              <Input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" value= {this.state.form.password_confirmation}
               onChange={this.handleChange.bind(this)}/>
               </Col>
           </FormGroup>
@@ -146,6 +146,7 @@ newUserSubmit(event){
             type="button"
             input type="submit"
             value='Submit'
+            onClick={this.newUserSubmit.bind(this)}
             className="btn btn-primary btn-lg btn-block form-submit"
           >
             Submit

@@ -82,6 +82,7 @@ class NewTrip extends Component {
         //todo redirect to login
         this.setState({errors: null})
         alert('Success')
+        this.props.toggleNewTrip()
       }})
   }
   toggleNavbar() {
@@ -96,9 +97,9 @@ class NewTrip extends Component {
           <form
             onSubmit={this.newTripSubmit.bind(this)}>
             <FormGroup row>
-              <Label for="Title" hidden sm={2}>Title</Label>
+              <Label for="title" hidden sm={2}>Title</Label>
               <Col sm={5}>
-                <Input type="text" name="Title" id="inputLarge" placeholder="Title" value= {this.state.form.title}
+                <Input type="text" name="title" id="inputLarge" placeholder="Title" value= {this.state.form.title}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>

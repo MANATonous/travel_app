@@ -3,9 +3,11 @@ import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Butto
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
-import JoinTrip from './JoinTrip'
-import AuthService from '../services/AuthService'
-import withAuth from '../services/withAuth'
+import NewTrip from './NewTrip';
+import JoinTrip from './JoinTrip';
+import Navigation from './Navigation';
+import AuthService from '../services/AuthService';
+import withAuth from '../services/withAuth';
 
 const Auth = new AuthService()
 
@@ -13,14 +15,17 @@ class Dashboard extends Component {
 
   constructor(props){
     super(props)
+    this.auth = new AuthService()
     this.state = {
       apiUrl: "http://localhost:3000",
       trips: [],
       collapsed: true,
-      modal: false,
+      modal_create: false,
+      modal_join: false
     }
       this.toggleNavbar = this.toggleNavbar.bind(this);
-      this.toggle = this.toggle.bind(this);
+      this.toggleCreate = this.toggleCreate.bind(this);
+      this.toggleJoin = this.toggleJoin.bind(this);
   }
 
   toggleNavbar() {
@@ -29,15 +34,26 @@ class Dashboard extends Component {
     });
   }
 
-  toggle() {
+  toggleCreate() {
     this.setState({
-      modal: !this.state.modal
+      modal_create: !this.state.modal_create
+    });
+  }
+
+  toggleJoin() {
+    this.setState({
+      modal_join: !this.state.modal_join
     });
   }
 
   componentWillMount(){
+
+    //Get user ID from local storage token
+    const userID = this.auth.getUserId()
+    //Reset local storage
     localStorage.getItem('trip_id') !== null ? localStorage.setItem('trip_id', null) : localStorage.getItem('trip_id')
-    fetch(`${this.state.apiUrl}/trips.json`)
+
+    fetch(`${this.state.apiUrl}/trips_by_user/${userID}`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
@@ -47,27 +63,36 @@ class Dashboard extends Component {
   }
 
   render(){
+    console.log(this.state.trips);
     return(
       <div>
+        <Navigation />
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
-          <Link to="/NewTrip">
-            <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
-          </Link>
-          <Link to="/JoinTrip">
-            <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
 
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-            <ModalHeader toggle={this.toggle}>Enter Trip ID Here!</ModalHeader>
+          <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
+          <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
+            <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
               <ModalBody>
-                < JoinTrip />
+                < NewTrip toggleNewTrip={this.toggleCreate} />
               </ModalBody>
               <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button color="secondary" onClick={this.toggleCreate}>Cancel</Button>
               </ModalFooter>
             </Modal>
-          </Link>
+
+          <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
+          <Modal isOpen={this.state.modal_join} toggle={this.toggleJoin} className={this.props.className}>
+            <ModalHeader toggle={this.toggleJoin}>Enter Trip ID Here!</ModalHeader>
+              <ModalBody>
+                < JoinTrip toggleJoinTrip={this.toggleJoin} />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggleJoin}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
+
         </ div>
           <div className= "jumbotron">
             <h1 className="label"> Your Trips </h1>
@@ -82,7 +107,7 @@ class Dashboard extends Component {
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
-                <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Scene" />
+                <img className= "tripsImage" src={trips.photo} alt="Vacation Scene" />
                 <div className="card-body">
                   <p className="card-text">{trips.description}</p>
                 </div>

@@ -1,8 +1,11 @@
-import React { Component } from 'react';
+import React, { Component } from 'react';
 import {Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink,dropdown, menu } from 'reactstrap';
 import '../css/App.css';
+import AuthService from '../services/AuthService'
 
-class NavBar extends Component {
+const Auth = new AuthService();
+
+class Navigation extends Component {
   constructor(props){
   super(props)
   this.state = {
@@ -10,7 +13,7 @@ class NavBar extends Component {
   }
   this.toggleNavbar = this.toggleNavbar.bind(this);
   }
-  
+
   handleLogout(){
     Auth.logout()
     this.props.history.replace('/login')
@@ -44,3 +47,5 @@ class NavBar extends Component {
     )
   }
 }
+
+export default Navigation;

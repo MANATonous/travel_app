@@ -4,6 +4,12 @@
   padding: 2px;
 }
 
+.MessageBoard {
+  align-items: right;
+  flex:auto;
+  text-align: right;
+}
+
 .card {
   margin: 10px;
   width: 30%;
@@ -39,6 +45,24 @@
 
 .jumbotron {
   background-color: white;
+  padding-left: 20%;
+  margin-left: 20%;
+}
+
+h5 {
+  margin: 30px;
+  color:grey;
+  margin-left: 24px;
+}
+
+h2 {
+  margin:30px;
+  font-style: bold;
+  color: grey;
+  font-size: 2rem;
+  margin-left: 23px;
+  margin-right: 23px;
+  border-bottom: solid pink 1px;
 }
 
 .btn-block {

@@ -19,7 +19,12 @@ class UsersController < ApplicationController
     user.email = params[:email]
     user.city = params[:city]
     user.state = params[:state]
-    user.avatar = params[:avatar_base]
+
+    if params[:avatar_base]
+      user.avatar = params[:avatar_base]
+    else
+      user.avatar = default_avatar
+    end
 
     if user.save
       token = Knock::AuthToken.new(payload: { sub: user.id }).token
@@ -34,8 +39,15 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :city, :state, :avatar_base)
+  end
+
+  def default_avatar
+    file_path = File.join(Rails.root, 'public', 'images', 'small', 'default_profile_image.png')
+    base64_image = Base64.encode64(File.read(file_path))
+    "data:image/jpg;base64,#{base64_image}"
   end
 
 end

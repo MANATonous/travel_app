@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import Dashboard from './Dashboard';
-import Login from './Login';
 import Trip from './Trip';
+import Login from './Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AuthService from '../services/AuthService'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const Auth = new AuthService()
 
