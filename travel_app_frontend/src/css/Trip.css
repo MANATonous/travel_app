@@ -1,52 +1,26 @@
-.tripsImage {
-  width: 98%;
-  margin: auto;
-  padding: 2px;
-}
 
-.MessageBoard {
-  align-items: right;
-  flex:auto;
-  text-align: right;
-}
+/* .container{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 50px 350px 50px;
 
-.card {
-  margin: 10px;
-  width: 30%;
-  height: auto;
-  font-size: 10px;
-  text-align: center;
-  padding: 2px;
-  border: 1px solid pink;
 }
-.card-header {
-  font-size: 20px;
-  text-align: center;
-  padding: 10px;
-  background-color: pink;
-  color: white !important;
-}
-.card-subtitle {
-  font-size: 15px;
-  text-align: center;
-  padding: 5px;
-}
-.card-body {
-  padding: 10px;
-  margin: 5px;
-}
+.jumbotron {
+  background-color: white;
+  padding-left: 20%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+} */
 
-.card-deck{
-  margin: 20px;
-}
+
 .label {
   margin-left: 35px;
 }
 
-.jumbotron {
-  background-color: white;
-  padding-left: 20%;
-  margin-left: 20%;
+.tripsImage {
+  width: 98%;
+  margin: auto;
+  padding: 2px;
 }
 
 h5 {

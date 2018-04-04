@@ -1,11 +1,25 @@
-#message-board {
 
-  height: 100%;
-  width: 100%;
+.message-board{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-wrap: wrap;
+  float: right;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: 50%;
+  width:500px;
+
+}
+.chatMessage {
+  flex:auto;
+  width:flex;
+  height:flex;
+  margin:auto;
+  flex-grow: 1;
+  order: 1;
+  text-align: left;
+
 }
 
 #chats {
