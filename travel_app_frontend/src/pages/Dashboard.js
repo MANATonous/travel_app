@@ -18,7 +18,8 @@ class Dashboard extends Component {
     this.auth = new AuthService()
     this.state = {
       apiUrl: "http://localhost:3000",
-      trips: [],
+      user_trips: [],
+      joined_trips: [],
       collapsed: true,
       modal_create: false,
       modal_join: false
@@ -58,7 +59,16 @@ class Dashboard extends Component {
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
-      this.setState({trips: parsedResponse})
+      const ownedTrips = []
+      const joinedTrips = []
+      parsedResponse.map((trip) => {
+        if (trip.user_id == userID) {
+          ownedTrips.push(trip);
+        } else {
+          joinedTrips.push(trip)
+        }
+      })
+      this.setState({user_trips: ownedTrips ,joined_trips: joinedTrips})
     })
   }
 
@@ -97,8 +107,11 @@ class Dashboard extends Component {
         <div className= "jumbotron">
           <h1 className="label"> Your Trips </h1>
           <hr className= "my-4" />
+        </div>
+
+        Trips I Started
         <CardDeck className="card-deck">
-          {this.state.trips.map((trips, index) => {
+          {this.state.user_trips.map((trips, index) => {
             return(
               <div className="card" key={index}>
                 <Link to={`/Trip/${trips.id}`}>
@@ -115,8 +128,31 @@ class Dashboard extends Component {
             )
           })}
         </CardDeck>
+
+        Trips I Was Invited To
+        <CardDeck className="card-deck">
+          {this.state.joined_trips.map((trips, index) => {
+            return(
+              <div className="card" key={index}>
+                <Link to={`/Trip/${trips.id}`}>
+                  <h3 className="card-header">{trips.title}</h3>
+                </Link>
+                <div className="card-body">
+                  <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
+                </div>
+                <img className= "tripsImage" src={trips.photo} alt="Vacation Scene" />
+                <div className="card-body">
+                  <p className="card-text">{trips.description}</p>
+                </div>
+              </div>
+            )
+          })}
+        </CardDeck>
+
+
+
         </div>
-      </div>
+
     );
   }
 }
