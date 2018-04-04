@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NewEvent from './NewEvent';
+import '../css/Trip.css';
+import {Table} from 'reactstrap';
 
 class Itinerary extends Component {
   constructor(props){
@@ -23,20 +25,20 @@ class Itinerary extends Component {
   render(){
     return(
       <div>
-        <table className="table table-hover">
+        <Table hover>
           <thead>
-            <tr className="table-primary">
-              <th scope="col">Date</th>
-              <th scope="col">Title</th>
-              <th scope="col">Location</th>
-              <th scope="col">Description</th>
-              <th scope="col">Link</th>
+            <tr>
+              <th>Date</th>
+              <th>Event Name</th>
+              <th>Location</th>
+              <th>Description</th>
+              <th>Link</th>
             </tr>
           </thead>
           <tbody>
           {this.state.events.map((events, index) =>{
             return(
-              <tr className="table-primary" key={index}>
+              <tr key={index}>
                 <td>{events.date}</td>
                 <td>{events.title}</td>
                 <td>{events.location}</td>
@@ -46,7 +48,7 @@ class Itinerary extends Component {
             )
           })}
           </tbody>
-        </table>
+        </Table>
       </div>
     )
   }

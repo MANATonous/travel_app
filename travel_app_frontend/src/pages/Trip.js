@@ -75,12 +75,13 @@ class Trip extends Component {
       <div class="container" className="MessageBoard">
         <MessageBoard />
       </div>
-      <div className="toggle-form">
-        {this.state.active && <NewEvent />}
+      <div className="toggle-form" id="toggle-form">
         <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
           Add New Event!
         </Button>
+        {this.state.active && <NewEvent />}
       </div>
+      <br />
         <Itinerary />
       </div>
     )
