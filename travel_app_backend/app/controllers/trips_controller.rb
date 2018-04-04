@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def trips_by_user
-    @trips_by_user = Trip.joins("JOIN user_trips ON user_trips.trip_id = trips.id AND user_trips.user_id = #{params[:user_id]}")
+    @trips_by_user = User.find(params[:user_id]).trips
   end
 
   def find_trip
