@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   resources :trips
   resources :users
   resources :register
+  get 'messages_by_trip/:trip_id' => 'messages#messages_by_trip'
+  get 'events_by_trip/:trip_id' => 'events#events_by_trip'
   get 'trips_by_user/:user_id' => 'trips#trips_by_user'
   post 'user_token' => 'user_token#create'
   post 'join_trip' => 'trips#join'
   post 'find_trip' => 'trips#find_trip'
   post 'trips_by_user' => 'trips#trips_by_user'
-  get '/messages', to: 'messages#index'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

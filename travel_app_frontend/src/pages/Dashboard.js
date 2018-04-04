@@ -59,7 +59,6 @@ class Dashboard extends Component {
   }
 
   render(){
-    console.log(this.state.trips);
     return(
       <div>
         <div className= "jumbotron">

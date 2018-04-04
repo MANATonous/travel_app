@@ -11,12 +11,15 @@ class Itinerary extends Component {
   }
 
   componentWillMount(){
-    fetch(`${this.state.apiUrl}/events`)
+    const trip_id = localStorage.getItem('trip_id')
+    fetch(`${this.state.apiUrl}/events_by_trip/${trip_id}`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
       this.setState({events: parsedResponse})
+      console.log(this.state.events)
+      debugger
     })
   }
 

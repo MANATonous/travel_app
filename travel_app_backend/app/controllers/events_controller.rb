@@ -4,6 +4,11 @@ class EventsController < ApplicationController
     render json: events
   end
 
+  def events_by_trip
+    events = Event.find_by trip_id: params[:trip_id]
+    render json: events
+  end
+
   def create
     event = Event.new(event_params)
     event.save!
