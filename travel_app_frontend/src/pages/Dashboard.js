@@ -72,7 +72,7 @@ class Dashboard extends Component {
           <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
           <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
             <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
-              <ModalBody>
+              <ModalBody id="toggleCreate">
                 < NewTrip toggleNewTrip={this.toggleCreate} />
               </ModalBody>
               <ModalFooter>

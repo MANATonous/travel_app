@@ -69,7 +69,7 @@ class Trip extends Component {
           {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
           {this.state.trip.description} </h5> <br />
         </jumbotron>
-      <div className="MessageBoard">
+      <div class="container" className="MessageBoard">
         <MessageBoard />
       </div>
       <div className="toggle-form">
