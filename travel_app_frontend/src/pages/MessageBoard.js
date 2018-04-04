@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import {ListGroup, ListGroupItem, Badge} from 'reactstrap';
+import AuthService from '../services/AuthService'
+
+const Auth = new AuthService()
 
 class MessageBoard extends Component {
+
   constructor(props){
     super(props)
     this.state = {
@@ -11,8 +15,8 @@ class MessageBoard extends Component {
       chats: [],
       error: '',
       form: {
-        user_id: 1,
-        trip_id: 1,
+        user_id: '',
+        trip_id: '',
         message_text: ''
       }
       }
@@ -24,12 +28,20 @@ class MessageBoard extends Component {
 
 
   componentWillMount(){
+
+    // grab user_id from JWT and trip_id from local localStorage
+    const { form } = this.state
+    form.user_id = Auth.getUserId()
+    form.trip_id = localStorage.getItem('trip_id')
     fetch(`${this.state.apiUrl}/messages.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
-      this.setState({chats: parsedResponse})
+      this.setState(
+        {chats: parsedResponse,
+        form }
+        )
     })
 
     const tripID = {
@@ -42,6 +54,7 @@ class MessageBoard extends Component {
     const { form } = this.state
     form.message_text = e.target.value
     this.setState({ form })
+    console.log(this.state.form)
   }
 
   submitMessage(e){
