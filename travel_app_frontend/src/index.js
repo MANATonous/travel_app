@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import registerServiceWorker from './registerServiceWorker';
+import Dashboard from './pages/Dashboard'
 
 ReactDOM.render(
   <Router>
@@ -23,6 +24,11 @@ ReactDOM.render(
       <Route
         path='/'
         component={App}
+      />
+      />
+      <Route
+        path='/Dashboard'
+        component={Dashboard}
       />
     </div>
   </Router>
