@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
+import AuthService from '../services/AuthService'
+import withAuth from '../services/withAuth'
 
 const apiURL = 'http://localhost:3000'
+const Auth = new AuthService()
+
 class Trip extends Component {
   constructor(props){
     super(props)
@@ -81,4 +85,4 @@ class Trip extends Component {
   }
 }
 
-export default Trip;
+export default withAuth(Trip);

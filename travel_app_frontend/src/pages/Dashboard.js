@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
 import JoinTrip from './JoinTrip'
+import AuthService from '../services/AuthService'
+import withAuth from '../services/withAuth'
+
+const Auth = new AuthService()
 
 class Dashboard extends Component {
 
@@ -92,4 +96,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withAuth(Dashboard);
