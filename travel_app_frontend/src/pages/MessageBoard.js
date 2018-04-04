@@ -24,10 +24,6 @@ class MessageBoard extends Component {
       }
   }
 
-  getTripId(){
-    return localStorage.getItem('trip_id')
-  }
-
 
   componentWillMount(){
 
@@ -35,7 +31,8 @@ class MessageBoard extends Component {
     const { form } = this.state
     form.user_id = Auth.getUserId()
     form.trip_id = localStorage.getItem('trip_id')
-    fetch(`${this.state.apiUrl}/messages.json`)
+
+    fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
@@ -45,22 +42,15 @@ class MessageBoard extends Component {
         form }
         )
     })
-
-    const tripID = {
-      trip_id: this.getTripId()
-    }
-
   }
 
   handleChange(e){
     const { form } = this.state
     form.message_text = e.target.value
     this.setState({ form })
-    console.log(this.state.form)
   }
 
   submitMessage(e){
-    //TODO handle user_id and trip_id on form
     e.preventDefault()
     const newMessage = this.state.form
     fetch(`${this.state.apiUrl}/messages`,

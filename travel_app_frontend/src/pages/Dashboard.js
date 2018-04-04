@@ -73,7 +73,6 @@ class Dashboard extends Component {
   }
 
   render(){
-    // console.log(this.state.trips);
     return(
       <div>
         <Navigation />
@@ -107,6 +106,7 @@ class Dashboard extends Component {
         <div className= "jumbotron">
           <h1 className="label"> Your Trips </h1>
           <hr className= "my-4" />
+
         </div>
 
         Trips I Started
@@ -130,6 +130,7 @@ class Dashboard extends Component {
         </CardDeck>
 
         Trips I Was Invited To
+
         <CardDeck className="card-deck">
           {this.state.joined_trips.map((trips, index) => {
             return(
