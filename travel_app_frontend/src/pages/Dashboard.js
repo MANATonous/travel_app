@@ -63,7 +63,7 @@ class Dashboard extends Component {
   }
 
   render(){
-    console.log(this.state.trips);
+    // console.log(this.state.trips);
     return(
       <div>
         <Navigation />
@@ -94,9 +94,9 @@ class Dashboard extends Component {
             </Modal>
 
         </ div>
-          <div className= "jumbotron">
-            <h1 className="label"> Your Trips </h1>
-            <hr className= "my-4" />
+        <div className= "jumbotron">
+          <h1 className="label"> Your Trips </h1>
+          <hr className= "my-4" />
         <CardDeck className="card-deck">
           {this.state.trips.map((trips, index) => {
             return(
