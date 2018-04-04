@@ -13,6 +13,7 @@ export default function withAuth(WrappedComponent) {
     }
 
     componentWillMount() {
+      console.log(this.props.match);
       if (!Auth.loggedIn()) {
         this.props.history.replace('/login')
       }
@@ -33,7 +34,7 @@ export default function withAuth(WrappedComponent) {
     render() {
       if (this.state.userId) {
         return (
-          <WrappedComponent history={this.props.history} userId={this.state.userId} />
+          <WrappedComponent history={this.props.history} userId={this.state.userId} trip_id={this.props.match.params.id} />
         )
       }
       else {

@@ -46,7 +46,6 @@ class Register extends Component {
 
 //handleChange is called any time a user inputs any value into a form field, when they do so the corresponding state.from field is updated
 handleChange(e){
-  console.log(this.state);
   const formState = Object.assign({}, this.state.form)
   formState[e.target.name] = e.target.value
   this.setState({form: formState})

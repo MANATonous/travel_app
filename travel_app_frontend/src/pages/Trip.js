@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
-import NewEvent from './NewEvent';
-import {jumbotron, Button} from 'reactstrap';
-import '../css/Trip.css';
-
+import NewEvent from './NewEvent'
+import withAuth from '../services/withAuth'
+import {Button} from 'react-bootstrap';
+import Navigation from './Navigation';
 
 const apiURL = 'http://localhost:3000'
+
 class Trip extends Component {
   constructor(props){
     super(props)
@@ -23,12 +24,13 @@ class Trip extends Component {
   }
 
   getTripId(){
-    if (this.props.match.params.id === null) {
+    console.log(this.props.match)
+    if (this.props.trip_id === null) {
       return localStorage.getItem('trip_id')
     }
    else {
-     localStorage.setItem('trip_id', this.props.match.params.id)
-     return this.props.match.params.id
+     localStorage.setItem('trip_id', this.props.trip_id)
+     return this.props.trip_id
   }}
 
   componentWillMount(){
@@ -63,6 +65,7 @@ class Trip extends Component {
   render() {
     return(
       <div>
+        <Navigation />
         <jumbotron>
           <h2>{this.state.trip.title} <br/></h2>
           <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
@@ -84,4 +87,4 @@ class Trip extends Component {
   }
 }
 
-export default Trip;
+export default withAuth(Trip);
