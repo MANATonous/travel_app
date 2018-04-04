@@ -17,6 +17,11 @@ class MessageBoard extends Component {
       }
   }
 
+  getTripId(){
+    return localStorage.getItem('trip_id')
+  }
+
+
   componentWillMount(){
     fetch(`${this.state.apiUrl}/messages.json`)
     .then((rawResponse) =>{
@@ -25,6 +30,11 @@ class MessageBoard extends Component {
     .then((parsedResponse) =>{
       this.setState({chats: parsedResponse})
     })
+
+    const tripID = {
+      trip_id: this.getTripId()
+    }
+
   }
 
   handleChange(e){
