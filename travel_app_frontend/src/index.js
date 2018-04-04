@@ -11,17 +11,18 @@ ReactDOM.render(
   <Router>
     <div>
       <Route
-        path='/'
-        component={App}/>
-      <Route
         exact
         path='/register'
         component={Register}
       />
       <Route
         exact
-        path='/Login'
+        path='/login'
         component={Login}
+      />
+      <Route
+        path='/'
+        component={App}
       />
     </div>
   </Router>

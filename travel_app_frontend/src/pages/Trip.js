@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
-import NewEvent from './NewEvent'
+import NewEvent from './NewEvent';
+import {jumbotron} from 'reactstrap';
+
 
 const apiURL = 'http://localhost:3000'
 class Trip extends Component {
@@ -10,7 +12,7 @@ class Trip extends Component {
     this.state = {
       trip: [],
       trip_id: '',
-      active: false
+      active: false,
     }
     this.toggleComponent = this.toggleComponent.bind(this)
   }
@@ -36,6 +38,8 @@ class Trip extends Component {
     const tripID = {
       trip_id: this.getTripId()
     }
+
+    this.setState({newEventStatus: false})
 
     fetch(`${apiURL}/find_trip`,
       {
@@ -63,18 +67,21 @@ class Trip extends Component {
   render() {
     return(
       <div>
-        {this.state.trip.title} <br/>
-        {this.state.trip.start_date} to {this.state.trip.end_date} <br/>
-        {this.state.trip.city}, {this.state.trip.state} <br/>
-        {this.state.trip.country} <br/>
-        {this.state.trip.description} <br />
+        <jumbotron>
+          <h2>{this.state.trip.title} <br/></h2>
+          <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
+          {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
+          {this.state.trip.description} </h5> <br />
+        </jumbotron>
+      <div className="MessageBoard">
         <MessageBoard />
-        <div className="toggle-form">
-          {this.state.active && <NewEvent />}
-          <button type="button" onClick={this.toggleComponent.bind(this)}>
-            toggle
-          </button>
-        </div>
+      </div>
+      <div className="toggle-form">
+        {this.state.active && <NewEvent />}
+        <button type="button" onClick={this.toggleComponent.bind(this)}>
+          toggle
+        </button>
+      </div>
         <Itinerary />
       </div>
     )

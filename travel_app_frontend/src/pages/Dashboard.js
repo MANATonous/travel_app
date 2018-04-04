@@ -3,7 +3,8 @@ import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Butto
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
-import JoinTrip from './JoinTrip'
+import JoinTrip from './JoinTrip';
+import NewTrip from './NewTrip';
 
 class Dashboard extends Component {
 
@@ -13,10 +14,12 @@ class Dashboard extends Component {
       apiUrl: "http://localhost:3000",
       trips: [],
       collapsed: true,
-      modal: false,
+      modal_create: false,
+      modal_join: false
     }
       this.toggleNavbar = this.toggleNavbar.bind(this);
-      this.toggle = this.toggle.bind(this);
+      this.toggleCreate = this.toggleCreate.bind(this);
+      this.toggleJoin = this.toggleJoin.bind(this);
   }
 
   toggleNavbar() {
@@ -25,9 +28,15 @@ class Dashboard extends Component {
     });
   }
 
-  toggle() {
+  toggleCreate() {
     this.setState({
-      modal: !this.state.modal
+      modal_create: !this.state.modal_create
+    });
+  }
+
+  toggleJoin() {
+    this.setState({
+      modal_join: !this.state.modal_join
     });
   }
 
@@ -48,22 +57,29 @@ class Dashboard extends Component {
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
-          <Link to="/NewTrip">
-            <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1">Create New Trip</button>
-          </Link>
-          <Link to="/JoinTrip">
-            <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2">Join A Trip</button>
 
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-            <ModalHeader toggle={this.toggle}>Enter Trip ID Here!</ModalHeader>
+          <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
+          <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
+            <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
               <ModalBody>
-                < JoinTrip />
+                < NewTrip toggleNewTrip={this.toggleCreate} />
               </ModalBody>
               <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button color="secondary" onClick={this.toggleCreate}>Cancel</Button>
               </ModalFooter>
             </Modal>
-          </Link>
+
+          <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
+          <Modal isOpen={this.state.modal_join} toggle={this.toggleJoin} className={this.props.className}>
+            <ModalHeader toggle={this.toggleJoin}>Enter Trip ID Here!</ModalHeader>
+              <ModalBody>
+                < JoinTrip toggleJoinTrip={this.toggleJoin} />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggleJoin}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
+
         </ div>
           <div className= "jumbotron">
             <h1 className="label"> Your Trips </h1>
