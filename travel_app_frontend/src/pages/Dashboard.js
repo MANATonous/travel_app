@@ -130,7 +130,7 @@ class Dashboard extends Component {
         </CardDeck>
 
         Trips I Was Invited To
->>>>>>> master
+
         <CardDeck className="card-deck">
           {this.state.joined_trips.map((trips, index) => {
             return(
