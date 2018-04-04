@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import {ListGroup, ListGroupItem, Badge, Col} from 'reactstrap';
+import '../css/MessageBoard.css';
 import AuthService from '../services/AuthService'
 
 const Auth = new AuthService()
+
 
 class MessageBoard extends Component {
 
@@ -81,29 +84,32 @@ class MessageBoard extends Component {
       }})
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="message-board">
         <h3>Message Board</h3>
         <div className="chats">
+        <form className="input" onSubmit={this.submitMessage.bind(this)}>
+          <input type="text" className="col-form-label col-form-label-lg" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
+          <br /> <input type="submit" value="Submit" className="btn btn-secondary"/>
+        </form>
+        <br />
           {this.state.chats.map((chats, index) =>{
             return(
-              <div className="card border-primary mb-3" key={index}>
-                <div className="card-header">{chats.user_id}</div>
-                <div className="card-body">
-                  <p className="card-text">{chats.message}</p>
-                </div>
-              </div>
+              <ListGroup sm={3} key={index}>
+                <Col sm={6}>
+                <ListGroupItem className="chatMessage">  <Badge pill>{chats.user_id}</Badge> {chats.message}</ListGroupItem>
+                </Col>
+              </ListGroup>
             )
           })}
+          </div>
         </div>
-        <form className="input" onSubmit={this.submitMessage.bind(this)}>
-          <input type="text" onChange={this.handleChange.bind(this)}/>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    )
+      )
+    }
   }
-}
+
+
+
 
 export default MessageBoard;

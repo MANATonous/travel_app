@@ -3,9 +3,13 @@ import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Butto
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
-import NewTrip from './NewTrip'
-import JoinTrip from './JoinTrip'
-import AuthService from '../services/AuthService'
+import NewTrip from './NewTrip';
+import JoinTrip from './JoinTrip';
+import Navigation from './Navigation';
+import AuthService from '../services/AuthService';
+import withAuth from '../services/withAuth';
+
+const Auth = new AuthService()
 
 class Dashboard extends Component {
 
@@ -61,6 +65,7 @@ class Dashboard extends Component {
   render(){
     return(
       <div>
+        <Navigation />
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
@@ -68,7 +73,7 @@ class Dashboard extends Component {
           <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
           <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
             <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
-              <ModalBody>
+              <ModalBody id="toggleCreate">
                 < NewTrip toggleNewTrip={this.toggleCreate} />
               </ModalBody>
               <ModalFooter>
@@ -88,9 +93,15 @@ class Dashboard extends Component {
             </Modal>
 
         </ div>
+<<<<<<< HEAD
       <div className= "jumbotron">
         <h1 className="label"> Your Trips </h1>
         <hr className= "my-4" />
+=======
+        <div className= "jumbotron">
+          <h1 className="label"> Your Trips </h1>
+          <hr className= "my-4" />
+>>>>>>> master
         <CardDeck className="card-deck">
           {this.state.trips.map((trips, index) => {
             return(
@@ -115,4 +126,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withAuth(Dashboard);

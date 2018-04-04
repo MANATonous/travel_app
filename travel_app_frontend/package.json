@@ -24,6 +24,8 @@
     "react-test-renderer": "^16.2.0"
   },
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"]
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }

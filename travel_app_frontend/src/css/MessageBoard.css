@@ -1,0 +1,41 @@
+
+.message-board{
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: 50%;
+  width:500px;
+
+}
+.chatMessage {
+  flex:auto;
+  width:flex;
+  height:flex;
+  margin:auto;
+  flex-grow: 1;
+  order: 1;
+  text-align: left;
+
+}
+
+#chats {
+  border: solid grey 1px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#card-text {
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+#card-header {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px 0 0 10px;
+}
