@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def trips_by_user
-    render json: Trip.where("user_id = #{params[:user_id]}")
+    @trips_by_user = Trip.where("user_id = #{params[:user_id]}")
   end
 
   def find_trip
