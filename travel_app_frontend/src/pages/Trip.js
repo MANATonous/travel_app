@@ -23,7 +23,6 @@ class Trip extends Component {
 
   getTripId(){
     if (this.props.match.params.id === null) {
-      debugger
       return localStorage.getItem('trip_id')
     }
    else {
@@ -59,10 +58,6 @@ class Trip extends Component {
     })
     this.setState({trip_id: tripID.trip_id})
   }
-
-  // componentDidMount(){
-  //
-  // }
 
   render() {
     return(

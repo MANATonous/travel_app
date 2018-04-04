@@ -3,13 +3,15 @@ import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Butto
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import '../css/Dashboard.css';
-import JoinTrip from './JoinTrip';
-import NewTrip from './NewTrip';
+import NewTrip from './NewTrip'
+import JoinTrip from './JoinTrip'
+import AuthService from '../services/AuthService'
 
 class Dashboard extends Component {
 
   constructor(props){
     super(props)
+    this.auth = new AuthService()
     this.state = {
       apiUrl: "http://localhost:3000",
       trips: [],
@@ -41,8 +43,13 @@ class Dashboard extends Component {
   }
 
   componentWillMount(){
+
+    //Get user ID from local storage token
+    const userID = this.auth.getUserId()
+    //Reset local storage
     localStorage.getItem('trip_id') !== null ? localStorage.setItem('trip_id', null) : localStorage.getItem('trip_id')
-    fetch(`${this.state.apiUrl}/trips.json`)
+
+    fetch(`${this.state.apiUrl}/trips_by_user/${userID}`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
@@ -52,6 +59,7 @@ class Dashboard extends Component {
   }
 
   render(){
+    console.log(this.state.trips);
     return(
       <div>
         <div className= "jumbotron">
@@ -94,7 +102,7 @@ class Dashboard extends Component {
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
-                <img className= "tripsImage" src="https://images.pexels.com/photos/6934/beach-vacation-water-summer.jpg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Vacation Scene" />
+                <img className= "tripsImage" src={trips.photo} alt="Vacation Scene" />
                 <div className="card-body">
                   <p className="card-text">{trips.description}</p>
                 </div>

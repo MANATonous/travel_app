@@ -21,6 +21,11 @@ class MessageBoard extends Component {
       }
   }
 
+  getTripId(){
+    return localStorage.getItem('trip_id')
+  }
+
+
   componentWillMount(){
 
     // grab user_id from JWT and trip_id from local localStorage
@@ -37,6 +42,11 @@ class MessageBoard extends Component {
         form }
         )
     })
+
+    const tripID = {
+      trip_id: this.getTripId()
+    }
+
   }
 
   handleChange(e){
