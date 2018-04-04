@@ -1,5 +1,6 @@
 json.array! @trips_by_user do |trip|
   json.id trip.id
+  json.user_id trip.user_id
   json.title trip.title
   json.description trip.description
   json.city trip.city
