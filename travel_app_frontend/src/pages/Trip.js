@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent';
-import {jumbotron} from 'reactstrap';
+import {jumbotron, Button} from 'reactstrap';
+import '../css/Trip.css';
 
 
 const apiURL = 'http://localhost:3000'
@@ -73,9 +74,9 @@ class Trip extends Component {
       </div>
       <div className="toggle-form">
         {this.state.active && <NewEvent />}
-        <button type="button" onClick={this.toggleComponent.bind(this)}>
-          toggle
-        </button>
+        <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+          Add New Event!
+        </Button>
       </div>
         <Itinerary />
       </div>

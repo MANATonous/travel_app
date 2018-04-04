@@ -5,9 +5,9 @@
 }
 
 .MessageBoard {
-  align-items: center;
+  align-items: right;
   flex:auto;
-  text-align: center;
+  text-align: right;
 }
 
 .card {
@@ -51,15 +51,18 @@
 
 h5 {
   margin: 30px;
-  border-bottom: solid grey 1px;
   color:grey;
+  margin-left: 24px;
 }
 
 h2 {
   margin:30px;
-  font-style: strong;
+  font-style: bold;
   color: grey;
-
+  font-size: 2rem;
+  margin-left: 23px;
+  margin-right: 23px;
+  border-bottom: solid pink 1px;
 }
 
 .btn-block {
