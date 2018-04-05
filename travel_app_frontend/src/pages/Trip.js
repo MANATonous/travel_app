@@ -53,7 +53,9 @@ class Trip extends Component {
     return(
       <div>
         <Navigation />
-        {this.renderAPI()}
+        <div classname="api">
+          {this.renderAPI()}
+        </div>
         <div className="wrapper">
             <div className="tripinfo">
               <h2>{this.state.trip.title} <br/></h2>
@@ -81,8 +83,10 @@ class Trip extends Component {
             </div>
           </div>
         </div>
-    )
+      )
+    }
   }
-}
+
+
 
 export default withAuth(Trip);
