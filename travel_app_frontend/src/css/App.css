@@ -25,6 +25,16 @@
 .App-intro {
   font-size: large;
 }
+.admin-page-background {
+  background-image: url('../EuropeanCity.jpeg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.AppBackground {
+  background-color: #000;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

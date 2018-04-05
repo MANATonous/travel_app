@@ -23,22 +23,13 @@ class Trip extends Component {
     this.setState(prevState => ({active : !this.state.active}))
   }
 
-  getTripId(){
-    console.log(this.props.match)
-    if (this.props.trip_id === null) {
-      return localStorage.getItem('trip_id')
-    }
-   else {
-     localStorage.setItem('trip_id', this.props.trip_id)
-     return this.props.trip_id
-  }}
 
   componentWillMount(){
 
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage
     const tripID = {
-      trip_id: this.getTripId()
+      trip_id: this.props.trip_id
     }
 
     this.setState({newEventStatus: false})

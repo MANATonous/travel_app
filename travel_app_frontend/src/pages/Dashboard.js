@@ -76,6 +76,7 @@ class Dashboard extends Component {
     return(
       <div>
         <Navigation />
+        <div className="AppBackground">
         <div className= "jumbotron">
           <p className= "lead"> Create and Manage Trips with Friends and Family </p>
           <hr className= "my-4" />
@@ -151,7 +152,7 @@ class Dashboard extends Component {
         </CardDeck>
 
 
-
+        </div>
         </div>
 
     );

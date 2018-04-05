@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import AuthService from '../services/AuthService';
 import Register from './Register'
-import { nav, Button, Col, Form, FormGroup, Label,Input, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
+import { Button, Col, Form, FormGroup, Label,Input, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/Login.css';
 import '../css/Register.css';
+
 
 class Login extends Component {
   constructor(props) {
@@ -40,34 +41,15 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#"><h1>Trippin Out</h1></a>
-          <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarColor03"
-          aria-controls="navbarColor03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarColor03">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Features</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
-              </li>
-            </ul>
+      <div className="admin-page-background">
+        <div className="card">
+          <div className="card-body">
+            <h2>{"Welcome to Trippin' Out!"}</h2>
+            <p className="card-text">{"If you've ever tried to plan a trip with multiple people, you know it can be difficult to keep all your ideas in one place. Our app makes it easy to organize all your thoughts and resources in one place."}</p>
+            <br/>
+            <p className="card-text">{"Once you add a trip to your dashboard, you'll easily be able to invite friends and family to your vacation or event. Everyone will be able to contribute ideas and stay connected through messaging and event itineraries."}</p>
           </div>
-        </nav>
+        </div>
         <div className="loginform">
           <form onSubmit={this.userCredSubmit.bind(this)}>
             <FormGroup row>
@@ -91,11 +73,11 @@ class Login extends Component {
                   type="submit"
                   value="Log In"
                   name="submit"
-                  className="btn btn-primary btn-lg form-submit"
+                  className="login btn btn-primary btn-lg form-submit"
                 />
               </Col>
             </FormGroup>
-            <Button id="registerbutton" className="btn btn-primary btn-lg form-submit" onClick={this.toggle}> Not Registered? </Button>
+            <Button id="registerbutton" className="btn btn-primary btn-lg form-submit" onClick={this.toggle}> Register </Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Start Trippin Out!</ModalHeader>
               <ModalBody>
