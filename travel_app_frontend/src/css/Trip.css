@@ -1,17 +1,30 @@
-
-/* .container{
+/*
+.container{
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 50px 350px 50px;
-
 }
 .jumbotron {
   background-color: white;
   padding-left: 20%;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+}
+toggle-form {
+
 } */
 
+.Table {
+  align-self: right;
+  display: inline-flex;
+}
+#toggle-form {
+  margin-left: 50px;
+}
+
+.form {
+  margin: 5px 0 0 5px;
+}
 
 .label {
   margin-left: 35px;
