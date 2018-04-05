@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Trip.css';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
@@ -64,7 +65,7 @@ class Trip extends Component {
 
   render() {
     return(
-      <div>
+      <div className="wrapper">
         <Navigation />
         <jumbotron>
           <h2>{this.state.trip.title} <br/></h2>
@@ -72,7 +73,7 @@ class Trip extends Component {
           {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
           {this.state.trip.description} </h5> <br />
         </jumbotron>
-      <div class="container" className="MessageBoard">
+      <div className="MessageBoard">
         <MessageBoard />
       </div>
       <div className="toggle-form" id="toggle-form">
@@ -81,7 +82,6 @@ class Trip extends Component {
         </Button>
         {this.state.active && <NewEvent />}
       </div>
-      <br />
         <Itinerary />
       </div>
     )
