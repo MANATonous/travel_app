@@ -88,10 +88,10 @@ class MessageBoard extends Component {
     return (
       <div className="message-board">
         <h3>Message Board</h3>
-        <div className="chats">
+        <div className="chats" id="chats">
         <form className="input" onSubmit={this.submitMessage.bind(this)}>
-          <input type="text" className="col-form-label col-form-label-lg" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
-          <br /> <input type="submit" value="Submit" className="btn btn-secondary"/>
+          <input type="text" id="newsuggestion" className="col-form-label" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
+          <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
         </form>
         <br />
           {this.state.chats.map((chats, index) =>{

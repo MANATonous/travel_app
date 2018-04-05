@@ -70,7 +70,7 @@ class NewEvent extends Component {
         <Row>
           <div className="form-group">
             <input
-              className="form-control form-control-lg title"
+              className="form-control title"
               type="text"
               placeholder="Title"
               name="title"
@@ -85,7 +85,7 @@ class NewEvent extends Component {
           <Col>
             <div className="form-group">
               <input
-                className="form-control form-control-lg"
+                className="form-control"
                 type="text"
                 placeholder="Location"
                 name="location"
@@ -99,7 +99,7 @@ class NewEvent extends Component {
             <div className="form-group">
               <label hidden className="col-form-label col-form-label-lg country">Date & Time</label>
               <input
-                className="form-control form-control-lg"
+                className="form-control"
                 type="datetime-local"
                 placeholder="Date & Time"
                 name="date"
