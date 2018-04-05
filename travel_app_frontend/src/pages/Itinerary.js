@@ -20,8 +20,6 @@ class Itinerary extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({events: parsedResponse})
-      console.log(this.state.events)
-      debugger
     })
   }
 
@@ -31,8 +29,8 @@ class Itinerary extends Component {
         <Table hover>
           <thead>
             <tr>
-              <th>Date</th>
               <th>Event Name</th>
+              <th>Date</th>
               <th>Location</th>
               <th>Description</th>
               <th>Link</th>
@@ -42,8 +40,8 @@ class Itinerary extends Component {
           {this.state.events.map((events, index) =>{
             return(
               <tr key={index}>
-                <td>{events.date}</td>
                 <td>{events.title}</td>
+                <td>{events.date}</td>
                 <td>{events.location}</td>
                 <td>{events.description}</td>
                 <td>{events.link}</td>

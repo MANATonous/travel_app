@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import '../css/Navigation.css';
 import {Navbar, NavbarBrand, Nav, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink,dropdown, menu } from 'reactstrap';
-import '../css/App.css';
 import AuthService from '../services/AuthService'
 
 const Auth = new AuthService();
@@ -27,7 +27,7 @@ class Navigation extends Component {
 
   render(){
     return(
-      <Navbar color="faded" light>
+      <Navbar light className="Navbar">
         <NavbarBrand href="/" className="mr-auto"><h1>Trippin Out!</h1></NavbarBrand>
         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
         <Collapse isOpen={!this.state.collapsed} navbar>

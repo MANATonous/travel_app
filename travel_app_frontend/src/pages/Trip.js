@@ -65,27 +65,40 @@ class Trip extends Component {
 
   render() {
     return(
-      <div className="wrapper">
+      <div>
         <Navigation />
-        <jumbotron>
-          <h2>{this.state.trip.title} <br/></h2>
-          <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
-          {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
-          {this.state.trip.description} </h5> <br />
-        </jumbotron>
-      <div className="MessageBoard">
-        <MessageBoard />
-      </div>
-      <div className="toggle-form" id="toggle-form">
-        <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
-          Add New Event!
-        </Button>
-        {this.state.active && <NewEvent />}
-      </div>
-        <Itinerary />
-      </div>
-    )
+        <div classname="api">
+          API Space
+        </div>
+        <div className="wrapper">
+            <div className="tripinfo">
+              <h2>{this.state.trip.title} <br/></h2>
+              <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
+              <p className="trip-details">
+                <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
+                <br/>
+                Location: {this.state.trip.city},  {this.state.trip.state}
+                <br/>
+                Trip Details:<br/>
+                {this.state.trip.description}
+              </p>
+            </div>
+            <div className="itinerary-row">
+            <div className="toggle-form"    id="toggle-form">
+              <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+                Add New Event!
+              </Button>
+              {this.state.active && <NewEvent />}
+            </div>
+            <Itinerary />
+            </div>
+            <div className="MessageBoard">
+              <MessageBoard />
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
-}
 
 export default withAuth(Trip);
