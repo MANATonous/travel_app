@@ -60,6 +60,7 @@ class Trip extends Component {
           {this.state.trip.description} </h5> <br />
           <img src={this.state.trip.photo} alt="Trip"/>
         </Jumbotron>
+
         <div className="MessageBoard container">
           <MessageBoard />
         </div>
@@ -69,6 +70,7 @@ class Trip extends Component {
             Add New Event!
           </Button>
         </div>
+
         <Itinerary />
       </div>
     )
