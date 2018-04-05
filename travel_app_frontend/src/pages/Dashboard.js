@@ -51,6 +51,7 @@ class Dashboard extends Component {
 
     //Get user ID from local storage token
     const userID = this.auth.getUserId()
+
     //Reset local storage
     localStorage.getItem('trip_id') !== null ? localStorage.setItem('trip_id', null) : localStorage.getItem('trip_id')
 
@@ -76,10 +77,12 @@ class Dashboard extends Component {
     return(
       <div>
         <Navigation />
-        <div className= "jumbotron">
-          <p className= "lead"> Create and Manage Trips with Friends and Family </p>
-          <hr className= "my-4" />
-
+        <div className= "jumbotron" id="dash-header">
+          <div id="dash-header-text">
+            <h1 id="dash-header-title">{"Welcome to Trippin' Out!"}</h1>
+            <p className= "lead" id="dash-header-subtitle"> Create and Manage Trips with Friends and Family </p>
+            <hr className= "my-4" />
+          </div>
           <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
           <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
             <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
@@ -101,15 +104,11 @@ class Dashboard extends Component {
                 <Button color="secondary" onClick={this.toggleJoin}>Cancel</Button>
               </ModalFooter>
             </Modal>
-
-        </ div>
-        <div className= "jumbotron">
-          <h1 className="label"> Your Trips </h1>
-          <hr className= "my-4" />
-
         </div>
-
-        Trips I Started
+        <div className= "jumbotron">
+          <h3 className="label">My Trips</h3>
+          <hr className= "my-4" />
+        </div>
         <CardDeck className="card-deck">
           {this.state.user_trips.map((trips, index) => {
             return(
@@ -118,6 +117,7 @@ class Dashboard extends Component {
                   <h3 className="card-header">{trips.title}</h3>
                 </Link>
                 <div className="card-body">
+                  <h3 className="card-subtitle text-muted">Trip Code: {trips.rand_code}</h3>
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
                 </div>
                 <img className= "tripsImage" src={trips.photo} alt="Vacation Scene" />
@@ -129,8 +129,10 @@ class Dashboard extends Component {
           })}
         </CardDeck>
 
-        Trips I Was Invited To
-
+        <div className= "jumbotron">
+          <h3 className="label">{"Trips I'm Going On"}</h3>
+          <hr className= "my-4" />
+        </div>
         <CardDeck className="card-deck">
           {this.state.joined_trips.map((trips, index) => {
             return(

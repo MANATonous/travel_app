@@ -12,7 +12,7 @@ class Trip extends Component {
   constructor(props){
     super(props)
     this.state = {
-      external_api_url: "app.ticketmaster.com/discovery/v2/events.json?city="
+      // external_api_url: "app.ticketmaster.com/discovery/v2/events.json?city="
       trip: [],
       active: false,
     }
