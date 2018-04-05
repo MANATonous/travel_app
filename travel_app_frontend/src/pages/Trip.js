@@ -43,7 +43,6 @@ class Trip extends Component {
 
     fetch(`${apiURL}/find_trip/${tripID}.json`)
     .then((rawResponse) =>{
-      console.log(rawResponse.body.json());
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
@@ -51,19 +50,20 @@ class Trip extends Component {
     })
   }
 
-  getTicketInfo(){
-    fetch(`${this.state.external_api_url}${this.state.trip.city}${this.state.external_api_key}`)
-    .then((rawResponse) =>{
-      return rawResponse.json()
-    })
-    .then((parsedResponse) =>{
-      const events = parsedResponse._embedded.events
-      console.log(events);
-    })
-  }
+  // getTicketInfo(){
+  //   console.log(`${this.state.external_api_url}${this.state.trip.city}${this.state.external_api_key}`);
+  //   fetch(`${this.state.external_api_url}${this.state.trip.city}${this.state.external_api_key}`)
+  //   .then((res) =>{
+  //     return res.json()
+  //   })
+  //   .then((parsedResponse) =>{
+  //     const events = parsedResponse._embedded.events
+  //     console.log(events);
+  //   })
+  // }
 
   render() {
-    this.state.trip.city ? this.getTicketInfo() : null
+    // this.state.trip.city ? this.getTicketInfo() : null
     return(
       <div>
         <Navigation />
