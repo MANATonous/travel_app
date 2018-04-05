@@ -18,8 +18,6 @@ class Itinerary extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({events: parsedResponse})
-      console.log(this.state.events)
-      debugger
     })
   }
 

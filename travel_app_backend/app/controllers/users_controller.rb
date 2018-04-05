@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: :show
+  # before_action :authenticate_user, only: :show
   def index
     @users = User.all
   end
 
-  def show
-    user = User.find params[:id]
-    render json: user
+  def user_info
+    @user = User.where("id = #{params[:user_id]}")
+    # render json: user
   end
 
   # we ran into errors when creating and using strong params alone, so we broke out each individual assignment

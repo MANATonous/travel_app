@@ -15,6 +15,9 @@ class MessageBoard extends Component {
     this.state = {
       apiUrl: "http://localhost:3000",
       chats: [],
+      first_name: '',
+      last_name: '',
+      avatar: '',
       error: '',
       form: {
         user_id: '',
@@ -31,6 +34,9 @@ class MessageBoard extends Component {
     const { form } = this.state
     form.user_id = Auth.getUserId()
     form.trip_id = localStorage.getItem('trip_id')
+    this.state.last_name = localStorage.getItem('last_name')
+    this.state.first_name = localStorage.getItem('first_name')
+    this.state.avatar = localStorage.getItem('avatar')
 
     fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{

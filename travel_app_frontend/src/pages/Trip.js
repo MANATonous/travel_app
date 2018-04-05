@@ -24,7 +24,6 @@ class Trip extends Component {
   }
 
   getTripId(){
-    console.log(this.props.match)
     if (this.props.trip_id === null) {
       return localStorage.getItem('trip_id')
     }
