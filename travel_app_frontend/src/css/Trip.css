@@ -14,10 +14,19 @@ toggle-form {
 
 } */
 
-.Table {
-  align-self: right;
-  display: inline-flex;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 3fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  background-color: #FBFEF9 !important;
 }
+.MessageBoard {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
 #toggle-form {
   margin-left: 50px;
 }
@@ -64,4 +73,5 @@ h2 {
 
 #button2 {
   float: right;
+
 }
