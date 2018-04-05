@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import {ListGroup, ListGroupItem, Badge, Col} from 'reactstrap';
+import { Scrollbars } from 'react-custom-scrollbars';
 import '../css/MessageBoard.css';
 import AuthService from '../services/AuthService'
 
@@ -88,22 +89,27 @@ class MessageBoard extends Component {
     return (
       <div className="message-board">
         <h3>Message Board</h3>
-        <div className="chats" id="chats">
-        <form className="input" onSubmit={this.submitMessage.bind(this)}>
-          <input type="text" id="newsuggestion" className="col-form-label" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
-          <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
-        </form>
-        <br />
+          <Scrollbars style={{ width: 500, height: 350 }}>
           {this.state.chats.map((chats, index) =>{
             return(
-              <ListGroup sm={3} key={index}>
-                <Col sm={6}>
-                <ListGroupItem className="chatMessage">  <Badge pill>{chats.user_id}</Badge> {chats.message}</ListGroupItem>
-                </Col>
-              </ListGroup>
+                <ListGroup sm={3} key={index}>
+                    <Col sm={12}>
+                      <ListGroupItem className="chatMessage">
+                      <Badge pill>
+                        {chats.user_id}
+                      </Badge> {chats.message}</ListGroupItem>
+                    </Col>
+                </ListGroup>
             )
           })}
-          </div>
+          </Scrollbars>
+          
+          <form className="input" onSubmit={this.submitMessage.bind(this)}>
+            <input type="text" id="newsuggestion" className="col-form-label" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
+            <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
+          </form>
+          
+          <br />
         </div>
       )
     }
