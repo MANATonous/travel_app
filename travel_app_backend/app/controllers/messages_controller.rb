@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   def messages_by_trip
-   @messages_by_trip = Message.where("trip_id = #{params[:trip_id]}").joins(:users)
+   @messages_by_trip = Message.where("trip_id = #{params[:trip_id]}")
   end
 
   def create
