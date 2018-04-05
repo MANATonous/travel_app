@@ -5,38 +5,30 @@ import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
 import {Button, Jumbotron} from 'react-bootstrap';
 import Navigation from './Navigation';
+import TicketmasterAPI from './TicketmasterAPI'
 
 const apiURL = 'http://localhost:3000'
 
 class Trip extends Component {
   constructor(props){
     super(props)
+    this.toggleComponent = this.toggleComponent.bind(this)
     this.state = {
-      external_api_url: "app.ticketmaster.com/discovery/v2/events.json?city="
       trip: [],
       active: false,
     }
-    this.toggleComponent = this.toggleComponent.bind(this)
   }
 
   toggleComponent() {
     this.setState(prevState => ({active : !this.state.active}))
   }
 
-  getTripId(){
-    if (this.props.trip_id === null) {
-      return localStorage.getItem('trip_id')
-    }
-   else {
-     localStorage.setItem('trip_id', this.props.trip_id)
-     return this.props.trip_id
-  }}
+  // <TicketmasterAPI />
 
   componentWillMount(){
-
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage
-    const tripID = this.getTripId()
+    const tripID = this.props.trip_id
 
     this.setState({newEventStatus: false})
 
@@ -49,23 +41,18 @@ class Trip extends Component {
     })
   }
 
-  // getTicketInfo(){
-  //   console.log(`${this.state.external_api_url}${this.state.trip.city}${this.state.external_api_key}`);
-  //   fetch(`${this.state.external_api_url}${this.state.trip.city}${this.state.external_api_key}`)
-  //   .then((res) =>{
-  //     return res.json()
-  //   })
-  //   .then((parsedResponse) =>{
-  //     const events = parsedResponse._embedded.events
-  //     console.log(events);
-  //   })
-  // }
+  renderAPI(){
+    if (this.state.trip.city != undefined) {
+      localStorage.setItem("city", this.state.trip.city)
+      return <TicketmasterAPI />
+    }
+  }
 
   render() {
-    // this.state.trip.city ? this.getTicketInfo() : null
     return(
       <div>
         <Navigation />
+        {this.renderAPI()}
         <Jumbotron>
           <h2>{this.state.trip.title} <br/></h2>
           <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
@@ -73,16 +60,17 @@ class Trip extends Component {
           {this.state.trip.description} </h5> <br />
           <img src={this.state.trip.photo} alt="Trip"/>
         </Jumbotron>
-      <div className="MessageBoard container">
-        <MessageBoard />
-      </div>
-      <div className="toggle-form" id="toggle-form">
-        <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
-          Add New Event!
-        </Button>
-        {this.state.active && <NewEvent />}
-      </div>
-      <br />
+
+        <div className="MessageBoard container">
+          <MessageBoard />
+        </div>
+        <div className="toggle-form">
+          {this.state.active && <NewEvent />}
+          <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+            Add New Event!
+          </Button>
+        </div>
+
         <Itinerary />
       </div>
     )
