@@ -5,11 +5,7 @@ class TripsController < ApplicationController
   end
 
   def find_trip
-    #take in id from post
-    #find the id
-    #send the trip back as json
-    singletrip = Trip.find_by_id(params[:trip_id])
-    render json: singletrip, status: 201
+    @find_trip = Trip.where("id = #{params[:trip_id]}")
   end
 
 

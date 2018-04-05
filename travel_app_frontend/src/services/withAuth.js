@@ -13,7 +13,6 @@ export default function withAuth(WrappedComponent) {
     }
 
     componentWillMount() {
-      console.log(this.props.match);
       if (!Auth.loggedIn()) {
         this.props.history.replace('/login')
       }
