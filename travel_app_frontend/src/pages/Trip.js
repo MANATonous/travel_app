@@ -4,72 +4,56 @@ import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
-import {Button} from 'react-bootstrap';
+import {Button, Jumbotron} from 'react-bootstrap';
 import Navigation from './Navigation';
+import TicketmasterAPI from './TicketmasterAPI'
 
 const apiURL = 'http://localhost:3000'
 
 class Trip extends Component {
   constructor(props){
     super(props)
+    this.toggleComponent = this.toggleComponent.bind(this)
     this.state = {
       trip: [],
-      trip_id: '',
       active: false,
     }
-    this.toggleComponent = this.toggleComponent.bind(this)
   }
 
   toggleComponent() {
     this.setState(prevState => ({active : !this.state.active}))
   }
 
-  getTripId(){
-    console.log(this.props.match)
-    if (this.props.trip_id === null) {
-      return localStorage.getItem('trip_id')
-    }
-   else {
-     localStorage.setItem('trip_id', this.props.trip_id)
-     return this.props.trip_id
-  }}
+  // <TicketmasterAPI />
 
   componentWillMount(){
-
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage
-    const tripID = {
-      trip_id: this.getTripId()
-    }
+    const tripID = this.props.trip_id
 
     this.setState({newEventStatus: false})
 
-    fetch(`${apiURL}/find_trip`,
-      {
-        body: JSON.stringify(tripID),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: "POST"
-      }
-    )
+    fetch(`${apiURL}/find_trip/${tripID}.json`)
     .then((rawResponse) =>{
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
-      this.setState({trip: parsedResponse})
-      console.log('trip', this.state.trip)
+      this.setState({trip: parsedResponse[0]})
     })
-    this.setState({trip_id: tripID.trip_id})
+  }
+
+  renderAPI(){
+    if (this.state.trip.city != undefined) {
+      localStorage.setItem("city", this.state.trip.city)
+      return <TicketmasterAPI />
+    }
   }
 
   render() {
     return(
       <div>
         <Navigation />
-        <div classname="api">
-          API Space
-        </div>
+        {this.renderAPI()}
         <div className="wrapper">
             <div className="tripinfo">
               <h2>{this.state.trip.title} <br/></h2>
@@ -85,8 +69,7 @@ class Trip extends Component {
             </div>
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
-              <Button type="button" className="btn btn-primary"
-              onClick={this.toggleComponent.bind(this)}>
+              <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
                 Add New Event!
               </Button>
               {this.state.active && <NewEvent />}
@@ -98,8 +81,8 @@ class Trip extends Component {
             </div>
           </div>
         </div>
-      )
-    }
+    )
   }
+}
 
 export default withAuth(Trip);

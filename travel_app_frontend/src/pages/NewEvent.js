@@ -63,7 +63,6 @@ class NewEvent extends Component {
   }
 
   render(){
-    // console.log(this.state.form)
     return(
       <Form className="form" onSubmit={this.newEventSubmit.bind(this)}>
 

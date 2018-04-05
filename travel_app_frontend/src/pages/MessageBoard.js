@@ -53,6 +53,7 @@ class MessageBoard extends Component {
 
   submitMessage(e){
     e.preventDefault()
+    e.target.reset()
     const newMessage = this.state.form
     fetch(`${this.state.apiUrl}/messages`,
       {
@@ -64,7 +65,6 @@ class MessageBoard extends Component {
       }
     )
     .then((rawResponse) => {
-      console.log(rawResponse);
       return Promise.all([rawResponse.status, rawResponse.json()])
     })
     .then((parsedResponse) =>{  this.state.error
@@ -77,9 +77,7 @@ class MessageBoard extends Component {
           trip_id:parsedResponse[1]['trip_id'],
           message:parsedResponse[1]['message']
         }
-        console.log(newMes);
         chat.push(newMes)
-        console.log(parsedResponse);
         this.setState({errors: null, chats: chat})
         this.render()
       }})
