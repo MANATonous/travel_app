@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Trip.css';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
@@ -52,29 +53,39 @@ class Trip extends Component {
     return(
       <div>
         <Navigation />
-        {this.renderAPI()}
-        <Jumbotron>
-          <h2>{this.state.trip.title} <br/></h2>
-          <h5>{this.state.trip.start_date} to {this.state.trip.end_date} <br/>
-          {this.state.trip.city}, {this.state.trip.state} {this.state.trip.country} <br/>
-          {this.state.trip.description} </h5> <br />
-          <img src={this.state.trip.photo} alt="Trip"/>
-        </Jumbotron>
-
-        <div className="MessageBoard container">
-          <MessageBoard />
+        <div classname="api">
+          {this.renderAPI()}
         </div>
-        <div className="toggle-form">
-          {this.state.active && <NewEvent />}
-          <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
-            Add New Event!
-          </Button>
+        <div className="wrapper">
+            <div className="tripinfo">
+              <h2>{this.state.trip.title} <br/></h2>
+              <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
+              <p className="trip-details">
+                <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
+                <br/>
+                Location: {this.state.trip.city},  {this.state.trip.state}
+                <br/>
+                Trip Details:<br/>
+                {this.state.trip.description}
+              </p>
+            </div>
+            <div className="itinerary-row">
+            <div className="toggle-form"    id="toggle-form">
+              <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+                Add New Event!
+              </Button>
+              {this.state.active && <NewEvent />}
+            </div>
+            <Itinerary />
+            </div>
+            <div className="MessageBoard">
+              <MessageBoard />
+            </div>
+          </div>
         </div>
-
-        <Itinerary />
-      </div>
-    )
+      )
+    }
   }
-}
+
 
 export default withAuth(Trip);

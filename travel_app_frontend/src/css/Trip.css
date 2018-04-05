@@ -14,10 +14,43 @@ toggle-form {
 
 } */
 
-.Table {
-  align-self: right;
-  display: inline-flex;
+
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  background-color: #FBFEF9 !important;
+  color: #4C5B5C;
 }
+.tripinfo {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  background-color: #FBFEF9;
+}
+.MessageBoard {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: #A3D2DC;
+
+}
+
+
+.itinerary-row {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: #FBFEF9
+}
+
+
+
 #toggle-form {
   margin-left: 50px;
 }
@@ -30,38 +63,29 @@ toggle-form {
   margin-left: 35px;
 }
 
-.tripsImage {
-  width: 98%;
-  margin: auto;
-  padding: 2px;
+.trip-photo {
+  margin-left: 24px;
 }
 
-h5 {
+.trip-details {
   margin: 30px;
-  color:grey;
   margin-left: 24px;
+  color: #4C5B5C;
 }
 
 h2 {
   margin:30px;
   font-style: bold;
-  color: grey;
+  color: #4C5B5C;
   font-size: 2rem;
   margin-left: 23px;
   margin-right: 23px;
   border-bottom: solid pink 1px;
 }
 
-.btn-block {
+.btn {
   width: 49%;
   align-items: center;
-}
-
-#button1 {
-  float: left;
-  margin-top: .5rem;
-}
-
-#button2 {
-  float: right;
+  background-color: #EA6759;
+  border-color: #EA6759;
 }
