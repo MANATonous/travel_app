@@ -88,4 +88,5 @@ class Trip extends Component {
   }
 
 
+
 export default withAuth(Trip);
