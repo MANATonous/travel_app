@@ -1,4 +1,4 @@
-/* 
+/*
 .message-board{
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +7,9 @@
   flex-grow: 1;
   flex-shrink: 1;
 } */
-
+.list-group-item {
+  background-color: Rgba(251, 254, 249,0.8);
+}
 
 #chats {
   margin: auto;
