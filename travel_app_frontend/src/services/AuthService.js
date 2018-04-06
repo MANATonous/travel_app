@@ -58,7 +58,7 @@ export default class AuthService {
       localStorage.removeItem('id_token');
       localStorage.removeItem('user_first')
       localStorage.removeItem('user_last')
-      localStorage.removeItem('avatar')
+
     }
 
     // We can decode the token and find the user's ID for subsequent calls to the server

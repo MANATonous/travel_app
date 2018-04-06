@@ -67,7 +67,6 @@ class MessageBoard extends Component {
     e.preventDefault()
     e.target.reset()
     const newMessage = this.state.form
-    console.log(newMessage)
     fetch(`${this.state.apiUrl}/messages`,
       {
         body: JSON.stringify(newMessage),

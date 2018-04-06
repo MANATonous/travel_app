@@ -78,12 +78,9 @@ class Dashboard extends Component {
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
-      console.log(parsedResponse)
       this.setState({user_info: parsedResponse})
-      console.log(this.state.user_info)
       localStorage.setItem('user_first', this.state.user_info[0].first_name)
-      localStorage.setItem('user_last', this.state.user_info[0].last_name)
-      localStorage.setItem('avatar', this.state.user_info[0].avatar)
+      localStorage.setItem('user_last', this.state.user_info[0].last_name.charAt(0))
     })
 
   }
