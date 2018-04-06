@@ -7,13 +7,8 @@
   flex-grow: 1;
   flex-shrink: 1;
 } */
-
-
-
-
-.chatMessage{
-  background-color: #FBFEF9;
-
+.list-group-item {
+  background-color: Rgba(251, 254, 249,0.8);
 }
 
 h3.message-board {

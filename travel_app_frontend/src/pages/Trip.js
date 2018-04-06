@@ -16,7 +16,7 @@ class Trip extends Component {
     this.toggleComponent = this.toggleComponent.bind(this)
     this.state = {
       trip: [],
-      active: false,
+      active: false
     }
   }
 
@@ -28,8 +28,10 @@ class Trip extends Component {
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage
     const tripID = this.props.trip_id
-
-    this.setState({newEventStatus: false})
+    localStorage.setItem('trip_id', tripID)
+    this.setState(
+      {newEventStatus: false}
+    )
 
     fetch(`${apiURL}/find_trip/${tripID}.json`)
     .then((rawResponse) =>{
@@ -37,6 +39,7 @@ class Trip extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({trip: parsedResponse[0]})
+      console.log(parsedResponse)
     })
   }
 
@@ -77,7 +80,7 @@ class Trip extends Component {
             <Itinerary />
             </div>
             <div className="MessageBoard">
-              <MessageBoard />
+              <MessageBoard trip_id={this.state.trip.id}/>
             </div>
           </div>
         </div>
