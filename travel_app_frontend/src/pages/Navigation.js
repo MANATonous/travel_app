@@ -33,10 +33,7 @@ class Navigation extends Component {
         <Collapse isOpen={!this.state.collapsed} navbar>
           <Nav navbar align="right">
             <NavItem>
-              <NavLink href="/Trips">My Trips</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Trips">My Past Trips</NavLink>
+              <NavLink href="/Dashboard">Dashboard</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/Login" onClick={this.handleLogout.bind(this)} className="logout">Logout</NavLink>

@@ -5,11 +5,12 @@ import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
 import { Button, Jumbotron } from 'react-bootstrap';
-import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import Navigation from './Navigation';
-import TicketmasterAPI from './TicketmasterAPI'
-import UpdateTrip from './UpdateTrip'
-import AuthService from '../services/AuthService'
+import TicketmasterAPI from './TicketmasterAPI';
+import { Col, Form, FormGroup, Label, Input, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import UpdateTrip from './UpdateTrip';
+import AuthService from '../services/AuthService';
+
 
 const apiURL = 'http://localhost:3000'
 
@@ -80,11 +81,9 @@ class Trip extends Component {
       <div>
 
         <Navigation />
-        <div classname="api">
-          {this.renderAPI()}
-        </div>
-
+      
         <div className="wrapper">
+
             <div className="tripinfo">
               <h2>{this.state.trip.title}</h2>
               {this.renderEditButton()}
@@ -98,6 +97,10 @@ class Trip extends Component {
               <br/>
               <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
               <p className="trip-details">
+                <div className="api">
+                <u>Whats Happening Locally?</u> 
+                  {this.renderAPI()}
+                </div>
                 <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
                 <br/>
                 Location: {this.state.trip.city},  {this.state.trip.state}
@@ -106,6 +109,13 @@ class Trip extends Component {
                 {this.state.trip.description}
               </p>
             </div>
+
+            <div className="MessageBoard">
+              <MessageBoard trip_id={this.state.trip.id}/>
+            </div>
+
+
+
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
               <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleNewEvent.bind(this)}>
@@ -120,9 +130,7 @@ class Trip extends Component {
             </div>
             <Itinerary />
             </div>
-            <div className="MessageBoard">
-              <MessageBoard trip_id={this.state.trip.id}/>
-            </div>
+
           </div>
           </div>
       )

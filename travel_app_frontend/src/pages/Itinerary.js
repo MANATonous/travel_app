@@ -26,7 +26,7 @@ class Itinerary extends Component {
   render(){
     return(
       <div>
-        <Table hover>
+        <Table responsive hover>
           <thead>
             <tr>
               <th>Event Name</th>
