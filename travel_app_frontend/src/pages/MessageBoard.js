@@ -58,7 +58,7 @@ class MessageBoard extends Component {
   handleChange(e){
     const { form } = this.state
     form.message_text = e.target.value
-    this.setState({ form, form })
+    this.setState({ form })
   }
 
 
