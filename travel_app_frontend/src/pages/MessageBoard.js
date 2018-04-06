@@ -35,12 +35,12 @@ class MessageBoard extends Component {
 
     fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{
+      console.log(rawResponse)
       return rawResponse.json()
     })
     .then((parsedResponse) =>{
       this.setState(
-        {chats: parsedResponse,
-        form }
+        {chats: parsedResponse}
         )
     })
   }
@@ -50,6 +50,8 @@ class MessageBoard extends Component {
     form.message_text = e.target.value
     this.setState({ form })
   }
+
+
 
   submitMessage(e){
     e.preventDefault()
@@ -101,12 +103,12 @@ class MessageBoard extends Component {
             )
           })}
           </Scrollbars>
-          
+
           <form className="input" onSubmit={this.submitMessage.bind(this)}>
             <input type="text" id="newsuggestion" className="col-form-label" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
             <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
           </form>
-          
+
           <br />
         </div>
       )

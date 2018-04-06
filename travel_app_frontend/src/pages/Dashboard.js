@@ -151,9 +151,6 @@ class Dashboard extends Component {
             )
           })}
         </CardDeck>
-
-
-        </div>
         </div>
 
     );
