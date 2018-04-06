@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import '../css/Dashboard.css';
 import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
-import '../css/Dashboard.css';
 import NewTrip from './NewTrip';
 import JoinTrip from './JoinTrip';
 import Navigation from './Navigation';
@@ -124,7 +124,8 @@ class Dashboard extends Component {
 
         </div>
 
-        Trips I Started
+
+        <h1> Trips I Started </h1>
         <CardDeck className="card-deck">
           {this.state.user_trips.map((trips, index) => {
             return(
@@ -144,7 +145,7 @@ class Dashboard extends Component {
           })}
         </CardDeck>
 
-        Trips I Was Invited To
+      <h1> Trips I Was Invited To </h1>
 
         <CardDeck className="card-deck">
           {this.state.joined_trips.map((trips, index) => {
