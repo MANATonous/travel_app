@@ -157,4 +157,4 @@ newUserSubmit(event){
       }
     }
 
-export default Register
+export default Register;

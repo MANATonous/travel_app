@@ -32,6 +32,9 @@
   align-items: baseline;
 
 }
+.entirePage {
+  background-color: #000;
+}
 .form {
   margin: 5px 0 0 0;
 }
