@@ -1,22 +1,36 @@
-
+/*
 .message-board{
   display: flex;
   flex-wrap: wrap;
-  float: right;
   flex-direction: row;
   justify-content: space-between;
   flex-grow: 1;
   flex-shrink: 1;
+} */
+
+
+
+
+.chatMessage{
+  background-color: #FBFEF9;
 
 }
-#chats {
-  margin: auto;
+
+h3 {
+  margin:30px;
+  font-style: bold;
+  color: #4C5B5C;
+  font-size: 2rem;
+  margin-left: 23px;
+  margin-right: 23px;
+  border-bottom: solid pink 4px;
 }
 
 #newsuggestion {
   margin: 10px 0 0 -60px;
   width: 275px;
 }
+
 #newsuggestion2 {
   margin: 10px 0 0 -60px;
   width: 205px;
