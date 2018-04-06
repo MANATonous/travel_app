@@ -42,12 +42,14 @@ class Login extends Component {
   render() {
     return (
       <div className="admin-page-background">
-        <div className="card">
+        <div className="info-text">
           <div className="card-body">
-            <h2>{"Welcome to Trippin' Out!"}</h2>
-            <p className="card-text">{"If you've ever tried to plan a trip with multiple people, you know it can be difficult to keep all your ideas in one place. Our app makes it easy to organize all your thoughts and resources in one place."}</p>
-            <br/>
-            <p className="card-text">{"Once you add a trip to your dashboard, you'll easily be able to invite friends and family to your vacation or event. Everyone will be able to contribute ideas and stay connected through messaging and event itineraries."}</p>
+            <h2 className="login-h2">{"Welcome to Trippin' Out!"}</h2>
+            <div className="text-description">
+              <p className="card-text">{"If you've ever tried to plan a trip with multiple people, you know it can be difficult to keep all your ideas in one place. Our app makes it easy to organize all your thoughts and resources in one place."}</p>
+              <br/>
+              <p className="card-text">{"Once you add a trip to your dashboard, you'll easily be able to invite friends and family to your vacation or event. Everyone will be able to contribute ideas and stay connected through messaging and event itineraries."}</p>
+            </div>
           </div>
         </div>
         <div className="loginform">
@@ -73,19 +75,16 @@ class Login extends Component {
                   type="submit"
                   value="Log In"
                   name="submit"
-                  className="login btn btn-primary btn-lg form-submit"
+                  className="login btn btn-lg form-submit"
                 />
               </Col>
             </FormGroup>
-            <Button id="registerbutton" className="btn btn-primary btn-lg form-submit" onClick={this.toggle}> Register </Button>
+            <Button id="registerbutton" className="btn btn-lg form-submit" onClick={this.toggle}> Register </Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Start Trippin Out!</ModalHeader>
+              <ModalHeader toggle={this.toggle}>{"Start Trippin' Out!"}</ModalHeader>
               <ModalBody>
                 <Register toggleModal={this.toggle}/>
               </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-              </ModalFooter>
             </Modal>
           </form>
         </div>

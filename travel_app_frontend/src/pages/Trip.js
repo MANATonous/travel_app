@@ -72,7 +72,7 @@ class Trip extends Component {
             </div>
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
-              <Button type="button" className="btn btn-primary btn-lg" onClick={this.toggleComponent.bind(this)}>
+              <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleComponent.bind(this)}>
                 Add New Event!
               </Button>
               {this.state.active && <NewEvent />}

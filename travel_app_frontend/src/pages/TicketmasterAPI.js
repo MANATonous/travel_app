@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import {Button, Jumbotron} from 'react-bootstrap';
-import withAuth from '../services/withAuth';
 
 class TicketmasterAPI extends Component {
   constructor(props){

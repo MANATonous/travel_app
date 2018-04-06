@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { FormGroup, Input } from 'reactstrap'
 import '../css/Register.css';
 
 
@@ -82,72 +81,50 @@ newUserSubmit(event){
     render() {
       return (
       <div>
-      <form
-        >
-          <FormGroup row>
-            <Label for="first_name" hidden sm={2}>First Name</Label>
-            <Col sm={10}>
+      <form className="register_form">
+          <FormGroup>
               <Input type="text" name="first_name" id="first_name_test" placeholder="First Name" value= {this.state.form.first_name}
               onChange={this.handleChange.bind(this)}/>
-            </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="last_name" hidden sm={2}>Last Name</Label>
-            <Col sm={10}>
+          <FormGroup>
               <Input type="text" name="last_name" id="last_name" placeholder="Last Name" value= {this.state.form.last_name}
               onChange={this.handleChange.bind(this)}/>
-            </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="city" hidden sm={2}>City</Label>
-            <Col sm={10}>
+          <FormGroup>
               <Input type="text" name="city" id="city" placeholder="City" value= {this.state.form.city}
               onChange={this.handleChange.bind(this)} />
-            </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="state" hidden sm={2}>State</Label>
-            <Col sm={10}>
+          <FormGroup>
               <Input type="text" name="state" id="state" placeholder="State" value= {this.state.form.state}
               onChange={this.handleChange.bind(this)} />
-            </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="email" hidden sm={2}>Email</Label>
-            <Col sm={10}>
+          <FormGroup>
               <Input type="email" name="email" id="email" placeholder="Email" value= {this.state.form.email}
               onChange={this.handleChange.bind(this)} />
-            </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="password" hidden sm={2}>Password</Label>
-              <Col sm={10}>
+          <FormGroup>
               <Input type="password" name="password" id="password" placeholder="Password" value= {this.state.form.password}
               onChange={this.handleChange.bind(this)}/>
-              </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="password_confirmation" hidden sm={2}>Confirm Password</Label>
-              <Col sm={10}>
+          <FormGroup>
               <Input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" value= {this.state.form.password_confirmation}
               onChange={this.handleChange.bind(this)}/>
-              </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="avatar_base" sm={2}>Upload a Profile Picture</Label>
-              <Col sm={5}>
+          <FormGroup>
+            <h6>Upload a Profile Picture</h6>
+          </FormGroup>
+          <FormGroup>
                 <Input
                   type="file"
                   onChange={this.fileChangeHandler.bind(this)}
                 />
-              </Col>
           </FormGroup>
           <button
             type="button"
             input type="submit"
             value='Submit'
             onClick={this.newUserSubmit.bind(this)}
-            className="btn btn-primary btn-lg btn-block form-submit"
+            className="btn btn-lg btn-block form-submit registerbutton"
           >
             Submit
           </button>
@@ -158,3 +135,7 @@ newUserSubmit(event){
     }
 
 export default Register;
+
+//
+// import { Navbar, Nav, NavDropdown, modal, Card, CardImg, CardDeck, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Form, FormGroup, Label,Input, Row} from 'reactstrap'
+// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';

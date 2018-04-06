@@ -8,3 +8,13 @@ form {
   align-items: center;
   margin: 50px 0 0 100px;
 }
+
+.registerbutton {
+  background-color: #88AE9F;
+}
+
+.register_form {
+  justify-content: center;
+  align-items: center;
+  padding-left: -30px;
+}

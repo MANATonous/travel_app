@@ -17,7 +17,8 @@
   color: black;
 }
 
-h3 {
+h3.message-board {
+
   margin:30px;
   font-style: bold;
   color: #4C5B5C;

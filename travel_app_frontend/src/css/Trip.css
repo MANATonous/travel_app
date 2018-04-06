@@ -74,7 +74,7 @@ toggle-form {
   color: #4C5B5C;
 }
 
-h2 {
+h2.tripinfo {
   margin:30px;
   font-style: bold;
   color: #4C5B5C;
@@ -84,7 +84,7 @@ h2 {
   border-bottom: solid pink 4px;
 }
 
-.btn {
+.new-event-btn {
   width: 25%;
   align-items: center;
   background-color: #EA6759;

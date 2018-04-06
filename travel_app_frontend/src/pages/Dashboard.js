@@ -12,7 +12,6 @@ import withAuth from '../services/withAuth';
 const Auth = new AuthService()
 
 class Dashboard extends Component {
-
   constructor(props){
     super(props)
     this.auth = new AuthService()
@@ -95,38 +94,30 @@ class Dashboard extends Component {
             <p className= "lead" id="dash-header-subtitle"> Create and Manage Trips with Friends and Family </p>
             <hr className= "my-4" />
           </div>
-          <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
-
+          <button type="button" className="btn btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
           <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
             <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
-            <ModalBody id="toggleCreate">
-              < NewTrip toggleNewTrip={this.toggleCreate} />
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={this.toggleCreate}>Cancel</Button>
-            </ModalFooter>
-          </Modal>
-
-          <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
+              <ModalBody id="toggleCreate">
+                < NewTrip toggleNewTrip={this.toggleCreate} />
+              </ModalBody>
+            </Modal>
+          <button type="button" className="btn btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
           <Modal isOpen={this.state.modal_join} toggle={this.toggleJoin} className={this.props.className}>
             <ModalHeader toggle={this.toggleJoin}>Enter Trip ID Here!</ModalHeader>
               <ModalBody>
                 < JoinTrip toggleJoinTrip={this.toggleJoin} />
               </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={this.toggleJoin}>Cancel</Button>
-              </ModalFooter>
             </Modal>
         </div>
-        <div className= "jumbotron">
+        <div>
           <h3 className="label">My Trips</h3>
-          <hr className= "my-4" />
+          <hr className= "my-4 dashboard-line" />
         </div>
         <CardDeck className="card-deck">
           {this.state.user_trips.map((trips, index) => {
             return(
-              <div className="card" key={index}>
-                <Link to={`/Trip/${trips.id}`}>
+              <div className="card dashboard-card" key={index}>
+                <Link to={`/Trip/${trips.id}`} style={{ textDecoration: 'none' }}>
                   <h3 className="card-header">{trips.title}</h3>
                 </Link>
                 <div className="card-body">
@@ -142,16 +133,16 @@ class Dashboard extends Component {
           })}
         </CardDeck>
 
-        <div className= "jumbotron">
+        <div>
           <h3 className="label">{"Trips I'm Going On"}</h3>
-          <hr className= "my-4" />
+          <hr className= "my-4 dashboard-line" />
         </div>
         <CardDeck className="card-deck">
           {this.state.joined_trips.map((trips, index) => {
             return(
-              <div className="card" key={index}>
-                <Link to={`/Trip/${trips.id}`}>
-                  <h3 className="card-header">{trips.title}</h3>
+              <div className="card dashboard-card" key={index}>
+                <Link to={`/Trip/${trips.id}`} style={{ textDecoration: 'none' }}>
+                  <h3 className="card-header" >{trips.title}</h3>
                 </Link>
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">{trips.start_date} to {trips.end_date}</h6>
@@ -164,7 +155,7 @@ class Dashboard extends Component {
             )
           })}
         </CardDeck>
-        </div>
+      </div>
 
     );
   }
