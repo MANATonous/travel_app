@@ -25,7 +25,10 @@ toggle-form {
   background-image: url('../trip-background.jpg');
   background-size: cover;
 }
-
+#buttonEdit {
+  background-color: #698DA0;
+  border: none;
+}
 
 /* .wrapper {
   display: grid;
@@ -41,6 +44,7 @@ toggle-form {
   margin: 5%;
   border-radius: 10px;
 }
+
 
 .MessageBoard {
   grid-column: 2/3;
@@ -92,13 +96,16 @@ h2.tripinfo {
   font-style: bold;
   color: #4C5B5C;
   font-size: 2rem;
-  margin-left: 23px;
-  margin-right: 23px;
   border-bottom: solid pink 4px;
+}
+
+#buttonEdit {
+  margin: 20px;
 }
 
 .new-event-btn {
   width: 25%;
+  margin: 20px;
   align-items: center;
   background-color: #698DA0;
   border-color: #698DA0;

@@ -81,7 +81,7 @@ class Trip extends Component {
       <div>
 
         <Navigation />
-      
+
         <div className="wrapper">
 
             <div className="tripinfo">
@@ -98,7 +98,7 @@ class Trip extends Component {
               <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
               <p className="trip-details">
                 <div className="api">
-                <u>Whats Happening Locally?</u> 
+                <u>Whats Happening Locally?</u>
                   {this.renderAPI()}
                 </div>
                 <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
