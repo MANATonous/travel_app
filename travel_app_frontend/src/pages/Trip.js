@@ -24,8 +24,6 @@ class Trip extends Component {
     this.setState(prevState => ({active : !this.state.active}))
   }
 
-  // <TicketmasterAPI />
-
   componentWillMount(){
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage

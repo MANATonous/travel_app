@@ -1,4 +1,8 @@
-/* .App {
+.mr-auto {
+  color: white !important;
+}
+
+.App {
   text-align: center;
 }
 
@@ -24,4 +28,4 @@
 
 .App-intro {
   font-size: large;
-} */
+} 
