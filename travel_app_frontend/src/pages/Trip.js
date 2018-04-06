@@ -15,10 +15,6 @@ class Trip extends Component {
     super(props)
     this.toggleComponent = this.toggleComponent.bind(this)
     this.state = {
-<<<<<<< HEAD
-      // external_api_url: "app.ticketmaster.com/discovery/v2/events.json?city="
-=======
->>>>>>> master
       trip: [],
       active: false,
     }
@@ -27,8 +23,6 @@ class Trip extends Component {
   toggleComponent() {
     this.setState(prevState => ({active : !this.state.active}))
   }
-
-  // <TicketmasterAPI />
 
   componentWillMount(){
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
