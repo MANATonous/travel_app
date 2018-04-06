@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Dashboard.css';
-import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav, Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import NewTrip from './NewTrip';
@@ -24,9 +24,9 @@ class Dashboard extends Component {
       modal_create: false,
       modal_join: false
     }
-      this.toggleNavbar = this.toggleNavbar.bind(this);
-      this.toggleCreate = this.toggleCreate.bind(this);
-      this.toggleJoin = this.toggleJoin.bind(this);
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.toggleCreate = this.toggleCreate.bind(this);
+    this.toggleJoin = this.toggleJoin.bind(this);
   }
 
   toggleNavbar() {
@@ -84,15 +84,16 @@ class Dashboard extends Component {
             <hr className= "my-4" />
           </div>
           <button type="button" className="btn btn-primary btn-lg btn-block " id= "button1" onClick={this.toggleCreate}>Create New Trip</button>
+
           <Modal isOpen={this.state.modal_create} toggle={this.toggleCreate} className={this.props.className}>
             <ModalHeader toggle={this.toggleCreate}>Create New Trip</ModalHeader>
-              <ModalBody id="toggleCreate">
-                < NewTrip toggleNewTrip={this.toggleCreate} />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={this.toggleCreate}>Cancel</Button>
-              </ModalFooter>
-            </Modal>
+            <ModalBody id="toggleCreate">
+              < NewTrip toggleNewTrip={this.toggleCreate} />
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={this.toggleCreate}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
 
           <button type="button" className="btn btn-primary btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
           <Modal isOpen={this.state.modal_join} toggle={this.toggleJoin} className={this.props.className}>
