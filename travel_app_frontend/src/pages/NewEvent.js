@@ -58,7 +58,7 @@ class NewEvent extends Component {
       } else { //(temporarily) set alert=success
         //todo redirect to login
         this.setState({errors: null})
-        alert('Success')
+        this.props.toggleNewEvent()
       }})
   }
 
