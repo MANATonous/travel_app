@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   resources :trips
   resources :users
   resources :register
+<<<<<<< HEAD
   get 'user_info/:user_id'  => 'users#user_info'
+=======
+
+  get 'user_info/:user_id'  => 'users#user_info'
+
+>>>>>>> 177475fadee00b6702226f39ebdde08d8944d86a
   get 'messages_by_trip/:trip_id' => 'messages#messages_by_trip'
   get 'events_by_trip/:trip_id' => 'events#events_by_trip'
   get 'trips_by_user/:user_id' => 'trips#trips_by_user'
