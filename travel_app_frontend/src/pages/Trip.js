@@ -7,6 +7,7 @@ import withAuth from '../services/withAuth'
 import {Button, Jumbotron} from 'react-bootstrap';
 import Navigation from './Navigation';
 import TicketmasterAPI from './TicketmasterAPI'
+import UpdateTrip from './UpdateTrip'
 
 const apiURL = 'http://localhost:3000'
 
@@ -39,7 +40,6 @@ class Trip extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({trip: parsedResponse[0]})
-      console.log(parsedResponse)
     })
   }
 

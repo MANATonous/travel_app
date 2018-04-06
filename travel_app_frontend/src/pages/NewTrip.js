@@ -3,8 +3,6 @@ import {Row, Col, Form, Modal, ModalBody, ModalHeader, Collapse, ModalFooter, Bu
 import AuthService from '../services/AuthService'
 import '../css/NewTrip.css';
 
-
-
 class NewTrip extends Component {
   constructor(props) {
     super(props)

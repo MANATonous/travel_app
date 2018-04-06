@@ -38,7 +38,6 @@ class MessageBoard extends Component {
 
     fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{
-      console.log(rawResponse)
       return rawResponse.json()
     })
     .then((parsedResponse) =>{

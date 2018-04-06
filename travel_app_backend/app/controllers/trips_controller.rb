@@ -45,7 +45,23 @@ class TripsController < ApplicationController
     else
       render json: {errors: user.errors}, status: 404
     end
+  end
 
+  def update
+    trip = Trip.find_by_id(params[:trip_id])
+    trip.title = params[:title]
+    trip.city = params[:city]
+    trip.state = params[:state]
+    trip.country = params[:country]
+    trip.start_date = params[:start_date]
+    trip.end_date = params[:end_date]
+    trip.description = params[:description]
+    trip.link = params[:link]
+    if params[:photo_base]
+      trip.photo = params[:photo_base]
+    end
+    trip.save!
+    render json: trip
   end
 
   private
@@ -53,8 +69,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:title, :city, :state, :country, :start_date, :end_date, :description, :link, :rand_code, :user_id, :photo_base)
   end
-
-
 
   def default_photo
     file_path = File.join(Rails.root, 'public', 'images', 'small', 'trip_default_image.png')

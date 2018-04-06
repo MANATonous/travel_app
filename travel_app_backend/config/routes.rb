@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'join_trip' => 'trips#join'
   post 'trips_by_user' => 'trips#trips_by_user'
 
+  patch 'trip' => 'trips#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
