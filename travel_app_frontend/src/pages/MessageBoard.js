@@ -16,8 +16,6 @@ class MessageBoard extends Component {
     this.state = {
       apiUrl: "http://localhost:3000",
       chats: [],
-      first_name: '',
-      last_name: '',
       avatar: '',
       error: '',
       form: {
@@ -36,9 +34,7 @@ class MessageBoard extends Component {
     const { form } = this.state
     form.user_id = Auth.getUserId()
     form.trip_id = localStorage.getItem('trip_id')
-    this.state.last_name = localStorage.getItem('last_name')
-    this.state.first_name = localStorage.getItem('first_name')
-    this.state.avatar = localStorage.getItem('avatar')
+    // this.state.avatar = localStorage.getItem('avatar')
 
     fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{
@@ -50,13 +46,13 @@ class MessageBoard extends Component {
         {chats: parsedResponse}
         )
     })
+    this.generateDisplayName()
   }
 
   generateDisplayName(){
     const { form } = this.state
-    form.display_name = this.state.first_name.concat(' ', `${this.state.last_name}`)
+    form.display_name = localStorage.getItem('user_first').concat(' ', `${localStorage.getItem('user_last')}`)
     this.setState({ form })
-    console.log(this.state.form)
   }
 
   handleChange(e){
@@ -71,6 +67,7 @@ class MessageBoard extends Component {
     e.preventDefault()
     e.target.reset()
     const newMessage = this.state.form
+    console.log(newMessage)
     fetch(`${this.state.apiUrl}/messages`,
       {
         body: JSON.stringify(newMessage),
@@ -91,11 +88,11 @@ class MessageBoard extends Component {
         let newMes = {
           user_id:parsedResponse[1]['user_id'],
           trip_id:parsedResponse[1]['trip_id'],
-          message:parsedResponse[1]['message']
+          message:parsedResponse[1]['message'],
+          display_name:parsedResponse[1]['display_name']
         }
         chat.push(newMes)
         this.setState({errors: null, chats: chat})
-        console.log(this.state.chats)
         this.render()
       }})
   }
@@ -110,9 +107,9 @@ class MessageBoard extends Component {
                 <ListGroup sm={3} key={index}>
                     <Col sm={12}>
                       <ListGroupItem className="chatMessage">
-                      <Badge pill>
-                        {chats.user_id}
-                      </Badge> {chats.message}</ListGroupItem>
+                      <button type="button" id="message-display-name" class="btn btn-primary btn-sm disabled nohover">
+                      <strong>{chats.display_name}</strong>
+                      </button> {chats.message}</ListGroupItem>
                     </Col>
                 </ListGroup>
             )
