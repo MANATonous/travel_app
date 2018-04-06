@@ -55,9 +55,6 @@ class Trip extends Component {
     return(
       <div>
         <Navigation />
-        <div classname="api">
-          {this.renderAPI()}
-        </div>
 
         <div className="wrapper">
 
@@ -65,6 +62,10 @@ class Trip extends Component {
               <h2>{this.state.trip.title} <br/></h2>
               <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
               <p className="trip-details">
+                <div className="api">
+                <u>Whats Happening Locally?</u> 
+                  {this.renderAPI()}
+                </div>
                 <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
                 <br/>
                 Location: {this.state.trip.city},  {this.state.trip.state}
@@ -77,6 +78,8 @@ class Trip extends Component {
             <div className="MessageBoard">
               <MessageBoard trip_id={this.state.trip.id}/>
             </div>
+
+
 
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">

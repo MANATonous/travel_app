@@ -7,6 +7,15 @@
   flex-grow: 1;
   flex-shrink: 1;
 } */
+
+#message-submit {
+  margin: 0 auto;
+  padding: 0;
+  align-self: center;
+  margin-right: 25%;
+
+
+}
 .list-group-item {
   background-color: Rgba(251, 254, 249,0.8);
 }
@@ -15,6 +24,13 @@
   background-color: #EA6759;
   border-color: #EA6759;
   color: black;
+}
+
+.message-board {
+  width: 100%;
+  height: 500px;
+  align-content: center;
+  align-self: center;
 }
 
 h3.message-board {
@@ -28,13 +44,14 @@ h3.message-board {
 }
 
 #newsuggestion {
-  margin: 10px 0 0 -60px;
+  margin-top: 20px;
   width: 275px;
 }
 
 #newsuggestion2 {
-  margin: 10px 0 0 -60px;
   width: 205px;
+  margin-right: 25%;
+  margin-bottom: 20px;
 }
 
 #card-text {
