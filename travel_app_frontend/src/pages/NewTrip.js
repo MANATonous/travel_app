@@ -3,8 +3,6 @@ import { Col, FormGroup, Label, Input } from 'reactstrap';
 import AuthService from '../services/AuthService'
 import '../css/NewTrip.css';
 
-
-
 class NewTrip extends Component {
   constructor(props) {
     super(props)

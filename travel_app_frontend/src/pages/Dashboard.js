@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Dashboard.css';
-import { CardDeck, Navbar, NavbarBrand, Nav,Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
+import { CardDeck, Navbar, NavbarBrand, Nav, Modal, ModalBody, ModalHeader, Button, ModalFooter, DropdownToggle, Dropdown, DropdownItem,Collapse, DropdownMenu, NavbarToggler, NavItem, NavLink, jumbotron, dropdown, menu } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../css/AuthUserNavFooter.css';
 import NewTrip from './NewTrip';
@@ -21,11 +21,12 @@ class Dashboard extends Component {
       joined_trips: [],
       collapsed: true,
       modal_create: false,
-      modal_join: false
+      modal_join: false,
+      user_info: []
     }
-      this.toggleNavbar = this.toggleNavbar.bind(this);
-      this.toggleCreate = this.toggleCreate.bind(this);
-      this.toggleJoin = this.toggleJoin.bind(this);
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.toggleCreate = this.toggleCreate.bind(this);
+    this.toggleJoin = this.toggleJoin.bind(this);
   }
 
   toggleNavbar() {
@@ -70,6 +71,17 @@ class Dashboard extends Component {
       })
       this.setState({user_trips: ownedTrips ,joined_trips: joinedTrips})
     })
+
+    fetch(`${this.state.apiUrl}/user_info/${userID}.json`)
+    .then((rawResponse) =>{
+      return rawResponse.json()
+    })
+    .then((parsedResponse) =>{
+      this.setState({user_info: parsedResponse})
+      localStorage.setItem('user_first', this.state.user_info[0].first_name)
+      localStorage.setItem('user_last', this.state.user_info[0].last_name.charAt(0))
+    })
+
   }
 
   render(){
@@ -89,7 +101,6 @@ class Dashboard extends Component {
                 < NewTrip toggleNewTrip={this.toggleCreate} />
               </ModalBody>
             </Modal>
-
           <button type="button" className="btn btn-lg btn-block"  id= "button2" onClick={this.toggleJoin}>Join A Trip</button>
           <Modal isOpen={this.state.modal_join} toggle={this.toggleJoin} className={this.props.className}>
             <ModalHeader toggle={this.toggleJoin}>Enter Trip ID Here!</ModalHeader>

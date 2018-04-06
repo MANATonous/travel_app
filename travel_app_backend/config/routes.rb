@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users
   resources :register
 
+
+  get 'user_info/:user_id'  => 'users#user_info'
   get 'messages_by_trip/:trip_id' => 'messages#messages_by_trip'
   get 'events_by_trip/:trip_id' => 'events#events_by_trip'
   get 'trips_by_user/:user_id' => 'trips#trips_by_user'
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   post 'join_trip' => 'trips#join'
   post 'trips_by_user' => 'trips#trips_by_user'
 
+  patch 'trip' => 'trips#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
