@@ -21,9 +21,9 @@
 }
 
 #message-display-name{
-  background-color: #EA6759;
-  border-color: #EA6759;
-  color: black;
+  background-color: #698DA0;
+  border: none;
+  color: white;
 }
 
 .message-board {
@@ -52,6 +52,8 @@ h3.message-board {
   width: 205px;
   margin-right: 25%;
   margin-bottom: 20px;
+  background-color: #88AE9F;
+  border: none;
 }
 
 #card-text {

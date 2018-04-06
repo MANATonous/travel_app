@@ -14,12 +14,16 @@ toggle-form {
 
 } */
 
+
+
 .wrapper {
   display:grid;
   grid-template-columns: [line1] 50% [line2] 50% [end];
   grid-template-rows: [first] 10% [line2] 35% [line3] 20% [col4-start] 35% [five] 10% [end];
-  background-color: #A3D2DC !important;
+  background-color: #698DA0 !important;
   color: #4C5B5C;
+  background-image: url('../trip-background.jpg');
+  background-size: cover;
 }
 
 
@@ -33,21 +37,26 @@ toggle-form {
 .tripinfo {
   grid-column: 1/2;
   grid-row: 1;
-  margin-left: 1em;
-  background-color: #A3D2DC;
-  margin-top: 15px;
+  background-color: rgba(255,255,255,0.7);
+  margin: 5%;
+  border-radius: 10px;
 }
 
 .MessageBoard {
   grid-column: 2/3;
   grid-row: 1;
-  background-color: #A3D2DC;
+  background-color: rgba(255,255,255,0.7);
+  margin: 5%;
+  border-radius: 10px;
+
 }
 
 .itinerary-row {
   grid-column: 1/3;
   grid-row: 4/5;
-  background-color: #A3D2DC
+  background-color: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  margin: 5%;
 }
 
 .api {
@@ -91,8 +100,8 @@ h2.tripinfo {
 .new-event-btn {
   width: 25%;
   align-items: center;
-  background-color: #EA6759;
-  border-color: #EA6759;
+  background-color: #698DA0;
+  border-color: #698DA0;
 }
 
 @media (max-width: 900px ){
@@ -112,12 +121,10 @@ h2.tripinfo {
   .MessageBoard {
     grid-row: 2/3;
     grid-column: 1/2;
-    background-color: #A3D2DC;
   }
 
   .itinerary-row {
     grid-row: 3/4;
-    background-color: #A3D2DC
   }
 
 }
