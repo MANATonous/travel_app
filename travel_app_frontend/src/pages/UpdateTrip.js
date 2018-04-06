@@ -29,16 +29,16 @@ class UpdateTrip extends Component {
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     const tripID = localStorage.getItem('trip_id')
     const apiURL = this.state.apiURL
 
     fetch(`${apiURL}/find_trip/${tripID}.json`)
-    .then((rawResponse) =>{
-      return rawResponse.json()
+    .then((res) =>{
+      return res.json()
     })
-    .then((parsedResponse) =>{
-      const form = parsedResponse[0]
+    .then((res) =>{
+      const form = res[0]
       console.log(form.city);
       this.setState({
         form: {
@@ -84,7 +84,7 @@ class UpdateTrip extends Component {
   }
 
 
-  updateTripSubmit(event){
+  updateTripSubmit(event) {
     //when a submission happens we are NOT sending a url with parameters, opting to send json state object instead
     event.preventDefault()
     //set new trip to state
@@ -99,17 +99,10 @@ class UpdateTrip extends Component {
         method: "PATCH"
       }
     )
-    .then((rawResponse) => { //process response
-      return rawResponse.json()
+    .then((res) => { //process response
+      return res.json()
     })
-    .then((parsedResponse) =>{}
-      // if (parsedResponse[0] === 422) {
-      //   this.setState({errors: 'Invalid Inputs'})
-      // } else { //(temporarily) set alert=success
-      //   //todo redirect to login
-      //   this.setState({errors: null})
-        // this.props.toggleNewTrip()
-    )
+    .then((res) => this.props.toggleEdit(res))
   }
 
   toggleNavbar() {

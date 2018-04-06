@@ -4,35 +4,52 @@ import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
-import {Button, Jumbotron} from 'react-bootstrap';
+import { Button, Jumbotron } from 'react-bootstrap';
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import Navigation from './Navigation';
 import TicketmasterAPI from './TicketmasterAPI'
 import UpdateTrip from './UpdateTrip'
+import AuthService from '../services/AuthService'
 
 const apiURL = 'http://localhost:3000'
 
 class Trip extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.toggleComponent = this.toggleComponent.bind(this)
+    this.Auth = new AuthService()
     this.state = {
-      trip: [],
-      active: false
+      trip: {},
+      model_new_event: false,
+      modal_edit: false
     }
+    this.toggleNewEvent = this.toggleNewEvent.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
+    this.toggleModalEdit = this.toggleModalEdit.bind(this)
   }
 
-  toggleComponent() {
-    this.setState(prevState => ({active : !this.state.active}))
+  toggleNewEvent() {
+    this.setState({modal_new_event: !this.state.modal_new_event})
   }
 
-  componentWillMount(){
+  toggleEdit(res) {
+    this.setState({
+      trip: res,
+      modal_edit: !this.state.modal_edit
+    });
+  }
+
+  toggleModalEdit() {
+    this.setState({
+      modal_edit: !this.state.modal_edit
+    });
+  }
+
+
+  componentWillMount() {
     // When the component mounts we want see if an object exists in local storage, if yes, load the object,
     //if not pull it from props.match.params.id and save it to local storage
     const tripID = this.props.trip_id
     localStorage.setItem('trip_id', tripID)
-    this.setState(
-      {newEventStatus: false}
-    )
 
     fetch(`${apiURL}/find_trip/${tripID}.json`)
     .then((rawResponse) =>{
@@ -50,16 +67,35 @@ class Trip extends Component {
     }
   }
 
+  renderEditButton(){
+    if (this.state.trip.user_id == this.Auth.getUserId()) {
+      return (
+        <Button type="button" className="btn btn-primary btn-lg btn-block " id="buttonEdit" onClick={this.toggleModalEdit}> edit </Button>
+      )
+    }
+  }
+
   render() {
     return(
       <div>
+
         <Navigation />
         <div classname="api">
           {this.renderAPI()}
         </div>
+
         <div className="wrapper">
             <div className="tripinfo">
-              <h2>{this.state.trip.title} <br/></h2>
+              <h2>{this.state.trip.title}</h2>
+              {this.renderEditButton()}
+              <Modal isOpen={this.state.modal_edit} toggle={this.toggleModalEdit}>
+                <ModalHeader toggle={this.toggleModalEdit}>Update Your Trip</ModalHeader>
+                <ModalBody id="toggleEdit">
+                  <UpdateTrip toggleEdit={this.toggleEdit} />
+                </ModalBody>
+              </Modal>
+
+              <br/>
               <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
               <p className="trip-details">
                 <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
@@ -72,10 +108,15 @@ class Trip extends Component {
             </div>
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
-              <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleComponent.bind(this)}>
+              <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleNewEvent.bind(this)}>
                 Add New Event!
               </Button>
-              {this.state.active && <NewEvent />}
+              <Modal isOpen={this.state.modal_new_event} toggle={this.toggleNewEvent}>
+                <ModalHeader toggle={this.toggleNewEvent}>Add New Event</ModalHeader>
+                <ModalBody id="toggleNewEvent">
+                  < NewEvent toggleNewEvent={this.toggleNewEvent} />
+                </ModalBody>
+              </Modal>
             </div>
             <Itinerary />
             </div>
@@ -83,7 +124,7 @@ class Trip extends Component {
               <MessageBoard trip_id={this.state.trip.id}/>
             </div>
           </div>
-        </div>
+          </div>
       )
     }
   }
