@@ -22,7 +22,8 @@ class Dashboard extends Component {
       joined_trips: [],
       collapsed: true,
       modal_create: false,
-      modal_join: false
+      modal_join: false,
+      user_info: []
     }
       this.toggleNavbar = this.toggleNavbar.bind(this);
       this.toggleCreate = this.toggleCreate.bind(this);
@@ -71,6 +72,20 @@ class Dashboard extends Component {
       })
       this.setState({user_trips: ownedTrips ,joined_trips: joinedTrips})
     })
+
+    fetch(`${this.state.apiUrl}/user_info/${userID}.json`)
+    .then((rawResponse) =>{
+      return rawResponse.json()
+    })
+    .then((parsedResponse) =>{
+      console.log(parsedResponse)
+      this.setState({user_info: parsedResponse})
+      console.log(this.state.user_info)
+      localStorage.setItem('user_first', this.state.user_info[0].first_name)
+      localStorage.setItem('user_last', this.state.user_info[0].last_name)
+      localStorage.setItem('avatar', this.state.user_info[0].avatar)
+    })
+
   }
 
   render(){
