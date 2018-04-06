@@ -7,10 +7,22 @@
   flex-direction: right;
 }
 
+.login-h2 {
+  font-style: bold;
+  color: #4C5B5C;
+  font-size: 2rem;
+  margin-left: 23px;
+  margin-right: 23px;
+  margin-bottom: 10px;
+  border-bottom: solid gray 2px;
+}
+
 form {
   margin: auto;
   float: right;
 }
+
+
 
 /* .navbar {
   background-color: #88AE9F !important;
@@ -22,7 +34,6 @@ form {
 
 .btn-primary {
   align-items: baseline;
-  background-color: solid pink;
 
 }
 
@@ -52,13 +63,20 @@ form {
   height: 45px;
   padding:10px 15 15 10px;
   border: none;
-  transition: 0.3s opacity ease;
+  transition: 1s opacity ease;
   cursor: pointer;
   width: 20rem;
+  outline:none;
 
 }
 .form-submit:hover{
-  opacity: 0.6;
+  opacity: 0.8;
+  outline:none;
+}
+
+.form-submit:active {
+  border:none;
+  outline:none;
 }
 
 
@@ -125,7 +143,7 @@ form {
           flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.9);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.6rem;
@@ -174,6 +192,7 @@ form {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  font-size: 2rem;
 }
 
 .modal-body {
@@ -181,22 +200,11 @@ form {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  padding: 1rem;
+  align-self: center;
+  margin-bottom: 10px;
 }
 
-.modal-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 1rem;
-  border-top: 1px solid #f7f7f9;
-}
+
 
 .modal-footer > :not(:first-child) {
   margin-left: .25rem;
@@ -224,17 +232,30 @@ form {
   background-size: cover;
   height:110vh;
 }
+/*
+div.info-text {
+  height: 100%;
+  width: 100%;
 
+  align-items: center;
+  flex-direction: right;
+} */
 
-
-.card {
+.info-text {
   grid-column: 2/3;
   grid-row: 2/3;
   background-color: rgba(251,254,249,0.6);
   align-content: center;
-  min-width: 400px;
+  min-width: 300px;
   border: 1px solid grey;
-  height: 50vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+}
+
+.text-description {
+  padding-top: 10px;
 }
 
 .card-body h2 {

@@ -61,6 +61,15 @@
   padding: 10px;
   background-color: #698DA0;
   color: white !important;
+
+}
+
+.card-header:hover {
+  text-decoration: none;
+}
+
+a.hover {
+  text-decoration: none;
 }
 
 .card-subtitle {
@@ -95,10 +104,65 @@
   margin-top: .5rem;
   background-color: #88AE9F;
   border: none;
+  transition: 1s opacity ease;
+  cursor: pointer;
+}
+
+#button1:hover {
+  opacity: 0.8;
+  outline:none;
 }
 
 #button2 {
   float: right;
   background-color: #88AE9F;
   border: none;
+  transition: 1s opacity ease;
+  cursor: pointer;
+}
+
+#button2:hover {
+  opacity: 0.8;
+  outline:none;
+}
+
+.dashboard-line {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.dashboard-card {
+  max-width: 30%;
+}
+
+.link {
+  text-decoration: none !important;
+}
+
+@media (max-width: 700px) {
+  .dashboard-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  #dash-header {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 525px) {
+  #button1, #button2 {
+    width: 100%;
+  }
+
+  #dash-header-title {
+    font-size: 5rem;
+    color: white;
+  }
+
+  #dash-header-subtitle {
+    font-size: 40px;
+    color: white;
+  }
+
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Form, Modal, ModalBody, ModalHeader, Collapse, ModalFooter, Button, FormGroup, Label, Input,Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink} from 'reactstrap';
+import { Col, FormGroup, Label, Input } from 'reactstrap';
 import AuthService from '../services/AuthService'
 import '../css/NewTrip.css';
 
@@ -97,43 +97,39 @@ class NewTrip extends Component {
           <form
             onSubmit={this.newTripSubmit.bind(this)} id="form">
             <FormGroup row>
-              <Label for="title" hidden sm={2}>Title</Label>
               <Col>
                 <Input type="text" name="title" id="inputLarge" placeholder="Title" value= {this.state.form.title}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="city" hidden sm={2}>City</Label>
               <Col>
                 <Input type="text" name="city" id="inputLarge" placeholder="City" value= {this.state.form.city}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="state" hidden sm={2}>City</Label>
               <Col>
                 <Input type="text" name="state" id="inputLarge" placeholder="State" value= {this.state.form.state}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="country" hidden sm={2}>Country</Label>
               <Col>
                 <Input type="text" name="country" id="inputLarge" placeholder="Country" value= {this.state.form.country}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="start_date" sm={3}>Start Date</Label>
-              <Col sm={6}>
+              <Label for="start_date" sm={4}>Start Date</Label>
+              <Col sm={8}>
                 <Input type="date" name="start_date" id="inputLarge" placeholder="Start Date" value= {this.state.form.start_date}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="end_date" sm={3}>End Date</Label>
-              <Col sm={6}>
+              <Label for="end_date" sm={4}>End Date</Label>
+              <Col sm={8}>
                 <Input type="date" name="end_date" id="inputLarge" placeholder="End Date" value= {this.state.form.end_date}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
@@ -141,7 +137,7 @@ class NewTrip extends Component {
             <FormGroup row>
               <Label for="description" > </Label>
               <Col>
-                <Input type="textarea" rows="4" name="description" id="exampleTextarea" placeholder="Add ideas for your trip here! Events, Adventures, and Explorations!" value= {this.state.form.description}
+                <Input type="textarea" rows="4" name="description" id="exampleTextarea" placeholder="Trip Description: Events, Adventures, and Explorations!" value= {this.state.form.description}
                 onChange={this.handleChange.bind(this)}/>
               </Col>
             </FormGroup>
@@ -152,7 +148,10 @@ class NewTrip extends Component {
                 onChange={this.handleChange.bind(this)}/>
               </Col>
               </FormGroup>
-              <FormGroup Row>
+              <FormGroup>
+                <h6>Upload a Picture for Your Trip</h6>
+              </FormGroup>
+              <FormGroup row>
                 <Label for="photo_base" hidden sm={2}>Add a Trip Picture</Label>
                 <Col>
                   <input type="file" onChange={this.fileChangeHandler.bind(this)} />
@@ -162,7 +161,7 @@ class NewTrip extends Component {
               type="button"
               input type="submit"
               value='Submit'
-              className="btn btn-primary btn-lg btn-block form-submit">
+              className="btn btn-lg btn-block form-submit new-trip-btn">
                   Submit
             </button>
           </form>
