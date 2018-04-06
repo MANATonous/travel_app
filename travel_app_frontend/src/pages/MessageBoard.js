@@ -16,11 +16,13 @@ class MessageBoard extends Component {
     this.state = {
       apiUrl: "http://localhost:3000",
       chats: [],
+      avatar: '',
       error: '',
       form: {
         user_id: '',
         trip_id: '',
-        message_text: ''
+        message_text: '',
+        display_name: ''
       }
       }
   }
@@ -32,6 +34,7 @@ class MessageBoard extends Component {
     const { form } = this.state
     form.user_id = Auth.getUserId()
     form.trip_id = localStorage.getItem('trip_id')
+    // this.state.avatar = localStorage.getItem('avatar')
 
     fetch(`${this.state.apiUrl}/messages_by_trip/${form.trip_id}.json`)
     .then((rawResponse) =>{
@@ -43,6 +46,13 @@ class MessageBoard extends Component {
         {chats: parsedResponse}
         )
     })
+    this.generateDisplayName()
+  }
+
+  generateDisplayName(){
+    const { form } = this.state
+    form.display_name = localStorage.getItem('user_first').concat(' ', `${localStorage.getItem('user_last')}`)
+    this.setState({ form })
   }
 
   handleChange(e){
@@ -77,7 +87,8 @@ class MessageBoard extends Component {
         let newMes = {
           user_id:parsedResponse[1]['user_id'],
           trip_id:parsedResponse[1]['trip_id'],
-          message:parsedResponse[1]['message']
+          message:parsedResponse[1]['message'],
+          display_name:parsedResponse[1]['display_name']
         }
         chat.push(newMes)
         this.setState({errors: null, chats: chat})
@@ -95,9 +106,9 @@ class MessageBoard extends Component {
                 <ListGroup sm={3} key={index}>
                     <Col sm={12}>
                       <ListGroupItem className="chatMessage">
-                      <Badge pill>
-                        {chats.user_id}
-                      </Badge> {chats.message}</ListGroupItem>
+                      <button type="button" id="message-display-name" class="btn btn-primary btn-sm disabled nohover">
+                      <strong>{chats.display_name}</strong>
+                      </button> {chats.message}</ListGroupItem>
                     </Col>
                 </ListGroup>
             )

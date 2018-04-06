@@ -11,6 +11,11 @@
   background-color: Rgba(251, 254, 249,0.8);
 }
 
+#message-display-name{
+  background-color: #EA6759;
+  border-color: #EA6759;
+  color: black;
+}
 
 h3 {
   margin:30px;

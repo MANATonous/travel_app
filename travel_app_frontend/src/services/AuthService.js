@@ -56,6 +56,9 @@ export default class AuthService {
     // Removes the token
     logout() {
       localStorage.removeItem('id_token');
+      localStorage.removeItem('user_first')
+      localStorage.removeItem('user_last')
+
     }
 
     // We can decode the token and find the user's ID for subsequent calls to the server
