@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   get 'messages_by_trip/:trip_id' => 'messages#messages_by_trip'
   get 'events_by_trip/:trip_id' => 'events#events_by_trip'
   get 'trips_by_user/:user_id' => 'trips#trips_by_user'
+  get 'find_trip/:trip_id' => 'trips#find_trip'
+
   post 'user_token' => 'user_token#create'
   post 'join_trip' => 'trips#join'
-  post 'find_trip' => 'trips#find_trip'
   post 'trips_by_user' => 'trips#trips_by_user'
 
 

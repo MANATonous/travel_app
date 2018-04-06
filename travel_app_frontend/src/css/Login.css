@@ -1,29 +1,52 @@
 .loginform {
-  position: absolute;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: right;
 }
+
+form {
+  margin: auto;
+  float: right;
+}
+
+/* .navbar {
+  background-color: #88AE9F !important;
+}
+
+#title {
+  color: #5C696A;
+} */
 
 .btn-primary {
   align-items: baseline;
   background-color: solid pink;
 
 }
+
+.login {
+  background-color: #88AE9F;
+}
+
+#registerbutton {
+  background-color: #698DA0;
+}
+
 .loginform > form {
   display: flex;
   flex-direction: column;
   justify-content: center
 }
+
 .form-item{
   padding: 9px;
   margin-bottom: 10px;
   height: 50px;
   width: 20rem;
   border: 1px solid grey;
+  background-color: rgba(251,254,249,0.8);
 }
 .form-submit{
   height: 45px;
@@ -191,6 +214,67 @@
   overflow: scroll;
 }
 
+.admin-page-background{
+  display:grid;
+  grid-template-columns: [first] 10% [line2] 35% [line3] 20% [col4-start] 35% [five] 10% [end];
+  grid-template-rows: [row1-start] 20% [row1-end] 60% [third-line] 20% [last-line];
+  background-image: url('../EuropeanCity.jpeg');
+  background-position: stretch;
+  background-repeat: repeat;
+  background-size: cover;
+  height:110vh;
+}
+
+
+
+.card {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: rgba(251,254,249,0.6);
+  align-content: center;
+  min-width: 400px;
+  border: 1px solid grey;
+  height: 50vh;
+}
+
+.card-body h2 {
+  color: #333435;
+}
+
+.loginform {
+  grid-column:4/5;
+  grid-row: 2/3;
+}
+
+
+.card-text {
+  font-size: 15px;
+  color: #333435;
+}
+
+@media (max-width: 800px) {
+  .admin-page-background {
+    grid-template-columns: [first] 10% [line2] 80% [line3] 10% [end];
+    grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] auto [fourth-line] auto [last-line] 10% [end];
+  }
+
+  .card {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-content: center;
+    min-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 15%;
+    min-height: 60vh;
+  }
+
+  .loginform {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
@@ -202,6 +286,7 @@
   .modal-sm {
     max-width: 300px;
   }
+
 }
 
 @media (min-width: 992px) {
