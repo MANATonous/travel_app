@@ -118,8 +118,6 @@ class MessageBoard extends Component {
             <input type="text" id="newsuggestion" className="col-form-label" placeholder=" Suggestions?" align="center" onChange={this.handleChange.bind(this)}/>
             <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
           </form>
-
-          <br />
         </div>
       )
     }

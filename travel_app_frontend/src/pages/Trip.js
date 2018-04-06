@@ -6,8 +6,9 @@ import NewEvent from './NewEvent'
 import withAuth from '../services/withAuth'
 import {Button, Jumbotron} from 'react-bootstrap';
 import Navigation from './Navigation';
-import TicketmasterAPI from './TicketmasterAPI'
-import UpdateTrip from './UpdateTrip'
+import TicketmasterAPI from './TicketmasterAPI';
+import UpdateTrip from './UpdateTrip';
+import { Col, Form, FormGroup, Label, Input, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 const apiURL = 'http://localhost:3000'
 
@@ -57,7 +58,9 @@ class Trip extends Component {
         <div classname="api">
           {this.renderAPI()}
         </div>
+
         <div className="wrapper">
+
             <div className="tripinfo">
               <h2>{this.state.trip.title} <br/></h2>
               <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
@@ -70,6 +73,11 @@ class Trip extends Component {
                 {this.state.trip.description}
               </p>
             </div>
+
+            <div className="MessageBoard">
+              <MessageBoard trip_id={this.state.trip.id}/>
+            </div>
+
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
               <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleComponent.bind(this)}>
@@ -79,9 +87,7 @@ class Trip extends Component {
             </div>
             <Itinerary />
             </div>
-            <div className="MessageBoard">
-              <MessageBoard trip_id={this.state.trip.id}/>
-            </div>
+
           </div>
         </div>
       )
