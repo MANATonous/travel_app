@@ -24,7 +24,7 @@ class MessageBoard extends Component {
         message_text: '',
         display_name: ''
       }
-      }
+    }
   }
 
 

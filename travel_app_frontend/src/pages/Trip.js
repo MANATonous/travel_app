@@ -129,7 +129,7 @@ class Trip extends Component {
                 </ModalBody>
               </Modal>
             </div>
-            <Itinerary />
+            <Itinerary tripOwner={this.state.trip.user_id}/>
             </div>
 
           </div>

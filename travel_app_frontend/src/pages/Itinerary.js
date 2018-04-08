@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import NewEvent from './NewEvent';
 import '../css/Trip.css';
 import {Table} from 'reactstrap';
+// import {Button} from 'react-bootstrap';
+import AuthService from '../services/AuthService';
 
 class Itinerary extends Component {
   constructor(props){
     super(props)
+    this.Auth = new AuthService()
     this.state = {
       apiUrl: 'http://localhost:3000',
       events: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentWillMount(){
@@ -20,6 +24,24 @@ class Itinerary extends Component {
     })
     .then((parsedResponse) =>{
       this.setState({events: parsedResponse})
+    })
+  }
+
+  handleDelete(i){
+    let eventsArray = this.state.events
+    const index = i.target.value
+    const eventToDelete = eventsArray[index]
+    fetch(`${this.state.apiUrl}/delete_event/${eventToDelete.id}`,
+      {
+        body: JSON.stringify(eventToDelete),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: "DELETE"
+      }
+    ).then((res) => {
+      eventsArray.splice(index, 1)
+      this.setState({events: eventsArray})
     })
   }
 
@@ -38,15 +60,28 @@ class Itinerary extends Component {
           </thead>
           <tbody>
           {this.state.events.map((events, index) =>{
-            return(
-              <tr key={index}>
-                <td>{events.title}</td>
-                <td>{events.date}</td>
-                <td>{events.location}</td>
-                <td>{events.description}</td>
-                <td>{events.link}</td>
-              </tr>
-            )
+            if (this.Auth.getUserId() == this.props.tripOwner) {
+              return(
+                <tr key={index}>
+                  <td>{events.title}</td>
+                  <td>{events.date}</td>
+                  <td>{events.location}</td>
+                  <td>{events.description}</td>
+                  <td>{events.link}</td>
+                  <td><button value={index} onClick={this.handleDelete}> delete </button></td>
+                </tr>
+              )
+            } else {
+              return(
+                <tr key={index}>
+                  <td>{events.title}</td>
+                  <td>{events.date}</td>
+                  <td>{events.location}</td>
+                  <td>{events.description}</td>
+                  <td>{events.link}</td>
+                </tr>
+              )
+            }
           })}
           </tbody>
         </Table>
