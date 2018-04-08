@@ -98,15 +98,15 @@ class MessageBoard extends Component {
   render() {
     return (
       <div className="message-board">
-        <h3>Message Board</h3>
-          <Scrollbars className="message-box" style={{height: 450}}
+        <h2 className="message-header">Message Board</h2>
+          <Scrollbars className="message-box" style={{ height: 600 }}
           >
           {this.state.chats.map((chats, index) =>{
             return(
                 <ListGroup key={index}>
                     <Col sm={12}>
                       <ListGroupItem className="chatMessage">
-                      <button type="button" id="message-display-name" class="btn btn-primary btn-sm disabled nohover">
+                      <button type="button" id="message-display-name" className="btn btn-primary btn-sm disabled nohover">
                       <strong>{chats.display_name}</strong>
                       </button> {chats.message}</ListGroupItem>
                     </Col>
@@ -115,12 +115,15 @@ class MessageBoard extends Component {
           })}
           </Scrollbars>
 
+          <div className="submits">
+            <form id="message-submit"  onSubmit={this.submitMessage.bind(this)}>
+              <textarea id="newsuggestion"
+              rows="4"
+              onChange={this.handleChange.bind(this)}></textarea>
 
-          <form id="message-submit"  onSubmit={this.submitMessage.bind(this)}>
-            <input type="text" id="newsuggestion" className="col-form-label" onChange={this.handleChange.bind(this)}/>
-
-            <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
-          </form>
+              <br /> <input type="submit" value="Submit" className="btn btn-secondary" id="newsuggestion2"/>
+            </form>
+          </div>
         </div>
       )
     }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/Trip.css';
 import MessageBoard from './MessageBoard';
 import Itinerary from './Itinerary';
 import NewEvent from './NewEvent'
@@ -10,6 +9,7 @@ import TicketmasterAPI from './TicketmasterAPI';
 import { Col, Form, FormGroup, Label, Input, Row, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import UpdateTrip from './UpdateTrip';
 import AuthService from '../services/AuthService';
+import '../css/Trip.css';
 
 
 const apiURL = 'http://localhost:3000'
@@ -64,14 +64,19 @@ class Trip extends Component {
   renderAPI(){
     if (this.state.trip.city != undefined) {
       localStorage.setItem("city", this.state.trip.city)
-      return <TicketmasterAPI />
+      return (
+          <TicketmasterAPI />
+
+      )
     }
   }
 
   renderEditButton(){
     if (this.state.trip.user_id == this.Auth.getUserId()) {
       return (
-        <Button type="button" className="btn btn-primary btn-lg btn-block " id="buttonEdit" onClick={this.toggleModalEdit}> edit </Button>
+        <div id="outer-submit">
+          <Button type="button" id="edit-button" onClick={this.toggleModalEdit} > </Button>
+        </div>
       )
     }
   }
@@ -81,31 +86,27 @@ class Trip extends Component {
       <div>
 
         <Navigation />
-      
+
         <div className="wrapper">
 
             <div className="tripinfo">
-              <h2>{this.state.trip.title}</h2>
-              {this.renderEditButton()}
-              <Modal isOpen={this.state.modal_edit} toggle={this.toggleModalEdit}>
-                <ModalHeader toggle={this.toggleModalEdit}>Update Your Trip</ModalHeader>
-                <ModalBody id="toggleEdit">
-                  <UpdateTrip toggleEdit={this.toggleEdit} />
-                </ModalBody>
-              </Modal>
-
-              <br/>
-              <img className="trip-photo" src="http://vyfhealth.com/wp-content/uploads/2015/10/yoga-placeholder1.jpg" />
+              <div className="trip-header">
+                <h2 id="trip-title">{this.state.trip.title}</h2>
+                <h5 id="trip-location">{this.state.trip.city},  {this.state.trip.state}</h5>
+                <h5 id="trip-dates">{this.state.trip.start_date} - {this.state.trip.end_date}</h5>
+                {this.renderEditButton()}
+                <Modal isOpen={this.state.modal_edit} toggle={this.toggleModalEdit}>
+                  <ModalHeader toggle={this.toggleModalEdit}>Update Your Trip</ModalHeader>
+                  <ModalBody id="toggleEdit">
+                    <UpdateTrip toggleEdit={this.toggleEdit} />
+                  </ModalBody>
+                </Modal>
+              </div>
+              <img className="trip-photo" src={this.state.trip.photo} />
+              <div id="api">
+                {this.renderAPI()}
+              </div>
               <p className="trip-details">
-                <div className="api">
-                <u>Whats Happening Locally?</u> 
-                  {this.renderAPI()}
-                </div>
-                <b>Date:</b> {this.state.trip.start_date} - {this.state.trip.end_date}
-                <br/>
-                Location: {this.state.trip.city},  {this.state.trip.state}
-                <br/>
-                Trip Details:<br/>
                 {this.state.trip.description}
               </p>
             </div>
