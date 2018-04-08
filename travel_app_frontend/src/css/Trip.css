@@ -20,7 +20,7 @@ toggle-form {
   display:grid;
   grid-template-columns: [line1] 50% [line2] 50% [end];
   grid-template-rows: [first] 10% [line2] 35% [line3] 20% [col4-start] 35% [five] 10% [end];
-  background-color: #698DA0 !important;
+  background-color: #EBDCD9;
   color: #4C5B5C;
   background-image: url('../trip-background.jpg');
   background-size: cover;
@@ -46,6 +46,47 @@ toggle-form {
 }
 
 
+.trip-header {
+  padding: 10px;
+  margin-left: 10px;
+  width: 80%;
+  margin-right: 0;
+}
+
+#trip-title {
+  font-size: 3rem;
+
+  margin-right: -40 !important;
+}
+
+#outer-submit {
+  background: url('../edit-button-sm.png') no-repeat top right;
+  margin-right: 20px;
+  margin-top: -70px;
+  width:50px;
+  float:right;
+
+
+}
+
+#edit-button {
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+
+}
+
+
+img.trip-photo {
+  max-width: 90%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+
+
+
+
 .MessageBoard {
   grid-column: 2/3;
   grid-row: 1;
@@ -63,33 +104,24 @@ toggle-form {
   margin: 5%;
 }
 
-.api {
-  background-color: white;
+#api, .trip-details {
+  background-color: #FCF4F2;
+  width: 90%;
+  margin: 20px auto !important;
   border-radius: 5px;
+  padding: 20px;
 }
 
 
-/* #toggle-form {
-  margin-left: 50px;
-} */
 
 .form {
   margin: 5px 0 0 5px;
 }
-
+/*
 .label {
   margin-left: 35px;
-}
+} */
 
-.trip-photo {
-  margin-left: 24px;
-}
-
-.trip-details {
-  margin: 30px;
-  margin-left: 24px;
-  color: #4C5B5C;
-}
 
 h2.tripinfo {
   margin:30px;

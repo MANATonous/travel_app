@@ -34,7 +34,10 @@ class TicketmasterAPI extends Component {
   renderAPI(){
 
     return (
-      <p> {this.state.suggested_event.name} - {this.state.suggested_event.dates.start.localDate} <a href={this.state.suggested_event.url}>Learn More </a></p>
+      <div className="api">
+        <h5>{"What's happening locally?"}</h5>
+        <p> {this.state.suggested_event.name} - {this.state.suggested_event.dates.start.localDate} <a href={this.state.suggested_event.url}>Learn More </a></p>
+      </div>
     )
   }
 
