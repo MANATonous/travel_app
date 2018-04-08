@@ -48,7 +48,6 @@ class JoinTrip extends Component {
         //todo redirect to login
         this.setState({errors: null})
         //TODO redirect to trips dashboard
-        alert('Success')
         this.props.toggleJoinTrip()
       }})
   }

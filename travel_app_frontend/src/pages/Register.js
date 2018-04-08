@@ -74,7 +74,6 @@ newUserSubmit(event){
     } else { //otherwise redirect to login and (temporarily) set alert=success
       //todo redirect to login
       this.setState({errors: null})
-      alert('Success')
       this.props.toggleModal()
     }})
 }
