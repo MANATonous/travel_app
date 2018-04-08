@@ -92,8 +92,7 @@ class Trip extends Component {
             <div className="tripinfo">
               <div className="trip-header">
                 <h2 id="trip-title">{this.state.trip.title}</h2>
-                <h5 id="trip-location">{this.state.trip.city},  {this.state.trip.state}</h5>
-                <h5 id="trip-dates">{this.state.trip.start_date} - {this.state.trip.end_date}</h5>
+
                 {this.renderEditButton()}
                 <Modal isOpen={this.state.modal_edit} toggle={this.toggleModalEdit}>
                   <ModalHeader toggle={this.toggleModalEdit}>Update Your Trip</ModalHeader>
@@ -102,7 +101,15 @@ class Trip extends Component {
                   </ModalBody>
                 </Modal>
               </div>
-              <img className="trip-photo" src={this.state.trip.photo} />
+              <div className="secondary-header">
+                <h5>{this.state.trip.city},  {this.state.trip.state}</h5>
+                <h5>{this.state.trip.start_date} - {this.state.trip.end_date}</h5>
+              </div>
+
+              <div className="trip-image">
+                <img className="trip-photo" src={this.state.trip.photo} />
+              </div>
+
               <div id="api">
                 {this.renderAPI()}
               </div>
@@ -120,7 +127,7 @@ class Trip extends Component {
             <div className="itinerary-row">
             <div className="toggle-form"    id="toggle-form">
               <Button type="button" className="btn btn-primary btn-lg new-event-btn" onClick={this.toggleNewEvent.bind(this)}>
-                Add New Event!
+                 Add New Event
               </Button>
               <Modal isOpen={this.state.modal_new_event} toggle={this.toggleNewEvent}>
                 <ModalHeader toggle={this.toggleNewEvent}>Add New Event</ModalHeader>

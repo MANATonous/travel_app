@@ -1,20 +1,4 @@
-/*
-.container{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 50px 350px 50px;
-}
-.jumbotron {
-  background-color: white;
-  padding-left: 20%;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-}
-toggle-form {
-
-} */
-
-
+/* entire container */
 
 .wrapper {
   display:grid;
@@ -25,18 +9,9 @@ toggle-form {
   background-image: url('../trip-background.jpg');
   background-size: cover;
 }
-#buttonEdit {
-  background-color: #698DA0;
-  border: none;
-}
 
-/* .wrapper {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows:1fr 1fr;
 
-} */
+/* trip card container */
 .tripinfo {
   grid-column: 1/2;
   grid-row: 1;
@@ -45,47 +20,59 @@ toggle-form {
   border-radius: 10px;
 }
 
-
+/* trip header */
 .trip-header {
-  padding: 10px;
-  margin-left: 10px;
-  width: 80%;
-  margin-right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 #trip-title {
   font-size: 3rem;
-
-  margin-right: -40 !important;
 }
 
+/* edit button image */
 #outer-submit {
   background: url('../edit-button-sm.png') no-repeat top right;
-  margin-right: 20px;
-  margin-top: -70px;
   width:50px;
-  float:right;
-
-
+  margin-right: 20px;
 }
 
 #edit-button {
   background-color: transparent;
   height: 50px;
   width: 50px;
-
 }
 
+#buttonEdit {
+  margin: 20px;
+}
 
 img.trip-photo {
   max-width: 90%;
   margin: 20px auto;
   border-radius: 10px;
+  display: block;
+}
+
+/* update button within edit modal */
+
+.update-button {
+  background-color: #88AE9F;
+}
+
+/* alignment for sections within trip details card */
+
+#api, .secondary-header, .trip-header, .trip-details {
+  background-color: #FFF9F7;
+  width: 90%;
+  margin: 20px auto !important;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 
-
-
+/* message board card related to entire page; actual message edits in message.css file */
 
 .MessageBoard {
   grid-column: 2/3;
@@ -96,6 +83,8 @@ img.trip-photo {
 
 }
 
+/* event card edits */
+
 .itinerary-row {
   grid-column: 1/3;
   grid-row: 4/5;
@@ -104,44 +93,23 @@ img.trip-photo {
   margin: 5%;
 }
 
-#api, .trip-details {
-  background-color: #FCF4F2;
-  width: 90%;
-  margin: 20px auto !important;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-
-
-.form {
-  margin: 5px 0 0 5px;
-}
-/*
-.label {
-  margin-left: 35px;
-} */
-
-
-h2.tripinfo {
-  margin:30px;
-  font-style: bold;
-  color: #4C5B5C;
-  font-size: 2rem;
-  border-bottom: solid pink 4px;
-}
-
-#buttonEdit {
-  margin: 20px;
-}
-
 .new-event-btn {
   width: 25%;
   margin: 20px;
   align-items: center;
   background-color: #698DA0;
   border-color: #698DA0;
+  min-width: 200px;
 }
+
+.delete-button{
+  border-radius: 50px;
+  background-color: #698DA0
+}
+
+
+
+/* tablet size */
 
 @media (max-width: 900px ){
 
