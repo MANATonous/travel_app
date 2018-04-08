@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Col, Form, Modal, ModalBody, ModalHeader, Collapse, ModalFooter, Button, FormGroup, Label, Input,Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink} from 'reactstrap';
 import AuthService from '../services/AuthService'
+import '../css/Trip.css';
 
 
 class UpdateTrip extends Component {
@@ -183,7 +184,7 @@ class UpdateTrip extends Component {
             type="button"
             input type="submit"
             value='Submit'
-            className="btn btn-primary btn-lg btn-block form-submit"
+            className="btn btn-primary btn-lg btn-block update-button form-submit"
           >
             Submit
           </button>

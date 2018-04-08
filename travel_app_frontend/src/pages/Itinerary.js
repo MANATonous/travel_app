@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import NewEvent from './NewEvent';
-import '../css/Trip.css';
 import {Table} from 'reactstrap';
-// import {Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import '../css/Trip.css';
 import AuthService from '../services/AuthService';
 
 class Itinerary extends Component {
@@ -68,7 +68,7 @@ class Itinerary extends Component {
                   <td>{events.location}</td>
                   <td>{events.description}</td>
                   <td>{events.link}</td>
-                  <td><button value={index} onClick={this.handleDelete}> delete </button></td>
+                  <td><Button type="button" className="btn btn-lg delete-button" value={index} onClick={this.handleDelete}> X </Button></td>
                 </tr>
               )
             } else {
